@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>PalPay - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>PalPay - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>AY1920S1-CS2103T-W12-3</code>      Since: <code>SEPT 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -15,8 +15,18 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#splitting-expense-with-multiple-people-code-split-code">3.2. Splitting expense with multiple people: <code>split</code></a></li>
+<li><a href="#finance-output-code-out-code">3.3. Finance output: <code>out</code></a></li>
+<li><a href="#finance-input-code-in-code">3.4. Finance input: <code>in</code></a></li>
+<li><a href="#display-view-code-view-code">3.5. Display view: <code>view</code></a></li>
+<li><a href="#deleting-finance-code-delete-code">3.6. Deleting Finance: <code>delete</code></a></li>
+<li><a href="#updating-finance-code-update-code">3.7. Updating Finance: <code>update</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.8. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.10. Saving the data</a></li>
 </ul>
 </li>
+<li><a href="#faq">4. FAQ</a></li>
+<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -44,9 +54,6 @@
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear within a few seconds.</p>
-<div class="paragraph">
-<p><strong>Placeholder for image</strong> image::Ui.png[width="790"]</p>
-</div>
 </li>
 <li>
 <p>Type your command in the command box and press <kbd>Enter</kbd> to execute it.<br>
@@ -117,8 +124,6 @@ Format: <code>help</code></p>
 <p>Split expenses with you friends<br>
 Format: <code>split AMOUNT [FLAG] n/NAME1 [n/NAME2]&#8230;&#8203;</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -149,204 +154,235 @@ Format: <code>split AMOUNT [FLAG] n/NAME1 [n/NAME2]&#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Listing all persons : <code>list</code></p>
 </div>
+<div class="sect2">
+<h3 id="finance-output-code-out-code"><a class="link" href="#finance-output-code-out-code">3.3. Finance output: <code>out</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
-</div>
-<div class="paragraph">
-<p>=== Editing a person : <code>edit</code></p>
+<p>Adds an expenditure of personal finance<br>
+Format: <code>out AMOUNT n/ITEM [t/CATEGORY]</code></p>
 </div>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Examples:
+* <code>out 100 n/milk t/food</code>
+* <code>out 29 n/taxi t/transport</code>
+* <code>out 12 n/burger</code></p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="finance-input-code-in-code"><a class="link" href="#finance-input-code-in-code">3.4. Finance input: <code>in</code></a></h3>
+<div class="paragraph">
+<p>Adds an income of personal finance<br>
+Format: <code>in AMOUNT n/ITEM [t/CATEGORY]</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Examples:
+* <code>in 100 n/errand t/work</code>
+* <code>in 200 n/mom t/family</code>
+* <code>in 120 n/work</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-view-code-view-code"><a class="link" href="#display-view-code-view-code">3.5. Display view: <code>view</code></a></h3>
+<div class="paragraph">
+<p>Shows all possible views (spending, projection and loan).<br>
+Format: <code>view KEYWORD [TIMEFRAME]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>KEYWORD</code> input only accepts <code>spending</code>, <code>projection</code> and <code>loan</code>.</p>
+</li>
+<li>
+<p><code>[TIMEFRAME]</code> input defines the number of days prior to this command for the called projection. (default=30)</p>
+</li>
+<li>
+<p><code>view spending</code> shows a breakdown of your categories of spending</p>
+</li>
+<li>
+<p><code>view projection</code> shows a personal finance projection for a given period of time</p>
+</li>
+<li>
+<p><code>view loan</code> shows the amount of money owed and lent to others</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>view loan</code></p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>view projection</code></p>
+</li>
+<li>
+<p><code>view spending</code></p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">3.6. Deleting Finance: <code>delete</code></a></h3>
 <div class="paragraph">
-<p>=== Locating persons by name: <code>find</code></p>
-</div>
-<div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
+<p>Deletes the specified income or expenditure from the finance manager.<br>
+Format: <code>delete --TYPE AMOUNT n/ITEM [t/CATEGORY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>TYPE</code> only accepts <code>in</code> or <code>out</code>. (e.g. <code>delete --out &#8230;&#8203;</code> refers to deleting an <strong>expenditure</strong>)</p>
+</li>
+<li>
+<p>Deletes the item from the given category with it&#8217;s given amount.</p>
+</li>
+<li>
+<p>If there is no given category, it will only search for given type with it&#8217;s corresponding amount.</p>
+</li>
+<li>
+<p>If AMOUNT/ITEM/CATEGORY or a combination of any of the 3 does not match, no operation will be performed</p>
+</li>
+<li>
+<p>example <code>delete --in 200 n/mom t/allowance</code> will delete income of <strong>200</strong> from type: <strong>mom</strong> and category: <strong>allowance</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p><code>delete --out 20 n/sprite t/drinks</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>delete --out 10 n/car</code></p>
+</li>
+<li>
+<p><code>delete --in 50 n/mom</code></p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">3.7. Updating Finance: <code>update</code></a></h3>
 <div class="paragraph">
-<p>=== Deleting a person : <code>delete</code></p>
-</div>
-<div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
+<p>Updates the specified income or expenditure from the finance manager.<br>
+Format: <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [t/CATEGORY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>TYPE</code> only accepts <code>in</code> or <code>out</code>. (e.g. <code>update --out &#8230;&#8203;</code> refers to deleting an <strong>expenditure</strong>)
+*<code>AMOUNT1</code> is the new amount you want to update the current in/out with.</p>
+</li>
+<li>
+<p>Updates the item from the given category with it&#8217;s given amount.</p>
+</li>
+<li>
+<p>If there is no given category, it will only search for given type with it&#8217;s corresponding amount.</p>
+</li>
+<li>
+<p>If AMOUNT/ITEM/CATEGORY or a combination of any of the 3 does not match, no operation will be performed</p>
+</li>
+<li>
+<p>example <code>update --in 100 200 n/mom t/allowance</code> will update income of <strong>200</strong> to <strong>100</strong> from type: <strong>mom</strong> and category: <strong>allowance</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<p><code>update --out 10 20 n/coke t/drinks</code></p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>update --out 100 300 n/transport</code></p>
+</li>
+<li>
+<p><code>update --in 60 70 n/dad</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Clearing all entries : <code>clear</code></p>
 </div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.8. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
-<div class="paragraph">
-<p>=== Exiting the program : <code>exit</code></p>
 </div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
-<div class="paragraph">
-<p>=== Saving the data</p>
 </div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>PalPay data is saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-<div class="paragraph">
-<p>=== Encrypting data files <code>[coming in v2.0]</code></p>
 </div>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
-<div class="paragraph">
-<p>== FAQ</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
 </div>
-<div class="paragraph">
-<p>== Command Summary</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>In</strong> <code>in AMOUNT n/ITEM [t/CATEGORY]</code><br>
+e.g. <code>in 100 n/allowance</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Out</strong> : <code>out AMOUNT n/ITEM [t/CATEGORY]</code><br>
+e.g. <code>out 20 n/coke t/drink</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><strong>Update</strong> : <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [t/CATEGORY]</code><br>
+e.g. <code>update --out 100 300 n/transport</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><strong>Delete</strong> : <code>delete --TYPE AMOUNT n/ITEM [t/CATEGORY]</code><br>
+e.g. <code>delete --in 200 n/waiter t/work</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Split</strong> : <code>split AMOUNT [FLAG] n/NAME1 [n/NAME2]&#8230;&#8203;</code><br>
+e.g. <code>split 100 --share n/Albert n/Bernard n/Clement</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>View</strong> : <code>view KEYWORD [TIMEFRAME]</code><br>
+e.g. <code>view loan</code>, <code>view projection</code>, <code>view spending</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
@@ -354,7 +390,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-23 07:28:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-23 08:22:32 UTC</div></div></div></body></html>
