@@ -13,16 +13,22 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#splitting-expense-with-multiple-people-code-split-code">3.2. Splitting expense with multiple people: <code>split</code></a></li>
-<li><a href="#finance-output-code-out-code">3.3. Finance output: <code>out</code></a></li>
-<li><a href="#finance-input-code-in-code">3.4. Finance input: <code>in</code></a></li>
-<li><a href="#display-view-code-view-code">3.5. Display view: <code>view</code></a></li>
+<li><a href="#splitting-expense-with-multiple-people-code-split-code">3.1. Splitting expense with multiple people: <code>split</code></a></li>
+<li><a href="#logging-expense-code-out-code">3.2. Logging expense: <code>out</code></a></li>
+<li><a href="#logging-finance-input-code-in-code">3.3. Logging finance input: <code>in</code></a></li>
+<li><a href="#setting-a-budget-code-set-code">3.4. Setting a budget: <code>set</code></a></li>
+<li><a href="#displaying-view-code-view-code">3.5. Displaying view: <code>view</code></a></li>
 <li><a href="#deleting-finance-code-delete-code">3.6. Deleting Finance: <code>delete</code></a></li>
 <li><a href="#updating-finance-code-update-code">3.7. Updating Finance: <code>update</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.8. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.10. Saving the data</a></li>
+<li><a href="#filtering-based-on-tags-code-filter-code">3.8. Filtering based on tags: <code>filter</code></a></li>
+<li><a href="#projecting-balance-based-on-transactions-code-project-code">3.9. Projecting balance based on transactions: <code>project</code></a></li>
+<li><a href="#redoing-the-past-entry-code-redo-code">3.10. Redoing the past entry : <code>redo</code></a></li>
+<li><a href="#undoing-the-past-entry-code-undo-code">3.11. Undoing the past entry : <code>undo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.12. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#listing-all-entries-code-list-code">3.13. Listing all entries : <code>list</code></a></li>
+<li><a href="#viewing-help-code-help-code">3.14. Viewing help : <code>help</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.16. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -67,10 +73,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>view</code></strong> : shows statistics of your current finances</p>
 </li>
 <li>
-<p><strong><code>in</code></strong><code>100 n/mother t/allowance</code> : adds an income to your personal finance of <strong>100</strong> dollars under the catergory <strong>mother</strong> and the item type <strong>allowance</strong>.</p>
+<p><strong><code>in</code></strong><code>100 n/mother c/allowance</code> : adds an income to your personal finance of <strong>100</strong> dollars under the catergory <strong>mother</strong> and the item type <strong>allowance</strong>.</p>
 </li>
 <li>
-<p><strong><code>out</code></strong><code>3 n/pie t/food</code> : adds an expenditure to your personal finance of <strong>3</strong> dollars under the category <strong>food</strong> and the item type <strong>pie</strong>.</p>
+<p><strong><code>out</code></strong><code>3 n/pie c/food</code> : adds an expenditure to your personal finance of <strong>3</strong> dollars under the category <strong>food</strong> and the item type <strong>pie</strong>.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -99,7 +105,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>in AMOUNT n/ITEM</code>, <code>AMOUNT</code> and 'ITEM' are parameters which can be used as <code>in 300 n/concert</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/ITEM [t/CATEGORY]</code> can be used as <code>n/coke t/drinks</code> or as <code>n/coke</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/ITEM [c/CATEGORY]</code> can be used as <code>n/coke t/drinks</code> or as <code>n/coke</code>.</p>
 </li>
 <li>
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[n/NAME]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>n/Amy</code>, <code>n/Amy n/Betty</code> etc.</p>
@@ -112,17 +118,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
-<div class="paragraph">
-<p>Opens help page for list of usable commands<br>
-Format: <code>help</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="splitting-expense-with-multiple-people-code-split-code"><a class="link" href="#splitting-expense-with-multiple-people-code-split-code">3.2. Splitting expense with multiple people: <code>split</code></a></h3>
+<h3 id="splitting-expense-with-multiple-people-code-split-code"><a class="link" href="#splitting-expense-with-multiple-people-code-split-code">3.1. Splitting expense with multiple people: <code>split</code></a></h3>
 <div class="paragraph">
 <p>Split expenses with you friends<br>
-Format: <code>split AMOUNT [FLAG] n/NAME1 [n/NAME2]&#8230;&#8203;</code></p>
+Format: <code>split [FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203;</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -147,42 +146,71 @@ Format: <code>split AMOUNT [FLAG] n/NAME1 [n/NAME2]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>split 1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
+<p><code>split $/1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
 </li>
 <li>
-<p><code>split 100 --share n/Albert n/Bernard n/Clement</code></p>
+<p><code>split $/100 --share n/Albert n/Bernard n/Clement</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="finance-output-code-out-code"><a class="link" href="#finance-output-code-out-code">3.3. Finance output: <code>out</code></a></h3>
+<h3 id="logging-expense-code-out-code"><a class="link" href="#logging-expense-code-out-code">3.2. Logging expense: <code>out</code></a></h3>
 <div class="paragraph">
 <p>Adds an expenditure of personal finance<br>
-Format: <code>out AMOUNT n/ITEM [t/CATEGORY]</code></p>
+Format: <code>out $/AMOUNT n/ITEM [c/CATEGORY]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:
-* <code>out 100 n/milk t/food</code>
-* <code>out 29 n/taxi t/transport</code>
-* <code>out 12 n/burger</code></p>
+* <code>out $/100 n/milk c/food</code>
+* <code>out $/29 n/taxi c/transport</code>
+* <code>out $/12 n/burger</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="finance-input-code-in-code"><a class="link" href="#finance-input-code-in-code">3.4. Finance input: <code>in</code></a></h3>
+<h3 id="logging-finance-input-code-in-code"><a class="link" href="#logging-finance-input-code-in-code">3.3. Logging finance input: <code>in</code></a></h3>
 <div class="paragraph">
 <p>Adds an income of personal finance<br>
-Format: <code>in AMOUNT n/ITEM [t/CATEGORY]</code></p>
+Format: <code>in $/AMOUNT n/ITEM [c/CATEGORY]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:
-* <code>in 100 n/errand t/work</code>
-* <code>in 200 n/mom t/family</code>
-* <code>in 120 n/work</code></p>
+* <code>in $/100 n/errand c/work</code>
+* <code>in $/200 n/mom c/family</code>
+* <code>in $/120 n/work</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-view-code-view-code"><a class="link" href="#display-view-code-view-code">3.5. Display view: <code>view</code></a></h3>
+<h3 id="setting-a-budget-code-set-code"><a class="link" href="#setting-a-budget-code-set-code">3.4. Setting a budget: <code>set</code></a></h3>
+<div class="paragraph">
+<p>Sets a budget for a particular category till the given deadline<br>
+Format: <code>set $/AMOUNT d/DATE c/CATEGORY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>AMOUNT</code> accepts the new budget to be set.</p>
+</li>
+<li>
+<p><code>DATE</code> accepts the deadline to be set.</p>
+</li>
+<li>
+<p><code>CATEGORY</code> accepts the CATEGORY for the budget</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>set $/100 c/shopping</code>
+* <code>set $/50 c/food</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="displaying-view-code-view-code"><a class="link" href="#displaying-view-code-view-code">3.5. Displaying view: <code>view</code></a></h3>
 <div class="paragraph">
 <p>Shows all possible views (spending, projection and loan).<br>
 Format: <code>view KEYWORD [TIMEFRAME]</code></p>
@@ -231,7 +259,7 @@ Format: <code>view KEYWORD [TIMEFRAME]</code></p>
 <h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">3.6. Deleting Finance: <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified income or expenditure from the finance manager.<br>
-Format: <code>delete --TYPE AMOUNT n/ITEM [t/CATEGORY]</code></p>
+Format: <code>delete INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -262,13 +290,7 @@ Format: <code>delete --TYPE AMOUNT n/ITEM [t/CATEGORY]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete --out 20 n/sprite t/drinks</code></p>
-</li>
-<li>
-<p><code>delete --out 10 n/car</code></p>
-</li>
-<li>
-<p><code>delete --in 50 n/mom</code></p>
+<p><code>delete 1</code></p>
 </li>
 </ul>
 </div>
@@ -277,7 +299,7 @@ Format: <code>delete --TYPE AMOUNT n/ITEM [t/CATEGORY]</code></p>
 <h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">3.7. Updating Finance: <code>update</code></a></h3>
 <div class="paragraph">
 <p>Updates the specified income or expenditure from the finance manager.<br>
-Format: <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [t/CATEGORY]</code></p>
+Format: <code>update --TYPE $/AMOUNT1 $/AMOUNT2 n/ITEM [c/CATEGORY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -297,7 +319,7 @@ Format: <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [t/CATEGORY]</code></p>
 <p>If AMOUNT/ITEM/CATEGORY or a combination of any of the 3 does not match, no operation will be performed</p>
 </li>
 <li>
-<p>example <code>update --in 100 200 n/mom t/allowance</code> will update income of <strong>200</strong> to <strong>100</strong> from type: <strong>mom</strong> and category: <strong>allowance</strong>.</p>
+<p>example <code>update --in $/100 $/200 n/mom c/allowance</code> will update income of <strong>200</strong> to <strong>100</strong> from type: <strong>mom</strong> and category: <strong>allowance</strong>.</p>
 </li>
 </ul>
 </div>
@@ -309,33 +331,120 @@ Format: <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [t/CATEGORY]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>update --out 10 20 n/coke t/drinks</code></p>
+<p><code>update --out $/10 $/20 n/coke c/drinks</code></p>
 </li>
 <li>
-<p><code>update --out 100 300 n/transport</code></p>
+<p><code>update --out $/100 300 n/transport</code></p>
 </li>
 <li>
-<p><code>update --in 60 70 n/dad</code></p>
+<p><code>update --in $/60 70 n/dad</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.8. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="filtering-based-on-tags-code-filter-code"><a class="link" href="#filtering-based-on-tags-code-filter-code">3.8. Filtering based on tags: <code>filter</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
+<p>Shows all relevant transactions with given <code>CATEGORY</code><br>
+Format: <code>filter CATEGORY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>CATEGORY</code> input accepts <code>CATEGORY</code> you have used in In or Out transactions before.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter food</code></p>
+</li>
+<li>
+<p><code>filter transport</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="projecting-balance-based-on-transactions-code-project-code"><a class="link" href="#projecting-balance-based-on-transactions-code-project-code">3.9. Projecting balance based on transactions: <code>project</code></a></h3>
+<div class="paragraph">
+<p>Projects future balace based on past In or Out transactions<br>
+Format: <code>project d/DATE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>project d/10012019</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-the-past-entry-code-redo-code"><a class="link" href="#redoing-the-past-entry-code-redo-code">3.10. Redoing the past entry : <code>redo</code></a></h3>
+<div class="paragraph">
+<p>Redoes the latest entry<br>
+Format: <code>redo</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-the-past-entry-code-undo-code"><a class="link" href="#undoing-the-past-entry-code-undo-code">3.11. Undoing the past entry : <code>undo</code></a></h3>
+<div class="paragraph">
+<p>Undoes the latest entry.<br>
+Format: <code>undo</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.12. Clearing all entries : <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clears all entries from the Bank Account.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
+<h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">3.13. Listing all entries : <code>list</code></a></h3>
+<div class="paragraph">
+<p>Lists all entries from the Bank Account.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.14. Viewing help : <code>help</code></a></h3>
+<div class="paragraph">
+<p>Opens help page for list of usable commands<br>
+Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>PalPay data is saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -361,33 +470,60 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>In</strong> <code>in AMOUNT n/ITEM [t/CATEGORY]</code><br>
-e.g. <code>in 100 n/allowance</code></p>
+<p><strong>Split</strong> <code>split [FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203;</code><br>
+e.g. <code>split $/1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
 </li>
 <li>
-<p><strong>Out</strong> : <code>out AMOUNT n/ITEM [t/CATEGORY]</code><br>
-e.g. <code>out 20 n/coke t/drink</code></p>
+<p><strong>Out</strong> : <code>out $/AMOUNT n/ITEM [c/CATEGORY]</code><br>
+e.g. <code>out $/20 n/coke c/drink</code></p>
 </li>
 <li>
-<p><strong>Update</strong> : <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [t/CATEGORY]</code><br>
-e.g. <code>update --out 100 300 n/transport</code></p>
+<p><strong>In</strong> <code>in $/AMOUNT n/ITEM [c/CATEGORY]</code><br>
+e.g. <code>in $/100 n/allowance</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete --TYPE AMOUNT n/ITEM [t/CATEGORY]</code><br>
-e.g. <code>delete --in 200 n/waiter t/work</code></p>
+<p><strong>Set</strong> : <code>set $/AMOUNT d/DATE c/CATEGORY</code><br>
+e.g. <code>set $/100 d/10102019 c/food</code></p>
 </li>
 <li>
-<p><strong>Split</strong> : <code>split AMOUNT [FLAG] n/NAME1 [n/NAME2]&#8230;&#8203;</code><br>
-e.g. <code>split 100 --share n/Albert n/Bernard n/Clement</code></p>
+<p><strong>View</strong> : <code>view []</code><br>
+e.g. <code>view projection</code></p>
 </li>
 <li>
-<p><strong>View</strong> : <code>view KEYWORD [TIMEFRAME]</code><br>
-e.g. <code>view loan</code>, <code>view projection</code>, <code>view spending</code></p>
+<p><strong>Delete</strong> : <code>delete --TYPE AMOUNT n/ITEM [c/CATEGORY]</code><br>
+e.g. <code>delete --in $/200 n/waiter c/work</code></p>
+</li>
+<li>
+<p><strong>Update</strong> : <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [c/CATEGORY]</code><br>
+e.g. <code>update --out $/100 $/300 n/transport</code></p>
+</li>
+<li>
+<p><strong>Filter</strong> : <code>filter CATEGORY</code><br>
+e.g. <code>filter food</code></p>
+</li>
+<li>
+<p><strong>Project</strong> : <code>project DURATION</code><br>
+e.g. <code>project 10</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-21 10:32:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-21 15:10:54 UTC</div></div></div></body></html>
