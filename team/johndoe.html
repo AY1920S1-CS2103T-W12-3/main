@@ -139,27 +139,27 @@
 <div class="sect2">
 <h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">Deleting Finance : <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified income or expenditure from the finance manager.<br>
-Format: <code>delete INDEX</code></p>
+<p>Deletes the specified Transaction or Budget from the finance manager.<br>
+Format: <code>delete TYPE+INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>TYPE</code> only accepts <code>in</code> or <code>out</code>. (e.g. <code>delete --out &#8230;&#8203;</code> refers to deleting an <strong>expenditure</strong>)</p>
+<p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added)</p>
 </li>
 <li>
-<p>Deletes the item from the given category with it&#8217;s given amount.</p>
+<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>delete --b1</code> refers to deleting an <strong>Budget</strong> of index 1)</p>
 </li>
 <li>
-<p>If there is no given category, it will only search for given type with it&#8217;s corresponding amount.</p>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete --b 1</code> or <code>delete --1</code> or <code>delete --1b</code> will not work)</p>
 </li>
 <li>
-<p>If AMOUNT/ITEM/CATEGORY or a combination of any of the 3 does not match, no operation will be performed</p>
+<p>Nothing will be deleted if the transaction or budget with <code>INDEX</code> does not exists.</p>
 </li>
 <li>
-<p>example <code>delete --in 200 n/mom t/allowance</code> will delete income of <strong>200</strong> from type: <strong>mom</strong> and category: <strong>allowance</strong>.</p>
+<p>example <code>delete --t1</code> will delete the first transaction from the list of transactions.</p>
 </li>
 </ul>
 </div>
@@ -171,7 +171,10 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code></p>
+<p><code>delete t1</code></p>
+</li>
+<li>
+<p><code>delete b3</code></p>
 </li>
 </ul>
 </div>
@@ -180,26 +183,29 @@ Format: <code>delete INDEX</code></p>
 <h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">Updating Finance : <code>update</code></a></h3>
 <div class="paragraph">
 <p>Updates the specified income or expenditure from the finance manager.<br>
-Format: <code>update --TYPE $/AMOUNT1 $/AMOUNT2 n/ITEM [c/CATEGORY]</code></p>
+Format: <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>TYPE</code> only accepts <code>in</code> or <code>out</code>. (e.g. <code>update --out &#8230;&#8203;</code> refers to deleting an <strong>expenditure</strong>) *<code>AMOUNT1</code> is the new amount you want to update the current in/out with.</p>
+<p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added)</p>
 </li>
 <li>
-<p>Updates the item from the given category with it&#8217;s given amount.</p>
+<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update --b1 &#8230;&#8203;</code> refers to updating a <strong>Budget</strong> of index 1)</p>
 </li>
 <li>
-<p>If there is no given category, it will only search for given type with it&#8217;s corresponding amount.</p>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update --b 1 ..</code> or <code>update --1 ..</code> or <code>update --1b ..</code> will not work)</p>
 </li>
 <li>
-<p>If AMOUNT/ITEM/CATEGORY or a combination of any of the 3 does not match, no operation will be performed</p>
+<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted but <code>update t1</code> will not be accepted)</p>
 </li>
 <li>
-<p>example <code>update --in $/100 $/200 n/mom c/allowance</code> will update income of <strong>200</strong> to <strong>100</strong> from type: <strong>mom</strong> and category: <strong>allowance</strong>.</p>
+<p>Nothing will be updated if the transaction or budget with <code>INDEX</code> does not exists.</p>
+</li>
+<li>
+<p>example <code>update --t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
 </li>
 </ul>
 </div>
@@ -211,13 +217,13 @@ Format: <code>update --TYPE $/AMOUNT1 $/AMOUNT2 n/ITEM [c/CATEGORY]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>update --out $/10 $/20 n/coke c/drinks</code></p>
+<p><code>update t1 $/20 n/coke c/drinks d/12122019</code></p>
 </li>
 <li>
-<p><code>update --out $/100 300 n/transport</code></p>
+<p><code>update b2 $/300</code></p>
 </li>
 <li>
-<p><code>update --in $/60 70 n/dad</code></p>
+<p><code>update t4 $/30 d/12102019</code></p>
 </li>
 </ul>
 </div>
@@ -456,15 +462,15 @@ Example: <code>project 10</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="transaction-code-in-code-code-out-code"><a class="link" href="#transaction-code-in-code-code-out-code">Transaction: <code>in</code>/<code>out</code></a></h3>
+<h3 id="transaction-code-in-code-code-out-code-code-split-code"><a class="link" href="#transaction-code-in-code-code-out-code-code-split-code">Transaction: <code>in</code> / <code>out</code> / <code>split</code></a></h3>
 <div class="paragraph">
-<p>This feature allows user to input income or expense statements into the PalPay.</p>
+<p>The <code>Transaction</code> abstract class allows user to input income, expense or split commands into the PalPay.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extends the <code>Transaction</code> class.
-<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong> which describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
+<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong>. This describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
 <code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
 <code>inTransaction</code> and <code>outTransaction</code> implements <code>BankAccountOperation</code>.</p>
 </div>
@@ -479,13 +485,59 @@ This allows multiple transaction calls within the same method.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-command-feature-code-undo-code-code-redo-code"><a class="link" href="#undo-redo-command-feature-code-undo-code-code-redo-code">Undo / Redo Command Feature: <code>undo</code> <code>redo</code></a></h3>
+<h3 id="update-code-update-code"><a class="link" href="#update-code-update-code">Update: <code>update</code></a></h3>
+<div class="paragraph">
+<p>This feature allows users to update either the <strong>Amount</strong>, <strong>Date</strong> or <strong>Category</strong> of either a Transaction or Budget.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p>This <code>update</code> feature allows one or more fields of a Transaction or Budget to be updated. (e.g. <code>update t1 $/2</code> and <code>update t1 $/2 d/10102019</code> will both work as intended). This will minimize the need to input all non-required parameters if a user does not require all parameters of a Transaction or Budget to be changed.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-update-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-update-requires-code-type-index-code-as-one-of-its-parameter">Aspect: Update requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> takes in <code>TYPE+INDEX</code> to decide whether to delete an item from Transaction or Budget list. (e.g. <code>delete b1</code> deletes item index 1 from budget).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Requires lesser user steps to be taken before executing a <code>update</code> command</p>
+</li>
+<li>
+<p>Cons: Requires two lists to be created instead of 1. The <code>UniqueTransactionList</code> stores Transaction items and <code>UniqueBudgetList</code> to store Budget items.
+For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Change to <strong>Transaction</strong> or <strong>Budget</strong> mode and keying in only index (e.g. <code>update 1</code>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Requires only one unique list required to store both Transactions and Budgets.</p>
+</li>
+<li>
+<p>Cons: Requires additional user step to switch between modes before executing a updating command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-command-feature-code-undo-code-code-redo-code"><a class="link" href="#undo-redo-command-feature-code-undo-code-code-redo-code">Undo / Redo Command Feature: <code>undo</code>/<code>redo</code></a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -574,7 +626,40 @@ The following activity diagram summarizes what happens when a user executes Dele
 </div>
 <div class="sect3">
 <h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
-
+<div class="sect4">
+<h5 id="aspect-delete-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-delete-requires-code-type-index-code-as-one-of-its-parameter">Aspect: Delete requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> takes in <code>TYPE+INDEX</code> to decide whether to delete an item from Transaction or Budget list. (e.g. <code>delete b1</code> deletes item index 1 from budget).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Requires lesser user steps to be taken before executing a <code>delete</code> command</p>
+</li>
+<li>
+<p>Cons: Requires two lists to be created instead of 1. The <code>UniqueTransactionList</code> stores Transaction items and <code>UniqueBudgetList</code> to store Budget items.
+For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Change to <strong>Transaction</strong> or <strong>Budget</strong> mode and keying in only index (e.g. <code>delete 1</code>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Requires only one unique list required to store both Transactions and Budgets.</p>
+</li>
+<li>
+<p>Cons: Requires additional user step to switch between modes before executing a delete command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -598,7 +683,7 @@ The following activity diagram summarizes what happens when a user executes Dele
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-sorting-of-the-bank-account"><a class="link" href="#aspect-sorting-of-the-bank-account">Aspect: Sorting of the Bank Account</a></h5>
 <div class="ulist">
@@ -676,7 +761,7 @@ PalPay filters the list of transactions by checking if any of the specified cate
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-filtering-by-multiple-categories"><a class="link" href="#aspect-filtering-by-multiple-categories">Aspect: Filtering by multiple categories</a></h5>
 <div class="ulist">
@@ -733,7 +818,7 @@ A <code>LendMoney</code> instance is created for each person and executed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
 <div class="paragraph">
 <p>Current implementation of <code>Split</code> class encourages code reuse by abstracting the delegating the task of rebalancing to another class.<br>
 However, this introduces coupling as the behavior of <code>Split</code> is now inexplicably tied to <code>LendMoney</code>.</p>
@@ -769,7 +854,7 @@ Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">Design Considerations</a></h4>
 
 </div>
 </div>
@@ -811,7 +896,7 @@ For instance, <code>project d/22112019 c/Food -o</code> will project the <em>use
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">Design Considerations</a></h4>
 <div class="paragraph">
 <p>The project command has multiple possible implementations as to how the projection may be computed.
 In the current implementation, the projected amount is calculated via the following equation:</p>
@@ -1325,4 +1410,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 13:33:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 14:17:53 UTC</div></div></div></body></html>
