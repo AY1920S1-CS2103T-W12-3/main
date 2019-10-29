@@ -156,10 +156,10 @@ Format: <code>delete TYPE+INDEX</code></p>
 <p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete --b 1</code> or <code>delete --1</code> or <code>delete --1b</code> will not work)</p>
 </li>
 <li>
-<p>Nothing will be deleted if the transaction or budget with <code>INDEX</code> does not exists.</p>
+<p>You can only delete an existing transaction or budget. Nothing will be deleted if the transaction or budget with <code>INDEX</code> does not exists.</p>
 </li>
 <li>
-<p>example <code>delete --t1</code> will delete the first transaction from the list of transactions.</p>
+<p>Example: <code>delete --t1</code> will delete the first transaction from the list of transactions.</p>
 </li>
 </ul>
 </div>
@@ -202,10 +202,10 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code>
 <p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted but <code>update t1</code> will not be accepted)</p>
 </li>
 <li>
-<p>Nothing will be updated if the transaction or budget with <code>INDEX</code> does not exists.</p>
+<p>You can only update an existing transaction or budget. Nothing will be updated if the transaction or budget with <code>INDEX</code> does not exists.</p>
 </li>
 <li>
-<p>example <code>update --t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
+<p>Example: <code>update --t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
 </li>
 </ul>
 </div>
@@ -239,7 +239,7 @@ Format: <code>sort PREDICATE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Only able to <code>sort</code> by <code>date</code> and <code>amount</code> in v1.3.</p>
+<p>You are only able to <code>sort</code> by <code>date</code> and <code>amount</code> in v1.3.</p>
 </li>
 </ul>
 </div>
@@ -301,7 +301,7 @@ Format: <code>project d/DATE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
+<p><code>DATE</code> only accepts date in format DDMMYYYY.</p>
 </li>
 </ul>
 </div>
@@ -335,21 +335,21 @@ Format: <code>undo</code></p>
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing All Entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the Bank Account.<br>
+<p>Clears all entries from your Bank Account.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">Listing All Entries : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Lists all entries from the Bank Account.<br>
+<p>Lists all entries from your Bank Account.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing Help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Opens help page for list of usable commands<br>
+<p>Opens help page for the list of usable commands<br>
 Format: <code>help</code></p>
 </div>
 </div>
@@ -387,8 +387,8 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Split</strong> <code>split [FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203;</code><br>
-Example: <code>split $/1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
+<p><strong>Split</strong> <code>split [f/FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]</code><br>
+Example: <code>split $/100 f/loan n/Albert n/Bernard n/Clement s/2 s/1 s/7</code></p>
 </li>
 <li>
 <p><strong>Out</strong> : <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
@@ -407,12 +407,12 @@ Example: <code>set $/100 d/10102019 c/food</code></p>
 Example: <code>view transaction</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete --TYPE AMOUNT n/ITEM [c/CATEGORY]</code><br>
-Example: <code>delete --in $/200 n/waiter c/work</code></p>
+<p><strong>Delete</strong> : <code>delete TYPE+INDEX</code><br>
+Example: <code>delete t1 $/200 n/waiter c/work</code></p>
 </li>
 <li>
-<p><strong>Update</strong> : <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [c/CATEGORY]</code><br>
-Example: <code>update --out $/100 $/300 n/transport</code></p>
+<p><strong>Update</strong> : <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code><br>
+Example: <code>update b1 $/100 c/transport</code></p>
 </li>
 <li>
 <p><strong>Sort</strong> : <code>sort PREDICATE</code><br>
@@ -622,42 +622,20 @@ The following activity diagram summarizes what happens when a user executes Dele
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
-
+<div class="paragraph">
+<p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extend the <code>Transaction</code> class.
+<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong> which describe the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
+<code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
+<code>inTransaction</code> and <code>outTransaction</code> implement <code>BankAccountOperation</code>.
+==== Design Consideration</p>
 </div>
-<div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-delete-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-delete-requires-code-type-index-code-as-one-of-its-parameter">Aspect: Delete requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> takes in <code>TYPE+INDEX</code> to decide whether to delete an item from Transaction or Budget list. (e.g. <code>delete b1</code> deletes item index 1 from budget).</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Requires lesser user steps to be taken before executing a <code>delete</code> command</p>
-</li>
-<li>
-<p>Cons: Requires two lists to be created instead of 1. The <code>UniqueTransactionList</code> stores Transaction items and <code>UniqueBudgetList</code> to store Budget items.
-For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Change to <strong>Transaction</strong> or <strong>Budget</strong> mode and keying in only index (e.g. <code>delete 1</code>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Requires only one unique list required to store both Transactions and Budgets.</p>
-</li>
-<li>
-<p>Cons: Requires additional user step to switch between modes before executing a delete command.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.
+<code>inTransaction</code> and <code>outTransaction</code> can be referenced by making a call to <code>BankAccountOperation</code>,
+this <code>BankAccountOperation</code> is then passed as an argument to <code>Logic</code> components and multiple CRUD commands.
+This allows multiple transaction calls within the same method.</p>
 </div>
 </div>
 </div>
@@ -842,7 +820,7 @@ The balance in the <code>Ledger</code> and the balance of the recipient is updat
 <h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">Set Budget Feature: <code>set</code></a></h3>
 <div class="paragraph">
 <p>This feature allows the user to set a budget for a given time period for a category, if specified.
-The user is allowed to set multiple budgets.
+The user is allowed to set multiple budgets, but duplicate budgets (budgets with the same identity in terms of <strong>amount</strong>, <strong>date</strong> and <strong>tag</strong>) are not allowed.
 Upon setting the budget and prior to the deadline, the user&#8217;s <code>OutTransaction</code> will deduct the amount from each budget in the list respectively.</p>
 </div>
 <div class="sect3">
@@ -855,7 +833,14 @@ Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in
 </div>
 <div class="sect3">
 <h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">Design Considerations</a></h4>
-
+<div class="paragraph">
+<p>Currently, <code>Budget</code> does not extend from <code>Transaction</code> although the two behave in a similar way.
+There is an aggregation between <code>Budget</code> and <code>Transaction</code> as the two can exist independent of each other,
+although an effect on one may also cause an impact on the other.
+The current design was chosen over the former design of inheritance as there is a stark difference in the two
+in a way that <code>Budget</code> does not affect the <code>balance</code> of the user&#8217;s bank account directly while <code>Transaction</code> does.
+Hence, by Liskov Substitution Principle, inheritance is not a suitable design.<br></p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1410,4 +1395,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 14:17:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 15:57:04 UTC</div></div></div></body></html>
