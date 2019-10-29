@@ -37,7 +37,7 @@
 <li><a href="#split-feature-code-split-code">4.6. Split Feature: <code>split</code></a></li>
 <li><a href="#settle-up-feature-code-pay-code">4.7. Settle Up Feature: <code>pay</code></a></li>
 <li><a href="#set-budget-feature-code-set-code">4.8. Set Budget Feature: <code>set</code></a></li>
-<li><a href="#Implementation-Projection">4.9. Project Balance feature: <code>project</code></a></li>
+<li><a href="#Implementation-Projection">4.9. Project Balance Feature: <code>project</code></a></li>
 <li><a href="#logging">4.10. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.11. Configuration</a></li>
 </ul>
@@ -627,6 +627,11 @@ Refer to the <a href="UserGuide.html#Features">UserGuide</a> for usage details.<
 Given a list of <strong>shares</strong> and <strong>people</strong>, each person is assigned an <strong>amount</strong> based on the corresponding positional share and the total amount given to <code>split</code> command.<br>
 A <code>LendMoney</code> instance is created for each person and executed.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LedgerOperationDiagram.png" alt="LedgerOperationDiagram">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
@@ -642,6 +647,12 @@ However, this introduces coupling as the behavior of <code>Split</code> is now i
 <p>This feature allows the user to send money to another person.<br>
 The balance in the <code>Ledger</code> and the balance of the recipient is updated accordingly.</p>
 </div>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>pay</code> command creates <code>LendMoney</code> class that handles the transfer of fund from the user to another person.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">4.8. Set Budget Feature: <code>set</code></a></h3>
@@ -651,7 +662,7 @@ The user is allowed to set multiple budgets.
 Upon setting the budget and prior to the deadline, the user&#8217;s <code>OutTransaction</code> will deduct the amount from each budget in the list respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>set</code> command is an extension of parent <code>Command</code> class, facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em><br>
 Given an <strong>amount</strong> and <strong>date</strong>, a new Budget is set for the user.<br>
@@ -664,12 +675,12 @@ Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Projection"><a class="link" href="#Implementation-Projection">4.9. Project Balance feature: <code>project</code></a></h3>
+<h3 id="Implementation-Projection"><a class="link" href="#Implementation-Projection">4.9. Project Balance Feature: <code>project</code></a></h3>
 <div class="paragraph">
 <p>This feature allows users to <em>project</em> their balance status based on past income and outflows as manifest in their <em>TransactionHistory</em> by using the command <code>project [DATE]</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.9.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>project</code> command is facilitated by the Logic and Model components of the application, <em>PalPay</em></p>
 </div>
@@ -1206,4 +1217,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 05:38:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 12:15:29 UTC</div></div></div></body></html>
