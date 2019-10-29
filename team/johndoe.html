@@ -137,7 +137,7 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">Deleting Finance: <code>delete</code></a></h3>
+<h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">Deleting Finance : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified income or expenditure from the finance manager.<br>
 Format: <code>delete INDEX</code></p>
@@ -177,7 +177,7 @@ Format: <code>delete INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">Updating Finance: <code>update</code></a></h3>
+<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">Updating Finance : <code>update</code></a></h3>
 <div class="paragraph">
 <p>Updates the specified income or expenditure from the finance manager.<br>
 Format: <code>update --TYPE $/AMOUNT1 $/AMOUNT2 n/ITEM [c/CATEGORY]</code></p>
@@ -223,10 +223,41 @@ Format: <code>update --TYPE $/AMOUNT1 $/AMOUNT2 n/ITEM [c/CATEGORY]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-based-on-categories-code-filter-code"><a class="link" href="#filtering-based-on-categories-code-filter-code">Filtering based on categories: <code>filter</code></a></h3>
+<h3 id="sorting-transactions-code-sort-code"><a class="link" href="#sorting-transactions-code-sort-code">Sorting transactions : <code>sort</code></a></h3>
+<div class="paragraph">
+<p>Sorts all transactions with given <code>PREDICATE</code><br>
+Format: <code>sort PREDICATE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only able to <code>sort</code> by <code>date</code> and <code>amount</code> in v1.3.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sort amount</code></p>
+</li>
+<li>
+<p><code>sort date</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filtering-transactions-code-filter-code"><a class="link" href="#filtering-transactions-code-filter-code">Filtering Transactions : <code>filter</code></a></h3>
 <div class="paragraph">
 <p>Shows all relevant transactions with given <code>CATEGORY</code><br>
-Format: <code>filter CATEGORY</code></p>
+Format: <code>filter CATEGORY&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -248,15 +279,15 @@ Format: <code>filter CATEGORY</code></p>
 <p><code>filter food</code></p>
 </li>
 <li>
-<p><code>filter transport</code></p>
+<p><code>filter transport allowance</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="projecting-balance-based-on-transactions-code-project-code"><a class="link" href="#projecting-balance-based-on-transactions-code-project-code">Projecting balance based on transactions: <code>project</code></a></h3>
+<h3 id="projecting-balance-code-project-code"><a class="link" href="#projecting-balance-code-project-code">Projecting Balance : <code>project</code></a></h3>
 <div class="paragraph">
-<p>Projects future balace based on past In or Out transactions<br>
+<p>Projects future balance based on past In or Out transactions<br>
 Format: <code>project d/DATE</code></p>
 </div>
 <div class="sidebarblock">
@@ -282,49 +313,49 @@ Format: <code>project d/DATE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-past-entry-code-redo-code"><a class="link" href="#redoing-the-past-entry-code-redo-code">Redoing the past entry : <code>redo</code></a></h3>
+<h3 id="redoing-the-last-command-code-redo-code"><a class="link" href="#redoing-the-last-command-code-redo-code">Redoing the Last Command : <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Redoes the latest entry<br>
+<p>Redo the last command<br>
 Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-the-past-entry-code-undo-code"><a class="link" href="#undoing-the-past-entry-code-undo-code">Undoing the past entry : <code>undo</code></a></h3>
+<h3 id="undoing-the-last-command-code-undo-code"><a class="link" href="#undoing-the-last-command-code-undo-code">Undoing the Last Command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Undoes the latest entry.<br>
+<p>Undo the last command.<br>
 Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing All Entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the Bank Account.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">Listing all entries : <code>list</code></a></h3>
+<h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">Listing All Entries : <code>list</code></a></h3>
 <div class="paragraph">
 <p>Lists all entries from the Bank Account.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing Help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Opens help page for list of usable commands<br>
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-application-code-exit-code"><a class="link" href="#exiting-the-application-code-exit-code">Exiting the Application : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the Data</a></h3>
 <div class="paragraph">
 <p>PalPay data is saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -340,7 +371,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Bank Account folder.</p>
 </div>
 </div>
 </div>
@@ -351,39 +382,43 @@ There is no need to save manually.</p>
 <ul>
 <li>
 <p><strong>Split</strong> <code>split [FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203;</code><br>
-e.g. <code>split $/1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
+Example: <code>split $/1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
 </li>
 <li>
-<p><strong>Out</strong> : <code>out $/AMOUNT n/ITEM [c/CATEGORY]</code><br>
-e.g. <code>out $/20 n/coke c/drink</code></p>
+<p><strong>Out</strong> : <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
+Example: <code>out $/20 n/coke d/19112019 c/drink c/lunch</code></p>
 </li>
 <li>
-<p><strong>In</strong> <code>in $/AMOUNT n/ITEM [c/CATEGORY]</code><br>
-e.g. <code>in $/100 n/allowance</code></p>
+<p><strong>In</strong> <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
+Example: <code>in $/100 n/allowance d/11112019 c/income</code></p>
 </li>
 <li>
 <p><strong>Set</strong> : <code>set $/AMOUNT d/DATE c/CATEGORY</code><br>
-e.g. <code>set $/100 d/10102019 c/food</code></p>
+Example: <code>set $/100 d/10102019 c/food</code></p>
 </li>
 <li>
-<p><strong>View</strong> : <code>view []</code><br>
-e.g. <code>view projection</code></p>
+<p><strong>View</strong> : <code>view TAB</code><br>
+Example: <code>view transaction</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete --TYPE AMOUNT n/ITEM [c/CATEGORY]</code><br>
-e.g. <code>delete --in $/200 n/waiter c/work</code></p>
+Example: <code>delete --in $/200 n/waiter c/work</code></p>
 </li>
 <li>
 <p><strong>Update</strong> : <code>update --TYPE AMOUNT1 AMOUNT2 n/ITEM [c/CATEGORY]</code><br>
-e.g. <code>update --out $/100 $/300 n/transport</code></p>
+Example: <code>update --out $/100 $/300 n/transport</code></p>
 </li>
 <li>
-<p><strong>Filter</strong> : <code>filter CATEGORY</code><br>
-e.g. <code>filter food</code></p>
+<p><strong>Sort</strong> : <code>sort PREDICATE</code><br>
+Example: <code>sort amount</code></p>
+</li>
+<li>
+<p><strong>Filter</strong> : <code>filter CATEGORY&#8230;&#8203;</code><br>
+Example: <code>filter food</code></p>
 </li>
 <li>
 <p><strong>Project</strong> : <code>project DURATION</code><br>
-e.g. <code>project 10</code></p>
+Example: <code>project 10</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
@@ -421,24 +456,26 @@ e.g. <code>project 10</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="delete-transaction-feature-code-delete-code"><a class="link" href="#delete-transaction-feature-code-delete-code">Delete Transaction Feature: <code>delete</code></a></h3>
+<h3 id="transaction-code-in-code-code-out-code"><a class="link" href="#transaction-code-in-code-code-out-code">Transaction: <code>in</code>/<code>out</code></a></h3>
 <div class="paragraph">
-<p>This feature allows the user to delete an existing transaction or budget from the list.<br>
-The following activity diagram summarizes what happens when a user executes Delete command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram">
-</div>
-<div class="title">Figure 1. Activity Diagram of Delete Command</div>
+<p>This feature allows user to input income or expense statements into the PalPay.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-
+<div class="paragraph">
+<p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extends the <code>Transaction</code> class.
+<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong> which describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
+<code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
+<code>inTransaction</code> and <code>outTransaction</code> implements <code>BankAccountOperation</code>.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
-
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.
+<code>inTransaction</code> and <code>outTransaction</code> can be referenced by making a call to <code>BankAccountOperation</code>, this <code>BankAccountOperation</code> is then passed as an argument to <code>Logic</code> components and multiple CRUD commands.
+This allows multiple transaction calls within the same method.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -448,7 +485,7 @@ The following activity diagram summarizes what happens when a user executes Dele
 
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -520,42 +557,35 @@ Violates Single Responsibility Principle and Separation of Concerns as <code>His
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="delete-transaction-feature-code-delete-code"><a class="link" href="#delete-transaction-feature-code-delete-code">Delete Transaction Feature: <code>delete</code></a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>This feature allows the user to delete an existing transaction or budget from the list.<br>
+The following activity diagram summarizes what happens when a user executes Delete command:</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram">
 </div>
-<div class="sect2">
-<h3 id="proposed-transaction-code-in-code-code-out-code"><a class="link" href="#proposed-transaction-code-in-code-code-out-code">[Proposed] Transaction: <code>in</code>/<code>out</code></a></h3>
-<div class="paragraph">
-<p>This feature allows user to input income or expense statements into the PalPay.</p>
+<div class="title">Figure 1. Activity Diagram of Delete Command</div>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
-<div class="paragraph">
-<p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extends the <code>Transaction</code> class.
-<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong> which describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
-<code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
-<code>inTransaction</code> and <code>outTransaction</code> implements <code>BankAccountOperation</code>.</p>
-</div>
+
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<div class="paragraph">
-<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.
-<code>inTransaction</code> and <code>outTransaction</code> can be referenced by making a call to <code>BankAccountOperation</code>, this <code>BankAccountOperation</code> is then passed as an argument to <code>Logic</code> components and multiple CRUD commands. This allows multiple transaction calls within the same method.</p>
-</div>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-transactions-feature-code-sort-code"><a class="link" href="#sort-transactions-feature-code-sort-code">Sort Transactions Feature: <code>sort</code></a></h3>
+<h3 id="sort-feature-code-sort-code"><a class="link" href="#sort-feature-code-sort-code">Sort Feature: <code>sort</code></a></h3>
 <div class="paragraph">
 <p>This feature allows the user to <em>sort</em> their bank account by the <em>amount</em> or <em>date</em> of their transactions by using the command <code>sort amount</code> or <code>sort date</code> respectively.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>sort</code> command is facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em>.</p>
+<p>The <code>sort</code> command is facilitated by the <em>Logic</em> and <em>Model</em> components of the application.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the sorting of transactions work when the user enters <code>sort amount</code>.</p>
@@ -566,8 +596,120 @@ Violates Single Responsibility Principle and Separation of Concerns as <code>His
 </div>
 <div class="title">Figure 2. Sequence Diagram for <code>sort amount</code></div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-sorting-of-the-bank-account"><a class="link" href="#aspect-sorting-of-the-bank-account">Aspect: Sorting of the Bank Account</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice):</strong> Creating a comparator for each area to be sorted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> Easy to implement.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> Users can only sort by comparators that have been implemented.
+Developers have to create a new comparator class to sort a new area.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Users can define the area to be sorted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> Extremely flexible for the users as they are not limited to the number of areas to be sorted.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> Difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filter-feature-code-filter-code"><a class="link" href="#filter-feature-code-filter-code">Filter Feature: <code>filter</code></a></h3>
 <div class="paragraph">
-<p>-To Be Continued-</p>
+<p>This feature allows the user to <em>filter</em> their bank account by the <em>category</em> of their transactions by using the
+ <code>filter [CATEGORY]&#8230;&#8203;</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">Overview</a></h4>
+<div class="paragraph">
+<p>The <code>FilterCommandParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FilterCommandParser#parse()</code>: This operation will take in a <code>String</code> input from the user that represents different categories delimited by a whitespace.
+It will then create a <code>TransactionContainsCategoriesPredicate</code> and passed into a new <code>FilterCommand</code>.
+Finally, this operation will return the new <code>FilterCommand</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>filter</code> command is facilitated by the <code>FilterCommandParser</code> and <code>FilterCommand</code> of the application.
+PalPay filters the list of transactions by checking if any of the specified categories exists in the transaction.</p>
+</div>
+<div class="paragraph">
+<p>For instance, the command <code>filter breakfast dinner</code> would display a list of transactions with categories of breakfast or dinner or both.</p>
+</div>
+<div class="paragraph">
+<p>The following class diagram depicts the relations of the FilterCommand, FilterCommandParser and its related classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FilterClassDiagram.png" alt="FilterClassDiagram">
+</div>
+<div class="title">Figure 3. Class Diagram for <code>Filter</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-filtering-by-multiple-categories"><a class="link" href="#aspect-filtering-by-multiple-categories">Aspect: Filtering by multiple categories</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice):</strong> Creating one predicate for all categories to be sorted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> Extremely flexible for the users as they are not limited to the number of categories to be filtered.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> Difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Creating a predicate for each category to be sorted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> Easy to implement.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> Users can only filter by predicates that have been implemented.
+Developers have to create a new predicate class to filter a new category.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -578,16 +720,15 @@ Violates Single Responsibility Principle and Separation of Concerns as <code>His
 Refer to the <a href="UserGuide.html#Features">UserGuide</a> for usage details.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>split</code> command is an abstraction of <code>LendMoney</code> class.<br>
-Given a list of <strong>shares</strong> and <strong>people</strong>, each person is assigned an <strong>amount</strong> based on the corresponding positional share and
-the total amount given to <code>split</code> command.<br>
+Given a list of <strong>shares</strong> and <strong>people</strong>, each person is assigned an <strong>amount</strong> based on the corresponding positional share and the total amount given to <code>split</code> command.<br>
 A <code>LendMoney</code> instance is created for each person and executed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
 <div class="paragraph">
 <p>Current implementation of <code>Split</code> class encourages code reuse by abstracting the delegating the task of rebalancing to another class.<br>
 However, this introduces coupling as the behavior of <code>Split</code> is now inexplicably tied to <code>LendMoney</code>.</p>
@@ -599,6 +740,90 @@ However, this introduces coupling as the behavior of <code>Split</code> is now i
 <div class="paragraph">
 <p>This feature allows the user to send money to another person.<br>
 The balance in the <code>Ledger</code> and the balance of the recipient is updated accordingly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">Set Budget Feature: <code>set</code></a></h3>
+<div class="paragraph">
+<p>This feature allows the user to set a budget for a given time period for a category, if specified.
+The user is allowed to set multiple budgets.
+Upon setting the budget and prior to the deadline, the user&#8217;s <code>OutTransaction</code> will deduct the amount from each budget in the list respectively.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>set</code> command is an extension of parent <code>Command</code> class, facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em><br>
+Given an <strong>amount</strong> and <strong>date</strong>, a new Budget is set for the user.<br>
+Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in a list in the application window till the date set by the user.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Projection"><a class="link" href="#Implementation-Projection">Project Balance feature: <code>project</code></a></h3>
+<div class="paragraph">
+<p>This feature allows users to <em>project</em> their balance status based on past income and outflows as manifest in their <em>TransactionHistory</em> by using the command <code>project [DATE]</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>project</code> command is facilitated by the Logic and Model components of the application, <em>PalPay</em></p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below demonstrates how the <code>project [DATE]</code> command is handled by the application.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Project.png" alt="ProjectCommand Sequence Diagram">
+</div>
+<div class="title">Figure 4. Sequence Diagram of Project Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements"><a class="link" href="#future-enhancements">Future Enhancements</a></h4>
+<div class="sect4">
+<h5 id="graphical-representation"><a class="link" href="#graphical-representation">Graphical Representation</a></h5>
+<div class="paragraph">
+<p>In future updates, the <em>user&#8217;s</em> balance projection will be displayed as a linear graph plotted against time, up until the date specified by the user in the command.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="projection-by-category"><a class="link" href="#projection-by-category">Projection by Category</a></h5>
+<div class="paragraph">
+<p>In future updates, the <em>user</em> will be able to customise projections beyond specifying a single date.
+Some possible customizations include solely projection <em>income</em> / <em>outflow</em> amounts, and filtered projections based on <em>categories</em>.
+For instance, <code>project d/22112019 c/Food -o</code> will project the <em>user&#8217;s</em> spending (or outflow, as denoted by the <code>-o</code> flag) on Food (specified by the <code>c/Food</code> tag) up until the 22nd of November, 2019 (specified by the <code>d/22112019</code> tag).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The project command has multiple possible implementations as to how the projection may be computed.
+In the current implementation, the projected amount is calculated via the following equation:</p>
+</div>
+<div class="paragraph">
+<p><em>Projected Balance = Current Balance - [(Past Income - Past Outflow) / Total Days Elapsed] * Days Until Date of Projection</em></p>
+</div>
+<div class="paragraph">
+<p>While this algorithm allows for simple and fast computation, it does not hedge against one-time big purchases.
+For example, if the user were to buy a computer, his outflow projection is likely to be proportionally larger in the short run.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">Alternative Implementations</a></h4>
+<div class="sect4">
+<h5 id="linear-regression"><a class="link" href="#linear-regression">Linear Regression</a></h5>
+<div class="paragraph">
+<p>In light of the above-mentioned limitation, a possible algorithm to be used is the
+<a href="https://en.wikipedia.org/wiki/Gradient_descent#targetText=Gradient%20descent%20is%20a%20first,function%20at%20the%20current%20point"><em>Gradient Descent</em></a>
+algorithm in finding a best fit projection line for the user&#8217;s balance.
+However, this will increase the computational cost of the <code>project</code> function significantly, causing <em>PalPay</em> to run slower overall.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -644,97 +869,6 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">Set Budget Feature: <code>set</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to set a budget for a given time period for a category, if specified.
-The user is allowed to set multiple budgets.
-Upon setting the budget and prior to the deadline, the user&#8217;s <code>OutTransaction</code> will deduct the amount from each budget in the list respectively.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>set</code> command is an extension of parent <code>Command</code> class, facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em><br>
-Given an <strong>amount</strong> and <strong>date</strong>, a new Budget is set for the user.<br>
-Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in a list in the application window
-till the date set by the user.<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Projection"><a class="link" href="#Implementation-Projection">Project Balance feature: <code>project</code></a></h3>
-<div class="paragraph">
-<p>This feature allows users to <em>project</em> their balance status based on past income and outflows
-as manifest in their <em>TransactionHistory</em> by using the command <code>project [DATE]</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>project</code> command is facilitated by the Logic and Model components of the application, <em>PalPay</em></p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below demonstrates how the <code>project [DATE]</code> command is handled by the application.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/Project.png" alt="ProjectCommand Sequence Diagram">
-</div>
-<div class="title">Figure 3. Sequence Diagram of Project Command</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="future-enhancements"><a class="link" href="#future-enhancements">Future Enhancements</a></h4>
-<div class="sect4">
-<h5 id="graphical-representation"><a class="link" href="#graphical-representation">Graphical Representation</a></h5>
-<div class="paragraph">
-<p>In future updates, the <em>user&#8217;s</em> balance projection will be displayed as a linear graph plotted against time, up until
-the date specified by the user in the command.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="projection-by-category"><a class="link" href="#projection-by-category">Projection by Category</a></h5>
-<div class="paragraph">
-<p>In future updates, the <em>user</em> will be able to customise projections beyond specifying a single date.
-Some possible customizations include solely projection <em>income</em> / <em>outflow</em> amounts, and filtered
-projections based on <em>categories</em>. For instance, <code>project d/22112019 c/Food -o</code> will project the
-<em>user&#8217;s</em> spending (or outflow, as denoted by the <code>-o</code> flag) on Food (specified by the <code>c/Food</code> tag)
-up until the 22nd of November, 2019 (specified by the <code>d/22112019</code> tag).</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
-<div class="paragraph">
-<p>The project command has multiple possible implementations as to how the projection may be computed.
-In the current implementation, the projected amount is calculated via the following equation:</p>
-</div>
-<div class="paragraph">
-<p><em>Projected Balance = Current Balance - [(Past Income - Past Outflow) / Total Days Elapsed] *
-Days Until Date of Projection</em></p>
-</div>
-<div class="paragraph">
-<p>While this algorithm allows for simple and fast computation, it does not hedge against one-time big purchases.
-For example, if the user were to buy a computer, his outflow projection is likely to be proportionally
-larger in the short run.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">Alternative Implementations</a></h4>
-<div class="sect4">
-<h5 id="linear-regression"><a class="link" href="#linear-regression">Linear Regression</a></h5>
-<div class="paragraph">
-<p>In light of the above-mentioned limitation, a possible algorithm to be used is the
-<a href="https://en.wikipedia.org/wiki/Gradient_descent#targetText=Gradient%20descent%20is%20a%20first,function%20at%20the%20current%20point"><em>Gradient Descent</em></a>
-algorithm in finding a best fit projection line for the user&#8217;s balance. However, this will increase the
-computational cost of the <code>project</code> function significantly, causing <em>PalPay</em> to run slower overall.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1170,12 +1304,6 @@ Expected: Similar to previous.</p>
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="proposed-data-encryption-2"><a class="link" href="#proposed-data-encryption-2">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1186,4 +1314,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 11:04:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 05:38:10 UTC</div></div></div></body></html>
