@@ -279,10 +279,12 @@ Format: <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
 <div class="sect2">
 <h3 id="setting-a-budget-code-set-code"><a class="link" href="#setting-a-budget-code-set-code">3.5. Setting a Budget : <code>set</code></a></h3>
 <div class="paragraph">
-<p>Sets a budget for a particular category until a certain date<br>
-You cannot have duplicate budgets (bugets with the same <code>AMOUNT</code> and <code>DATE</code> and <code>CATEGORY</code>).
-If you attempt to do so, you will receive an erorr message: <code>This budget already exists in the bank account</code>.<br>
-Format: <code>set $/AMOUNT d/DATE c/CATEGORY</code></p>
+<p>You can set a budget for a particular category until a certain date, given it is not a duplicate.
+A duplicate budget is a budget with the same <code>AMOUNT</code> and <code>DATE</code> and <code>CATEGORY</code>.<br>
+If you attempt to do so, you will receive an error message: <code>This budget already exists in the bank account</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>set $/AMOUNT d/DATE c/CATEGORY</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -302,17 +304,16 @@ Format: <code>set $/AMOUNT d/DATE c/CATEGORY</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example: Let&#8217;s say you want to restrict your spending for a certain category until a certain deadline.
+PalPay allows you to set a budget and serve as a reminder to show how much of the budget set you have left
+until the deadline. You will be able to be more self-conscious of your spending and minimise your spending by setting a budget.<br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>set $/100 c/shopping</code></p>
-</li>
-<li>
-<p><code>set $/50 c/food</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>To set a new budget:<br>
+1. Type <code>set</code> and enter the relevant details (amount, deadline, category) in the format given above.<br>
+2. The result box will display the message "New budget successfully set".<br>
+3. If the budget already exists in the budget list, the result box will display the message "This budget already exists".<br>
+4. Now you can see the newly set budget in the budget list.</p>
 </div>
 </div>
 <div class="sect2">
@@ -672,4 +673,4 @@ Example: <code>project 10</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 15:57:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 09:10:59 UTC</div></div></div></body></html>
