@@ -18,7 +18,7 @@
 <li><a href="#logging-expense-code-out-code">3.3. Logging Expense : <code>out</code></a></li>
 <li><a href="#logging-income-code-in-code">3.4. Logging Income : <code>in</code></a></li>
 <li><a href="#setting-a-budget-code-set-code">3.5. Setting a Budget : <code>set</code></a></li>
-<li><a href="#display-view-code-view-code">3.6. Display View : <code>view</code></a></li>
+<li><a href="#displaying-view-code-view-code">3.6. Displaying View : <code>view</code></a></li>
 <li><a href="#deleting-finance-code-delete-code">3.7. Deleting Finance : <code>delete</code></a></li>
 <li><a href="#updating-finance-code-update-code">3.8. Updating Finance : <code>update</code></a></li>
 <li><a href="#sorting-transactions-code-sort-code">3.9. Sorting Transactions : <code>sort</code></a></li>
@@ -45,10 +45,10 @@
 <p>PalPay is for those who <strong>prefer to use a desktop app for managing personal finances</strong>.
 More importantly, PalPay is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, PalPay can get your finance management tasks done faster than traditional GUI apps.
-This User Guide as written for the users of PalPay as an introductory document of the application.
-You are strongly encouraged to read this document before using the application top enjoy the full functionality of the application.
+This User Guide is written for the users of PalPay as an introductory document of the application.
+You are strongly encouraged to read this document before using the application to enjoy the full functionality of the application.
 Ready to start your journey to financial freedom?
-Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.
+Jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.
 Enjoy!</p>
 </div>
 </div>
@@ -73,23 +73,25 @@ The GUI should appear within a few seconds.</p>
 </li>
 <li>
 <p>Type your command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+Example: Typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>view</code></strong> : shows statistics of your current finances</p>
+<p><code>view</code> : shows statistics of your current finances</p>
 </li>
 <li>
-<p><strong><code>in</code></strong><code>100 n/mother c/allowance</code> : adds an income to your personal finance of <strong>100</strong> dollars under the catergory <strong>mother</strong> and the item type <strong>allowance</strong>.</p>
+<p><code>in $/100 n/mother d/31102019 c/allowance</code> : adds an income to your personal finance of <strong>100</strong> dollars with
+the category <strong>mother</strong> and the description <strong>allowance</strong>.</p>
 </li>
 <li>
-<p><strong><code>out</code></strong><code>3 n/pie c/food</code> : adds an expenditure to your personal finance of <strong>3</strong> dollars under the category <strong>food</strong> and the item type <strong>pie</strong>.</p>
+<p><code>out $/3 n/pie d/19112019 c/food</code> : adds an expenditure to your personal finance of <strong>3</strong> dollars with
+the category <strong>food</strong> and the description <strong>pie</strong>.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><code>exit</code> : exits the app</p>
 </li>
 </ul>
 </div>
@@ -112,16 +114,21 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>in AMOUNT n/ITEM</code>, <code>AMOUNT</code> and 'ITEM' are parameters which can be used as <code>in 300 n/concert</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user.<br>
+Example: For <code>in $/AMOUNT n/ITEM d/DATE</code>, <code>AMOUNT</code>, <code>ITEM</code> and <code>DATE</code> are parameters which can be used as
+<code>in $/300 n/concert d/19112019</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/ITEM [c/CATEGORY]</code> can be used as <code>n/coke t/drinks</code> or as <code>n/coke</code>.</p>
+<p>Items in square brackets are optional.<br>
+Example: <code>n/ITEM [c/CATEGORY]</code> can be used as <code>n/coke c/drinks</code> or as <code>n/coke</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[n/NAME]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>n/Amy</code>, <code>n/Amy n/Betty</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times.<br>
+Example: <code>[n/NAME]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>n/Amy</code>, <code>n/Amy n/Betty</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>AMOUNT n/ITEM</code>, <code>n/ITEM AMOUNT</code> is also acceptable.</p>
+<p>Parameters can be in any order.<br>
+Example: If the command specifies <code>$/AMOUNT n/ITEM</code>, <code>n/ITEM $/AMOUNT</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -131,32 +138,39 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h3 id="splitting-a-bill-with-friends-code-split-code"><a class="link" href="#splitting-a-bill-with-friends-code-split-code">3.1. Splitting a Bill with Friends : <code>split</code></a></h3>
 <div class="paragraph">
 <p>Split a bill with your friends<br>
-Format: <code>split [f/FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]</code></p>
+Format: <code>split $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]&#8230;&#8203;</code></p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>[FLAG]</code> defines how the bill is split:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>dutch</code> user is included in the split (default)</p>
-</li>
-<li>
-<p><code>loan</code> user is not included in the split</p>
-</li>
-</ul>
-</div>
-</li>
 <li>
 <p><code>[SHARE]</code> defines portion of bill to be paid by each person</p>
 <div class="ulist">
 <ul>
 <li>
-<p>number of rations must match number of names for <code>loan</code> splits</p>
+<p>if no shares are given, <code>amount</code> will be split evenly across all people, including user</p>
 </li>
 <li>
-<p>number of rations must be 1 more than number of names for <code>dutch</code> splits</p>
+<p>user is included in the bill if number of shares is <strong>1</strong> more than number of people</p>
+<div class="ulist">
+<ul>
+<li>
+<p>user&#8217;s share will be the first listed share</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>each person&#8217;s share is assigned in order</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i.e. last person&#8217;s share is the last share listed</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>shares cannot be negative numbers</p>
 </li>
 </ul>
 </div>
@@ -170,9 +184,23 @@ Format: <code>split [f/FLAG] $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]<
 <ul>
 <li>
 <p><code>split $/1000 n/Amy n/Betty n/Catherine n/Dan</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>$1000 is split equally between Amy, Betty, Catherine, Dan and the user.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><code>split $/100 f/loan n/Albert n/Bernard n/Clement s/2 s/1 s/7</code></p>
+<p><code>split $/100 n/Albert n/Bernard n/Clement s/2 s/1 s/7</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>$100 is split with Albert owing $20, Bernard owing $10 and Clement owing $70.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -224,10 +252,20 @@ Format: <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>out $/100 n/milk c/food</code>
-* <code>out $/29 n/taxi c/transport</code>
-* <code>out $/12 n/burger</code></p>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>out $/100 n/milk c/food c/drinks</code></p>
+</li>
+<li>
+<p><code>out $/29 n/taxi c/transport</code></p>
+</li>
+<li>
+<p><code>out $/12 n/burger</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -265,7 +303,7 @@ Format: <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>in $/100 n/errand c/work</code></p>
+<p><code>in $/100 n/errand c/work c/drinks</code></p>
 </li>
 <li>
 <p><code>in $/200 n/mom c/family</code></p>
@@ -317,29 +355,23 @@ until the deadline. You will be able to be more self-conscious of your spending 
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-view-code-view-code"><a class="link" href="#display-view-code-view-code">3.6. Display View : <code>view</code></a></h3>
+<h3 id="displaying-view-code-view-code"><a class="link" href="#displaying-view-code-view-code">3.6. Displaying View : <code>view</code></a></h3>
 <div class="paragraph">
-<p>Shows all possible views (spending, projection and loan)<br>
-Format: <code>view KEYWORD [TIMEFRAME]</code></p>
+<p>Shows all possible views<br>
+Format: <code>view TAB</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>KEYWORD</code> input only accepts <code>spending</code>, <code>projection</code> and <code>loan</code>.</p>
+<p><code>TAB</code> input only accepts <code>transaction</code> and <code>budget</code> in v1.3.</p>
 </li>
 <li>
-<p><code>[TIMEFRAME]</code> input defines the number of days prior to this command for the called projection. (default=30)</p>
+<p><code>view transaction</code> shows a list of all your transactions.</p>
 </li>
 <li>
-<p><code>view spending</code> shows a breakdown of your categories of spending</p>
-</li>
-<li>
-<p><code>view projection</code> shows a personal finance projection for a given period of time</p>
-</li>
-<li>
-<p><code>view loan</code> shows the amount of money owed and lent to others</p>
+<p><code>view budget</code> shows a list of all your budgets.</p>
 </li>
 </ul>
 </div>
@@ -351,13 +383,10 @@ Format: <code>view KEYWORD [TIMEFRAME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>view loan</code></p>
+<p><code>view transaction</code></p>
 </li>
 <li>
-<p><code>view projection</code></p>
-</li>
-<li>
-<p><code>view spending</code></p>
+<p><code>view budget</code></p>
 </li>
 </ul>
 </div>
@@ -470,6 +499,9 @@ Format: <code>sort PREDICATE</code></p>
 <li>
 <p>You are only able to <code>sort</code> by <code>date</code> and <code>amount</code> in v1.3.</p>
 </li>
+<li>
+<p>Transactions will be sorted in ascending order.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -499,7 +531,11 @@ Format: <code>filter CATEGORY&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CATEGORY</code> input accepts <code>CATEGORY</code> you have used in In or Out transactions before.</p>
+<p>All transactions with at least one <code>CATEGORY</code> in the <code>CATEGORY&#8230;&#8203;</code> input will be displayed.</p>
+</li>
+<li>
+<p>Example: <code>filter transport allowance</code> will display transactions with <code>transport</code>, <code>allowance</code>, or
+<code>transport</code> and <code>allowance</code>.</p>
 </li>
 </ul>
 </div>
@@ -595,9 +631,6 @@ Format: <code>exit</code></p>
 <p>PalPay data is saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
-</div>
 </div>
 </div>
 </div>
@@ -676,4 +709,4 @@ Example: <code>project 10</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 09:47:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:01:44 UTC</div></div></div></body></html>

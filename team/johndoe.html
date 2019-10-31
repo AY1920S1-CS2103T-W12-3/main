@@ -244,6 +244,9 @@ Format: <code>sort PREDICATE</code></p>
 <li>
 <p>You are only able to <code>sort</code> by <code>date</code> and <code>amount</code> in v1.3.</p>
 </li>
+<li>
+<p>Transactions will be sorted in ascending order.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -273,7 +276,11 @@ Format: <code>filter CATEGORY&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CATEGORY</code> input accepts <code>CATEGORY</code> you have used in In or Out transactions before.</p>
+<p>All transactions with at least one <code>CATEGORY</code> in the <code>CATEGORY&#8230;&#8203;</code> input will be displayed.</p>
+</li>
+<li>
+<p>Example: <code>filter transport allowance</code> will display transactions with <code>transport</code>, <code>allowance</code>, or
+<code>transport</code> and <code>allowance</code>.</p>
 </li>
 </ul>
 </div>
@@ -368,9 +375,6 @@ Format: <code>exit</code></p>
 <div class="paragraph">
 <p>PalPay data is saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -629,9 +633,11 @@ The following activity diagram summarizes what happens when a user executes Dele
 <p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extend the <code>Transaction</code> class.
 <code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong> which describe the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
 <code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
-<code>inTransaction</code> and <code>outTransaction</code> implement <code>BankAccountOperation</code>.
-==== Design Consideration</p>
+<code>inTransaction</code> and <code>outTransaction</code> implement <code>BankAccountOperation</code>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-delete-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-delete-requires-code-type-index-code-as-one-of-its-parameter">Aspect: Delete requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
 <div class="paragraph">
@@ -780,13 +786,34 @@ Developers have to create a new predicate class to filter a new category.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="view-feature-code-view-code"><a class="link" href="#view-feature-code-view-code">View Feature: <code>view</code></a></h3>
+<div class="paragraph">
+<p>This feature allows the user to switch between the different tabs of the application.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>view</code> command is facilitated by the <code>MainWindow</code>, <code>MainTabPanel</code>, <code>ViewCommandParser</code> and <code>ViewCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows the flow of the <code>view</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewActivityDiagram.png" alt="ViewActivityDiagram">
+</div>
+<div class="title">Figure 4. Activity Diagram for <code>View</code></div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="split-feature-code-split-code"><a class="link" href="#split-feature-code-split-code">Split Feature: <code>split</code></a></h3>
 <div class="paragraph">
 <p>This feature allows the user to pay for a certain item or make a transaction on behalf of his friends.
 Refer to the <a href="UserGuide.html#Features">UserGuide</a> for usage details.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>split</code> command is an abstraction of <code>LendMoney</code> class.<br>
 Given a list of <strong>shares</strong> and <strong>people</strong>, each person is assigned an <strong>amount</strong> based on the corresponding positional share and the total amount given to <code>split</code> command.<br>
@@ -813,7 +840,7 @@ However, this introduces coupling as the behavior of <code>Split</code> is now i
 The balance in the <code>Ledger</code> and the balance of the recipient is updated accordingly.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>pay</code> command creates <code>LendMoney</code> class that handles the transfer of fund from the user to another person.</p>
 </div>
@@ -827,7 +854,7 @@ The user is allowed to set multiple budgets, but duplicate budgets (budgets with
 Upon setting the budget and prior to the deadline, the user&#8217;s <code>OutTransaction</code> will deduct the amount from each budget in the list respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h4>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>set</code> command is an extension of parent <code>Command</code> class, facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em><br>
 Given an <strong>amount</strong> and <strong>date</strong>, a new Budget is set for the user.<br>
@@ -852,7 +879,7 @@ Hence, by Liskov Substitution Principle, inheritance is not a suitable design.<b
 <p>This feature allows users to <em>project</em> their balance status based on past income and outflows as manifest in their <em>TransactionHistory</em> by using the command <code>project [DATE]</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">Current Implementation</a></h4>
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>project</code> command is facilitated by the Logic and Model components of the application, <em>PalPay</em></p>
 </div>
@@ -863,7 +890,7 @@ Hence, by Liskov Substitution Principle, inheritance is not a suitable design.<b
 <div class="content">
 <img src="../images/Project.png" alt="ProjectCommand Sequence Diagram">
 </div>
-<div class="title">Figure 4. Sequence Diagram of Project Command</div>
+<div class="title">Figure 5. Sequence Diagram of Project Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1398,4 +1425,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 09:47:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:01:44 UTC</div></div></div></body></html>
