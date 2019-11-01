@@ -150,16 +150,16 @@ Format: <code>delete TYPE+INDEX</code></p>
 <p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added)</p>
 </li>
 <li>
-<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>delete --b1</code> refers to deleting an <strong>Budget</strong> of index 1)</p>
+<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>delete b1</code> refers to deleting an <strong>Budget</strong> of index 1)</p>
 </li>
 <li>
-<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete --b 1</code> or <code>delete --1</code> or <code>delete --1b</code> will not work)</p>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete b 1</code> or <code>delete 1</code> or <code>delete 1b</code> will not work)</p>
 </li>
 <li>
 <p>You can only delete an existing transaction or budget. Nothing will be deleted if the transaction or budget with <code>INDEX</code> does not exists.</p>
 </li>
 <li>
-<p>Example: <code>delete --t1</code> will delete the first transaction from the list of transactions.</p>
+<p>Example: <code>delete t1</code> will delete the first transaction from the list of transactions.</p>
 </li>
 </ul>
 </div>
@@ -196,19 +196,19 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code>
 <p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added)</p>
 </li>
 <li>
-<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update --b1 &#8230;&#8203;</code> refers to updating a <strong>Budget</strong> of index 1)</p>
+<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update b1 &#8230;&#8203;</code> refers to updating a <strong>Budget</strong> of index 1)</p>
 </li>
 <li>
-<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update --b 1 ..</code> or <code>update --1 ..</code> or <code>update --1b ..</code> will not work)</p>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work)</p>
 </li>
 <li>
-<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted but <code>update t1</code> will not be accepted)</p>
+<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted but <code>update t1</code> will not be accepted).</p>
 </li>
 <li>
 <p>You can only update an existing transaction or budget. Nothing will be updated if the transaction or budget with <code>INDEX</code> does not exists.</p>
 </li>
 <li>
-<p>Example: <code>update --t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
+<p>Example: <code>update t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
 </li>
 </ul>
 </div>
@@ -1425,4 +1425,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:01:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 03:24:45 UTC</div></div></div></body></html>
