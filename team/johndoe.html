@@ -480,25 +480,26 @@ Example: <code>project d/22072020</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="transaction-code-in-code-code-out-code-code-split-code"><a class="link" href="#transaction-code-in-code-code-out-code-code-split-code">Transaction: <code>in</code> / <code>out</code> / <code>split</code></a></h3>
+<h3 id="transaction-code-in-code-code-out-code-code-split-code-code-receive-code"><a class="link" href="#transaction-code-in-code-code-out-code-code-split-code-code-receive-code">Transaction: <code>in</code> / <code>out</code> / <code>split</code> / <code>receive</code></a></h3>
 <div class="paragraph">
 <p>The <code>Transaction</code> abstract class allows user to input income, expense or split commands into the PalPay.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extends the <code>Transaction</code> class.
-<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong>. This describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
-<code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
-<code>inTransaction</code> and <code>outTransaction</code> implements <code>BankAccountOperation</code>.</p>
+<p><code>Transaction</code> is an abstract class which contains the default constructor and commonly used functions. <code>InTransaction</code> and <code>OutTransaction</code> extends the <code>Transaction</code> class.
+<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong>, <strong>description</strong>, and a set of <strong>categories</strong>. This describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
+<code>InTransaction</code> and <code>OutTransaction</code> implements <code>BankAccountOperation</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
-<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.
-<code>inTransaction</code> and <code>outTransaction</code> can be referenced by making a call to <code>BankAccountOperation</code>, this <code>BankAccountOperation</code> is then passed as an argument to <code>Logic</code> components and multiple CRUD commands.
-This allows multiple transaction calls within the same method.</p>
+<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.<br>
+The balance in <code>BankAccount</code> is considered separate from the balance in <code>Ledger</code>, both being encompassed in <code>UserState</code>.
+Therefore user operations that deal with <code>BankAccount</code> implements the <code>BankAccountOperation</code> interface, while operations
+that deal with <code>Ledger</code> implements the <code>LedgerOperation</code> interface.<br>
+This allows us to achieve polymorphism by overloading methods in <code>Model</code> to handle the different operations correctly.</p>
 </div>
 </div>
 </div>
@@ -834,6 +835,13 @@ A <code>LendMoney</code> instance is created for each person and executed.</p>
 <div class="content">
 <img src="../images/LedgerOperationDiagram.png" alt="LedgerOperationDiagram">
 </div>
+<div class="title">Figure 5. Class diagram for operations that deal with Ledger</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SplitBehaviour.png" alt="SplitBehaviour">
+</div>
+<div class="title">Figure 6. Activity diagram for creating a <code>Split</code> object</div>
 </div>
 </div>
 <div class="sect3">
@@ -842,18 +850,54 @@ A <code>LendMoney</code> instance is created for each person and executed.</p>
 <p>Current implementation of <code>Split</code> class encourages code reuse by abstracting the delegating the task of rebalancing to another class.<br>
 However, this introduces coupling as the behavior of <code>Split</code> is now inexplicably tied to <code>LendMoney</code>.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Split.png" alt="Split">
+</div>
+<div class="title">Figure 7. Sequence diagram for executing a <code>SplitCommand</code></div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="settle-up-feature-code-pay-code"><a class="link" href="#settle-up-feature-code-pay-code">Settle Up Feature: <code>pay</code></a></h3>
+<h3 id="settle-up-feature-code-receive-code"><a class="link" href="#settle-up-feature-code-receive-code">Settle Up Feature: <code>receive</code></a></h3>
 <div class="paragraph">
-<p>This feature allows the user to send money to another person.<br>
-The balance in the <code>Ledger</code> and the balance of the recipient is updated accordingly.</p>
+<p>This feature allows another person to send money to the user.<br>
+The balance in the <code>Ledger</code> and the balance of the sender is updated accordingly.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>pay</code> command creates <code>LendMoney</code> class that handles the transfer of fund from the user to another person.</p>
+<p>The <code>receive</code> command creates <code>ReceiveMoney</code> class that handles the transfer of fund from another person to the user.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>handleBalance</code> method of <code>ReceiveMoney</code>, it will find the correct person in the <code>Ledger</code> by name,
+or create a new <code>Person</code> with given <strong>name</strong> if it is not already in the <code>Ledger</code>.<br>
+Balance of the user and the sender is then updated accordingly.</p>
+</div>
+<div class="listingblock">
+<div class="title">Code snippet of <code>handleBalance</code> in ReceiveMoney</div>
+<div class="content">
+<pre class="CodeRay highlight"><code>public class ReceiveMoney extends Payment {
+    @Override
+    public Amount handleBalance(Amount balance, UniquePersonList peopleInLedger) {
+        Person target = super.handleTarget(peopleInLedger);
+        target.spend(amount);
+        return balance.addAmount(amount);
+    }
+}
+
+public abstract class Payment extends Transaction implements LedgerOperations {
+    protected Person handleTarget(UniquePersonList peopleInLedger) {
+        Person personInvolved = person;
+        if (peopleInLedger.contains(person)) {
+            personInvolved = peopleInLedger.get(person).get();
+        } else {
+            peopleInLedger.add(person);
+        }
+        return personInvolved;
+    }
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -901,7 +945,7 @@ Hence, by Liskov Substitution Principle, inheritance is not a suitable design.<b
 <div class="content">
 <img src="../images/Project.png" alt="ProjectCommand Sequence Diagram">
 </div>
-<div class="title">Figure 5. Sequence Diagram of Project Command</div>
+<div class="title">Figure 8. Sequence Diagram of Project Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1436,4 +1480,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 02:41:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 04:09:37 UTC</div></div></div></body></html>
