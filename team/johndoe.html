@@ -147,16 +147,16 @@ Format: <code>delete TYPE+INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added)</p>
+<p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added).</p>
 </li>
 <li>
-<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>delete b1</code> refers to deleting an <strong>Budget</strong> of index 1)</p>
+<p><code>TYPE</code> accepts either <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>delete b1</code> refers to deleting an <strong>Budget</strong> of index 1).</p>
 </li>
 <li>
-<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete b 1</code> or <code>delete 1</code> or <code>delete 1b</code> will not work)</p>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete b 1</code> or <code>delete 1</code> or <code>delete 1b</code> will not work).</p>
 </li>
 <li>
-<p>You can only delete an existing transaction or budget. Nothing will be deleted if the transaction or budget with <code>INDEX</code> does not exists.</p>
+<p>You can only delete an existing transaction or budget. Nothing will be deleted if the transaction or budget of <code>INDEX</code> does not exists.</p>
 </li>
 <li>
 <p>Example: <code>delete t1</code> will delete the first transaction from the list of transactions.</p>
@@ -183,29 +183,44 @@ Format: <code>delete TYPE+INDEX</code></p>
 <h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">Updating Finance : <code>update</code></a></h3>
 <div class="paragraph">
 <p>Updates the specified income or expenditure from the finance manager.<br>
-Format: <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code></p>
+Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>AMOUNT</code> accepts a non-negative value less than or equal to 1,000,000 to update the target Transaction or Budget</p>
+<p><code>AMOUNT</code> accepts a non-negative value lesser than 1,000,000.</p>
 </li>
 <li>
-<p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added)</p>
+<p><code>ITEM</code> accepts the description of this Transaction or Budget.</p>
 </li>
 <li>
-<p><code>TYPE</code> only accepts <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update b1 &#8230;&#8203;</code> refers to updating a <strong>Budget</strong> of index 1)</p>
+<p><code>DATE</code> accepts the date of this Transaction or Budget</p>
 </li>
 <li>
-<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work)</p>
+<p><code>CATEGORY</code> accepts the CATEGORY for the Transaction or Budget.</p>
+</li>
+<li>
+<p>At least one <code>AMOUNT</code>, <code>DATE</code>, <code>ITEM</code> or <code>CATEGORY</code> fields must be entered. You can input more than 1 of the mentioned fields (e.g. <code>update t1 $/100 n/milk</code>).</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added).</p>
+</li>
+<li>
+<p><code>TYPE</code> accepts either <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update b1 &#8230;&#8203;</code> refers to updating a <strong>Budget</strong> of index 1).</p>
+</li>
+<li>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work).</p>
 </li>
 <li>
 <p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted but <code>update t1</code> will not be accepted).</p>
 </li>
 <li>
-<p>You can only update an existing transaction or budget. Nothing will be updated if the transaction or budget with <code>INDEX</code> does not exists.</p>
+<p>You can only update an existing transaction or budget. Nothing will be updated if the transaction or budget of <code>INDEX</code> does not exists.</p>
+</li>
+<li>
+<p>You can not change an <code>in</code> transaction to an <code>out</code> transaction.</p>
 </li>
 <li>
 <p>Example: <code>update t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
@@ -1480,4 +1495,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 07:53:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 12:39:14 UTC</div></div></div></body></html>
