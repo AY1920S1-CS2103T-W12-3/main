@@ -362,32 +362,58 @@ until the deadline. (V1.4) You will be more self-conscious of your spending and 
 <div class="sect2">
 <h3 id="displaying-view-code-view-code"><a class="link" href="#displaying-view-code-view-code">3.6. Displaying View : <code>view</code></a></h3>
 <div class="paragraph">
-<p>Want to switch tabs without using your mouse? You can switch to another tab with the <code>view</code> command.<br>
-Format: <code>view TAB</code></p>
+<p>Want to switch tabs without using your mouse? You can switch to another tab with the <code>view</code> command.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax"><a class="link" href="#command-syntax">3.6.1. Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>view TAB</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>TAB</code> input only accepts <code>transaction</code>, <code>budget</code>, <code>ledger</code> and <code>projection</code> in v1.4.</p>
+<p><code>TAB</code> input only accepts <code>transaction</code>, <code>budget</code>, <code>ledger</code> and <code>projection</code> in v1.4. It is case-insensitive.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="example-usage"><a class="link" href="#example-usage">3.6.2. Example Usage:</a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>You do not have to use your mouse in PalPay to switch tabs anymore.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>view transaction</code></p>
+<p>By default, you are in the <code>transaction</code> tab.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/view1.png" alt="view1">
+</div>
+</div>
 </li>
 <li>
-<p><code>view budget</code></p>
+<p>Simply type <strong>view budget</strong> in the command box and press <kbd>Enter</kbd>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/view2.png" alt="view2">
+</div>
+</div>
 </li>
-</ul>
+<li>
+<p>You can now view your budgets. Easy!</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/view3.png" alt="view3">
+</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -505,35 +531,63 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code>
 <div class="paragraph">
 <p>Have you ever wonder which is the most expensive transaction you ever made?
 Or wondered which is the latest transaction you made? Fret not!
-You can now <code>sort</code> your transactions according to <code>date</code> or <code>amount</code>.<br>
-Format: <code>sort PREDICATE</code></p>
+You can now <code>sort</code> your transactions according to <code>date</code> or <code>amount</code>.<br></p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-2"><a class="link" href="#command-syntax-2">3.9.1. Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>sort PREDICATE/ORDER</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>You are only able to <code>sort</code> by <code>date</code> and <code>amount</code> in v1.4.</p>
+<p><code>PREDICATE</code> accepts only <code>date</code> or <code>amount</code>. It is case-insensitive.</p>
 </li>
 <li>
-<p>Transactions will be sorted in ascending order.</p>
+<p><code>ORDER</code> accepts only <code>a</code> or <code>d</code> which represents ascending and descending, respectively.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="example-usage-2"><a class="link" href="#example-usage-2">3.9.2. Example Usage:</a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Do you want to know what is the latest transaction you made? No need to scroll all the way down anymore. PalPay
+has made it simple for you.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>sort amount</code></p>
+<p>By default, your transactions are sorted from the earliest
+transaction you entered to the latest transaction you entered.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/sort1.png" alt="sort1">
+</div>
+</div>
 </li>
 <li>
-<p><code>sort date</code></p>
+<p>Simply type <strong>sort date/d</strong> in the command box and press <kbd>Enter</kbd>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/sort2.png" alt="sort2">
+</div>
+</div>
 </li>
-</ul>
+<li>
+<p>Great! You can now see the latest transactions you made.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/sort3.png" alt="sort3">
+</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -543,7 +597,7 @@ Format: <code>sort PREDICATE</code></p>
 PalPay gives you the power to filter your transactions to solve that problem.<br></p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax"><a class="link" href="#command-syntax">3.10.1. Command Syntax</a></h4>
+<h4 id="command-syntax-3"><a class="link" href="#command-syntax-3">3.10.1. Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code></p>
 </div>
@@ -552,10 +606,10 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 <div class="ulist">
 <ul>
 <li>
-<p><code>YEAR</code> only accepts integers from 1900 to 9999.</p>
+<p><code>YEAR</code> accepts only integers from 1900 to 9999.</p>
 </li>
 <li>
-<p><code>MONTH</code> only accepts integers from 1 to 12.</p>
+<p><code>MONTH</code> accepts only integers from 1 to 12.</p>
 </li>
 <li>
 <p>All transactions with at least one <code>CATEGORY</code> in the <code>[c/CATEGORY]&#8230;&#8203;</code> input will be displayed.</p>
@@ -570,9 +624,9 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage"><a class="link" href="#example-usage">3.10.2. Example usage:</a></h4>
+<h4 id="example-usage-3"><a class="link" href="#example-usage-3">3.10.2. Example Usage:</a></h4>
 <div class="paragraph">
-<p>Imagine that you wanted to find out what you spent while shopping in October 2019.</p>
+<p>Imagine that you wanted to find out what you spent on shopping in October 2019.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -767,4 +821,4 @@ Example: <code>project d/22072020</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 13:31:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:38:20 UTC</div></div></div></body></html>
