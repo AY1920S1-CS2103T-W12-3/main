@@ -286,18 +286,18 @@ Format: <code>sort PREDICATE</code></p>
 <h3 id="filtering-transactions-code-filter-code"><a class="link" href="#filtering-transactions-code-filter-code">Filtering Transactions : <code>filter</code></a></h3>
 <div class="paragraph">
 <p>PalPay gives you the power to filter your transactions with your desired <code>CATEGORY</code>.<br>
-Format: <code>filter CATEGORY&#8230;&#8203;</code></p>
+Format: <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>All transactions with at least one <code>CATEGORY</code> in the <code>CATEGORY&#8230;&#8203;</code> input will be displayed.</p>
+<p>All transactions with at least one <code>CATEGORY</code> in the <code>[c/CATEGORY]&#8230;&#8203;</code> input will be displayed.</p>
 </li>
 <li>
-<p>Example: <code>filter transport allowance</code> will display transactions with <code>transport</code>, <code>allowance</code>, or
-<code>transport</code> and <code>allowance</code>.</p>
+<p>Example: <code>filter c/transport c/allowance y/2019</code> will display transactions with <code>transport</code>, <code>allowance</code>, or
+<code>transport</code> and <code>allowance</code> that occurred in 2019.</p>
 </li>
 </ul>
 </div>
@@ -309,10 +309,10 @@ Format: <code>filter CATEGORY&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>filter food</code></p>
+<p><code>filter m/2 n/Genki Sushi</code></p>
 </li>
 <li>
-<p><code>filter transport allowance</code></p>
+<p><code>filter c/transport c/allowance y/2019</code></p>
 </li>
 </ul>
 </div>
@@ -331,7 +331,7 @@ Format: <code>project d/DATE</code></p>
 <p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
 </li>
 <li>
-<p><code>DATE</code> input must be preceded by its tag <code>d\</code></p>
+<p><code>DATE</code> input must be preceded by its tag <code>d/</code></p>
 </li>
 <li>
 <p><code>DATE</code> input must be set in the future.</p>
@@ -452,8 +452,8 @@ Example: <code>update b1 $/100 c/transport</code></p>
 Example: <code>sort amount</code></p>
 </li>
 <li>
-<p><strong>Filter</strong> : <code>filter CATEGORY&#8230;&#8203;</code><br>
-Example: <code>filter food</code></p>
+<p><strong>Filter</strong> : <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code><br>
+Example: <code>filter c/transport c/allowance y/2019</code></p>
 </li>
 <li>
 <p><strong>Project</strong> : <code>project DURATION</code><br>
@@ -1495,4 +1495,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 04:36:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 09:40:32 UTC</div></div></div></body></html>
