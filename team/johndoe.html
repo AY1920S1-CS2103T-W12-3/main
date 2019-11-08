@@ -379,54 +379,164 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 </div>
 </div>
 <div class="sect2">
-<h3 id="projecting-balance-code-project-code"><a class="link" href="#projecting-balance-code-project-code">Projecting Balance : <code>project</code></a></h3>
+<h3 id="undoing-the-last-command-code-undo-code"><a class="link" href="#undoing-the-last-command-code-undo-code">Undoing the Last Command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Projects future balance based on past In or Out transactions<br>
-Format: <code>project d/DATE</code></p>
+<p>Did you accidentally delete a transaction? Do not panic! PalPay lets you undo your previous commands with just one
+word, <code>undo</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-3"><a class="link" href="#command-syntax-3">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
+<p>Once you exit PalPay, you cannot undo the previous commands.</p>
 </li>
 <li>
-<p><code>DATE</code> input must be preceded by its tag <code>d/</code></p>
-</li>
-<li>
-<p><code>DATE</code> input must be set in the future.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<p>List of Undoable Commands:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>project d/22072020</code></p>
+<p><code>in</code></p>
 </li>
 <li>
-<p><code>project d/01012020</code></p>
+<p><code>out</code></p>
+</li>
+<li>
+<p><code>set</code></p>
+</li>
+<li>
+<p><code>split</code></p>
+</li>
+<li>
+<p><code>receive</code></p>
+</li>
+<li>
+<p><code>project</code></p>
+</li>
+<li>
+<p><code>filter</code></p>
+</li>
+<li>
+<p><code>sort</code></p>
+</li>
+<li>
+<p><code>update</code></p>
+</li>
+<li>
+<p><code>delete</code></p>
+</li>
+<li>
+<p><code>clear</code></p>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-usage-3"><a class="link" href="#example-usage-3">Example Usage:</a></h4>
+<div class="paragraph">
+<p>Suppose you want to update your allowance you received in October 2019 to $800 but you accidentally update the GrabTaxi
+ride instead. Without going through the trouble of updating the same transaction again, you can simply perform the
+<code>undo</code> command. Just follow these three simple steps.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Here, you can see the wrong update you just made.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/undo1.png" alt="undo1">
+</div>
+</div>
+</li>
+<li>
+<p>Simply type <strong>undo</strong> in the command box and press <kbd>Enter</kbd>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/undo2.png" alt="undo2">
+</div>
+</div>
+</li>
+<li>
+<p>As you wish, your command has been undone.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/undo3.png" alt="undo3">
+</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="redoing-the-last-command-code-redo-code"><a class="link" href="#redoing-the-last-command-code-redo-code">Redoing the Last Command : <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Redo the last command<br>
-Format: <code>redo</code></p>
+<p>Made an extra <code>undo</code> by mistake? Do not worry! PalPay lets you redo your previous undo(s) with just one word, <code>redo</code>.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="undoing-the-last-command-code-undo-code"><a class="link" href="#undoing-the-last-command-code-undo-code">Undoing the Last Command : <code>undo</code></a></h3>
+<div class="sect3">
+<h4 id="command-syntax-4"><a class="link" href="#command-syntax-4">Command Syntax</a></h4>
 <div class="paragraph">
-<p>Undo the last command.<br>
-Format: <code>undo</code></p>
+<p>Format: <code>redo</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You can only redo <code>undo</code> commands.</p>
+</li>
+<li>
+<p>Once you exit PalPay, you cannot redo the previous undo(s).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-usage-4"><a class="link" href="#example-usage-4">Example Usage:</a></h4>
+<div class="paragraph">
+<p>Suppose you want to undo your last update but you accidentally undo twice instead.
+You can simply perform the <code>redo</code> command to revert the changes. Just follow these three simple steps.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Here, you can see the extra undo you just made and the GrabTaxi ride is back at $800.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/redo1.png" alt="redo1">
+</div>
+</div>
+</li>
+<li>
+<p>Simply type <strong>redo</strong> in the command box and press <kbd>Enter</kbd>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/redo2.png" alt="redo2">
+</div>
+</div>
+</li>
+<li>
+<p>Great! Your transaction is back to normal.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/redo3.png" alt="redo3">
+</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1556,4 +1666,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 03:31:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 03:39:03 UTC</div></div></div></body></html>

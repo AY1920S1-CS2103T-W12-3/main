@@ -13,19 +13,19 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#splitting-a-bill-with-friends-code-split-code">3.1. Splitting a Bill with Friends : <code>split</code></a></li>
-<li><a href="#settling-up-with-a-friend-code-receive-code">3.2. Settling Up with a Friend : <code>receive</code></a></li>
-<li><a href="#logging-expense-code-out-code">3.3. Logging Expense : <code>out</code></a></li>
-<li><a href="#logging-income-code-in-code">3.4. Logging Income : <code>in</code></a></li>
-<li><a href="#setting-a-budget-code-set-code">3.5. Setting a Budget : <code>set</code></a></li>
-<li><a href="#displaying-view-code-view-code">3.6. Displaying View : <code>view</code></a></li>
-<li><a href="#deleting-finance-code-delete-code">3.7. Deleting Finance : <code>delete</code></a></li>
-<li><a href="#updating-finance-code-update-code">3.8. Updating Finance : <code>update</code></a></li>
-<li><a href="#sorting-transactions-code-sort-code">3.9. Sorting Transactions : <code>sort</code></a></li>
-<li><a href="#filtering-transactions-code-filter-code">3.10. Filtering Transactions : <code>filter</code></a></li>
-<li><a href="#projecting-balance-code-project-code">3.11. Projecting Balance : <code>project</code></a></li>
-<li><a href="#redoing-the-last-command-code-redo-code">3.12. Redoing the Last Command : <code>redo</code></a></li>
-<li><a href="#undoing-the-last-command-code-undo-code">3.13. Undoing the Last Command : <code>undo</code></a></li>
+<li><a href="#logging-income-code-in-code">3.1. Logging Income : <code>in</code></a></li>
+<li><a href="#logging-expense-code-out-code">3.2. Logging Expense : <code>out</code></a></li>
+<li><a href="#setting-a-budget-code-set-code">3.3. Setting a Budget : <code>set</code></a></li>
+<li><a href="#splitting-a-bill-with-friends-code-split-code">3.4. Splitting a Bill with Friends : <code>split</code></a></li>
+<li><a href="#receiving-money-from-a-friend-code-receive-code">3.5. Receiving Money from a Friend : <code>receive</code></a></li>
+<li><a href="#projecting-balance-code-project-code">3.6. Projecting Balance : <code>project</code></a></li>
+<li><a href="#displaying-view-code-view-code">3.7. Displaying View : <code>view</code></a></li>
+<li><a href="#deleting-finance-code-delete-code">3.8. Deleting Finance : <code>delete</code></a></li>
+<li><a href="#updating-finance-code-update-code">3.9. Updating Finance : <code>update</code></a></li>
+<li><a href="#sorting-transactions-code-sort-code">3.10. Sorting Transactions : <code>sort</code></a></li>
+<li><a href="#filtering-transactions-code-filter-code">3.11. Filtering Transactions : <code>filter</code></a></li>
+<li><a href="#undoing-the-last-command-code-undo-code">3.12. Undoing the Last Command : <code>undo</code></a></li>
+<li><a href="#redoing-the-last-command-code-redo-code">3.13. Redoing the Last Command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.14. Clearing All Entries : <code>clear</code></a></li>
 <li><a href="#listing-all-entries-code-list-code">3.15. Listing All Entries : <code>list</code></a></li>
 <li><a href="#viewing-help-code-help-code">3.16. Viewing Help : <code>help</code></a></li>
@@ -139,7 +139,140 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </div>
 </div>
 <div class="sect2">
-<h3 id="splitting-a-bill-with-friends-code-split-code"><a class="link" href="#splitting-a-bill-with-friends-code-split-code">3.1. Splitting a Bill with Friends : <code>split</code></a></h3>
+<h3 id="logging-income-code-in-code"><a class="link" href="#logging-income-code-in-code">3.1. Logging Income : <code>in</code></a></h3>
+<div class="paragraph">
+<p>Adds an income of your personal finance<br>
+Format: <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>AMOUNT</code> accepts the value of this income. The <code>AMOUNT</code> value must be non-negative, non zero and lesser than 1,000,000.</p>
+</li>
+<li>
+<p><code>ITEM</code> accepts the description of this income.</p>
+</li>
+<li>
+<p><code>DATE</code> accepts accepts the date of this transaction</p>
+</li>
+<li>
+<p><code>CATEGORY</code> accepts the CATEGORY for this income. An in` Transaction can be created without <code>CATEGORY</code> inputs.</p>
+</li>
+<li>
+<p><code>in</code> updates the Bank Account with a net positive amount (e.g. <code>in n/work $/1000 d/10102019</code> will <strong>increase</strong> Bank Acount balance by $1000)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>in $/100 d/01012019 n/errand c/work c/drinks</code></p>
+</li>
+<li>
+<p><code>in $/200 d/29022020 n/mom c/family</code></p>
+</li>
+<li>
+<p><code>in $/120 d/31122019 n/work</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-expense-code-out-code"><a class="link" href="#logging-expense-code-out-code">3.2. Logging Expense : <code>out</code></a></h3>
+<div class="paragraph">
+<p>Adds an expenditure of your personal finance<br>
+Format: <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>AMOUNT</code> accepts the value of this expenditure. The <code>AMOUNT</code> value must be non-negative, non zero and lesser than 1,000,000.</p>
+</li>
+<li>
+<p><code>ITEM</code> accepts the description of this expenditure.</p>
+</li>
+<li>
+<p><code>DATE</code> accepts the date of this transaction</p>
+</li>
+<li>
+<p><code>CATEGORY</code> accepts the CATEGORY for this expenditure. An <code>out</code> Transaction can be created without any <code>CATEGORY</code>.</p>
+</li>
+<li>
+<p><code>in</code> will update the Bank Account with a net <strong>negative</strong> amount (e.g. <code>out n/milk $/2 d/10102019</code> will <strong>decrease</strong> Bank Acount balance by $2)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>out $/100 d/01012019 n/milk c/food c/drinks</code></p>
+</li>
+<li>
+<p><code>out $/29 d/29022020 n/taxi c/transport</code></p>
+</li>
+<li>
+<p><code>out $/12 d/31122019 n/burger</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-a-budget-code-set-code"><a class="link" href="#setting-a-budget-code-set-code">3.3. Setting a Budget : <code>set</code></a></h3>
+<div class="paragraph">
+<p>You can set a budget for a particular category until a certain date, given it is not a duplicate.
+A duplicate budget is a budget with the same <code>AMOUNT</code> and <code>DATE</code> and <code>CATEGORY</code>.<br>
+If you attempt to do so, you will receive an error message: <code>This budget already exists in the bank account</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>set $/AMOUNT d/DATE c/CATEGORY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>AMOUNT</code> input accepts the new budget amount to be set. This amount must be non-negative, non-zero and
+less than 1,000,000.</p>
+</li>
+<li>
+<p><code>DATE</code> input accepts the deadline to be set. It cannot be a date in the past.</p>
+</li>
+<li>
+<p><code>CATEGORY</code> accepts the CATEGORY for the budget. A budget can be created without <code>CATEGORY</code> inputs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example: Let&#8217;s say you want to restrict your spending for a certain category until a certain deadline.
+PalPay allows you to set a budget and serve as a reminder to show how much of the budget set you have left
+until the deadline. (V1.4) You will be more self-conscious of your spending and minimise your spending by setting a budget.<br></p>
+</div>
+<div class="paragraph">
+<p>To set a new budget:<br>
+1. Type <code>set</code> and enter the relevant details (amount, deadline, category) in the format given above.<br>
+2. The result box will display the message "New budget successfully set".<br>
+3. If the budget already exists in the budget list, the result box will display the message "This budget already exists".<br>
+4. Now you can see the newly set budget in the budget list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="splitting-a-bill-with-friends-code-split-code"><a class="link" href="#splitting-a-bill-with-friends-code-split-code">3.4. Splitting a Bill with Friends : <code>split</code></a></h3>
 <div class="paragraph">
 <p>Split a bill with your friends<br>
 Format: <code>split $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]&#8230;&#8203;</code></p>
@@ -210,7 +343,7 @@ Format: <code>split $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]&#8230;&#8
 </div>
 </div>
 <div class="sect2">
-<h3 id="settling-up-with-a-friend-code-receive-code"><a class="link" href="#settling-up-with-a-friend-code-receive-code">3.2. Settling Up with a Friend : <code>receive</code></a></h3>
+<h3 id="receiving-money-from-a-friend-code-receive-code"><a class="link" href="#receiving-money-from-a-friend-code-receive-code">3.5. Receiving Money from a Friend : <code>receive</code></a></h3>
 <div class="paragraph">
 <p>Receives money from 1 friend<br>
 Format: <code>receive $/AMOUNT n/NAME1 [d/DATE]</code></p>
@@ -221,35 +354,29 @@ Format: <code>receive $/AMOUNT n/NAME1 [d/DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>pay $/2.5 n/Albert</code></p>
+<p><code>receive $/2.5 n/Albert</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-expense-code-out-code"><a class="link" href="#logging-expense-code-out-code">3.3. Logging Expense : <code>out</code></a></h3>
+<h3 id="projecting-balance-code-project-code"><a class="link" href="#projecting-balance-code-project-code">3.6. Projecting Balance : <code>project</code></a></h3>
 <div class="paragraph">
-<p>Adds an expenditure of your personal finance<br>
-Format: <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
+<p>Projects future balance based on past In or Out transactions<br>
+Format: <code>project d/DATE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>AMOUNT</code> accepts the value of this expenditure. The <code>AMOUNT</code> value must be non-negative, non zero and lesser than 1,000,000.</p>
+<p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
 </li>
 <li>
-<p><code>ITEM</code> accepts the description of this expenditure.</p>
+<p><code>DATE</code> input must be preceded by its tag <code>d/</code></p>
 </li>
 <li>
-<p><code>DATE</code> accepts the date of this transaction</p>
-</li>
-<li>
-<p><code>CATEGORY</code> accepts the CATEGORY for this expenditure. An <code>out</code> Transaction can be created without any <code>CATEGORY</code>.</p>
-</li>
-<li>
-<p><code>in</code> will update the Bank Account with a net <strong>negative</strong> amount (e.g. <code>out n/milk $/2 d/10102019</code> will <strong>decrease</strong> Bank Acount balance by $2)</p>
+<p><code>DATE</code> input must be set in the future.</p>
 </li>
 </ul>
 </div>
@@ -261,111 +388,21 @@ Format: <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>out $/100 d/01012019 n/milk c/food c/drinks</code></p>
+<p><code>project d/22072020</code></p>
 </li>
 <li>
-<p><code>out $/29 d/29022020 n/taxi c/transport</code></p>
-</li>
-<li>
-<p><code>out $/12 d/31122019 n/burger</code></p>
+<p><code>project d/01012020</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-income-code-in-code"><a class="link" href="#logging-income-code-in-code">3.4. Logging Income : <code>in</code></a></h3>
-<div class="paragraph">
-<p>Adds an income of your personal finance<br>
-Format: <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>AMOUNT</code> accepts the value of this income. The <code>AMOUNT</code> value must be non-negative, non zero and lesser than 1,000,000.</p>
-</li>
-<li>
-<p><code>ITEM</code> accepts the description of this income.</p>
-</li>
-<li>
-<p><code>DATE</code> accepts accepts the date of this transaction</p>
-</li>
-<li>
-<p><code>CATEGORY</code> accepts the CATEGORY for this income. An in` Transaction can be created without <code>CATEGORY</code> inputs.</p>
-</li>
-<li>
-<p><code>in</code> updates the Bank Account with a net positive amount (e.g. <code>in n/work $/1000 d/10102019</code> will <strong>increase</strong> Bank Acount balance by $1000)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>in $/100 d/01012019 n/errand c/work c/drinks</code></p>
-</li>
-<li>
-<p><code>in $/200 d/29022020 n/mom c/family</code></p>
-</li>
-<li>
-<p><code>in $/120 d/31122019 n/work</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="setting-a-budget-code-set-code"><a class="link" href="#setting-a-budget-code-set-code">3.5. Setting a Budget : <code>set</code></a></h3>
-<div class="paragraph">
-<p>You can set a budget for a particular category until a certain date, given it is not a duplicate.
-A duplicate budget is a budget with the same <code>AMOUNT</code> and <code>DATE</code> and <code>CATEGORY</code>.<br>
-If you attempt to do so, you will receive an error message: <code>This budget already exists in the bank account</code>.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>set $/AMOUNT d/DATE c/CATEGORY</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>AMOUNT</code> input accepts the new budget amount to be set. This amount must be non-negative, non-zero and
-less than 1,000,000.</p>
-</li>
-<li>
-<p><code>DATE</code> input accepts the deadline to be set. It cannot be a date in the past.</p>
-</li>
-<li>
-<p><code>CATEGORY</code> accepts the CATEGORY for the budget. A budget can be created without <code>CATEGORY</code> inputs.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example: Let&#8217;s say you want to restrict your spending for a certain category until a certain deadline.
-PalPay allows you to set a budget and serve as a reminder to show how much of the budget set you have left
-until the deadline. (V1.4) You will be more self-conscious of your spending and minimise your spending by setting a budget.<br></p>
-</div>
-<div class="paragraph">
-<p>To set a new budget:<br>
-1. Type <code>set</code> and enter the relevant details (amount, deadline, category) in the format given above.<br>
-2. The result box will display the message "New budget successfully set".<br>
-3. If the budget already exists in the budget list, the result box will display the message "This budget already exists".<br>
-4. Now you can see the newly set budget in the budget list.<br></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="displaying-view-code-view-code"><a class="link" href="#displaying-view-code-view-code">3.6. Displaying View : <code>view</code></a></h3>
+<h3 id="displaying-view-code-view-code"><a class="link" href="#displaying-view-code-view-code">3.7. Displaying View : <code>view</code></a></h3>
 <div class="paragraph">
 <p>Want to switch tabs without using your mouse? You can switch to another tab with the <code>view</code> command.</p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax"><a class="link" href="#command-syntax">3.6.1. Command Syntax</a></h4>
+<h4 id="command-syntax"><a class="link" href="#command-syntax">3.7.1. Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>view TAB</code></p>
 </div>
@@ -382,7 +419,7 @@ until the deadline. (V1.4) You will be more self-conscious of your spending and 
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage"><a class="link" href="#example-usage">3.6.2. Example Usage:</a></h4>
+<h4 id="example-usage"><a class="link" href="#example-usage">3.7.2. Example Usage:</a></h4>
 <div class="paragraph">
 <p>You do not have to use your mouse in PalPay to switch tabs anymore.</p>
 </div>
@@ -417,7 +454,7 @@ until the deadline. (V1.4) You will be more self-conscious of your spending and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">3.7. Deleting Finance : <code>delete</code></a></h3>
+<h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">3.8. Deleting Finance : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified Transaction or Budget from the finance manager.<br>
 Format: <code>delete TYPE+INDEX</code></p>
@@ -460,7 +497,7 @@ Format: <code>delete TYPE+INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">3.8. Updating Finance : <code>update</code></a></h3>
+<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">3.9. Updating Finance : <code>update</code></a></h3>
 <div class="paragraph">
 <p>Updates the specified income or expenditure from the finance manager.<br>
 Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code></p>
@@ -527,14 +564,14 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-transactions-code-sort-code"><a class="link" href="#sorting-transactions-code-sort-code">3.9. Sorting Transactions : <code>sort</code></a></h3>
+<h3 id="sorting-transactions-code-sort-code"><a class="link" href="#sorting-transactions-code-sort-code">3.10. Sorting Transactions : <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Have you ever wonder which is the most expensive transaction you ever made?
 Or wondered which is the latest transaction you made? Fret not!
 You can now <code>sort</code> your transactions according to <code>date</code> or <code>amount</code>.<br></p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax-2"><a class="link" href="#command-syntax-2">3.9.1. Command Syntax</a></h4>
+<h4 id="command-syntax-2"><a class="link" href="#command-syntax-2">3.10.1. Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>sort PREDICATE/ORDER</code></p>
 </div>
@@ -554,7 +591,7 @@ You can now <code>sort</code> your transactions according to <code>date</code> o
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage-2"><a class="link" href="#example-usage-2">3.9.2. Example Usage:</a></h4>
+<h4 id="example-usage-2"><a class="link" href="#example-usage-2">3.10.2. Example Usage:</a></h4>
 <div class="paragraph">
 <p>Do you want to know what is the latest transaction you made? No need to scroll all the way down anymore. PalPay
 has made it simple for you.</p>
@@ -591,13 +628,13 @@ transaction you entered to the latest transaction you entered.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-transactions-code-filter-code"><a class="link" href="#filtering-transactions-code-filter-code">3.10. Filtering Transactions : <code>filter</code></a></h3>
+<h3 id="filtering-transactions-code-filter-code"><a class="link" href="#filtering-transactions-code-filter-code">3.11. Filtering Transactions : <code>filter</code></a></h3>
 <div class="paragraph">
 <p>Here at PalPay, you do not need to scroll through your history of transactions to find out what you spend two months ago.
 PalPay gives you the power to filter your transactions to solve that problem.<br></p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax-3"><a class="link" href="#command-syntax-3">3.10.1. Command Syntax</a></h4>
+<h4 id="command-syntax-3"><a class="link" href="#command-syntax-3">3.11.1. Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code></p>
 </div>
@@ -624,7 +661,7 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage-3"><a class="link" href="#example-usage-3">3.10.2. Example Usage:</a></h4>
+<h4 id="example-usage-3"><a class="link" href="#example-usage-3">3.11.2. Example Usage:</a></h4>
 <div class="paragraph">
 <p>Imagine that you wanted to find out what you spent on shopping in October 2019.</p>
 </div>
@@ -659,54 +696,164 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 </div>
 </div>
 <div class="sect2">
-<h3 id="projecting-balance-code-project-code"><a class="link" href="#projecting-balance-code-project-code">3.11. Projecting Balance : <code>project</code></a></h3>
+<h3 id="undoing-the-last-command-code-undo-code"><a class="link" href="#undoing-the-last-command-code-undo-code">3.12. Undoing the Last Command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Projects future balance based on past In or Out transactions<br>
-Format: <code>project d/DATE</code></p>
+<p>Did you accidentally delete a transaction? Do not panic! PalPay lets you undo your previous commands with just one
+word, <code>undo</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-4"><a class="link" href="#command-syntax-4">3.12.1. Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
+<p>Once you exit PalPay, you cannot undo the previous commands.</p>
 </li>
 <li>
-<p><code>DATE</code> input must be preceded by its tag <code>d/</code></p>
-</li>
-<li>
-<p><code>DATE</code> input must be set in the future.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<p>List of Undoable Commands:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>project d/22072020</code></p>
+<p><code>in</code></p>
 </li>
 <li>
-<p><code>project d/01012020</code></p>
+<p><code>out</code></p>
+</li>
+<li>
+<p><code>set</code></p>
+</li>
+<li>
+<p><code>split</code></p>
+</li>
+<li>
+<p><code>receive</code></p>
+</li>
+<li>
+<p><code>project</code></p>
+</li>
+<li>
+<p><code>filter</code></p>
+</li>
+<li>
+<p><code>sort</code></p>
+</li>
+<li>
+<p><code>update</code></p>
+</li>
+<li>
+<p><code>delete</code></p>
+</li>
+<li>
+<p><code>clear</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="redoing-the-last-command-code-redo-code"><a class="link" href="#redoing-the-last-command-code-redo-code">3.12. Redoing the Last Command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Redo the last command<br>
-Format: <code>redo</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="undoing-the-last-command-code-undo-code"><a class="link" href="#undoing-the-last-command-code-undo-code">3.13. Undoing the Last Command : <code>undo</code></a></h3>
+<div class="sect3">
+<h4 id="example-usage-4"><a class="link" href="#example-usage-4">3.12.2. Example Usage:</a></h4>
 <div class="paragraph">
-<p>Undo the last command.<br>
-Format: <code>undo</code></p>
+<p>Suppose you want to update your allowance you received in October 2019 to $800 but you accidentally update the GrabTaxi
+ride instead. Without going through the trouble of updating the same transaction again, you can simply perform the
+<code>undo</code> command. Just follow these three simple steps.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Here, you can see the wrong update you just made.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/undo1.png" alt="undo1">
+</div>
+</div>
+</li>
+<li>
+<p>Simply type <strong>undo</strong> in the command box and press <kbd>Enter</kbd>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/undo2.png" alt="undo2">
+</div>
+</div>
+</li>
+<li>
+<p>As you wish, your command has been undone.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/undo3.png" alt="undo3">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-the-last-command-code-redo-code"><a class="link" href="#redoing-the-last-command-code-redo-code">3.13. Redoing the Last Command : <code>redo</code></a></h3>
+<div class="paragraph">
+<p>Made an extra <code>undo</code> by mistake? Do not worry! PalPay lets you redo your previous undo(s) with just one word, <code>redo</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-5"><a class="link" href="#command-syntax-5">3.13.1. Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You can only redo <code>undo</code> commands.</p>
+</li>
+<li>
+<p>Once you exit PalPay, you cannot redo the previous undo(s).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-usage-5"><a class="link" href="#example-usage-5">3.13.2. Example Usage:</a></h4>
+<div class="paragraph">
+<p>Suppose you want to undo your last update but you accidentally undo twice instead.
+You can simply perform the <code>redo</code> command to revert the changes. Just follow these three simple steps.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Here, you can see the extra undo you just made and the GrabTaxi ride is back at $800.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/redo1.png" alt="redo1">
+</div>
+</div>
+</li>
+<li>
+<p>Simply type <strong>redo</strong> in the command box and press <kbd>Enter</kbd>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/redo2.png" alt="redo2">
+</div>
+</div>
+</li>
+<li>
+<p>Great! Your transaction is back to normal.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/redo3.png" alt="redo3">
+</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -821,4 +968,4 @@ Example: <code>project d/22072020</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 03:31:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 03:39:03 UTC</div></div></div></body></html>
