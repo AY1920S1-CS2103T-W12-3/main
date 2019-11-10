@@ -139,8 +139,12 @@
 <div class="sect2">
 <h3 id="deleting-finance-code-delete-code"><a class="link" href="#deleting-finance-code-delete-code">Deleting Finance : <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified Transaction or Budget from the finance manager.<br>
-Format: <code>delete TYPE+INDEX</code></p>
+<p>Deletes the specified Transaction, Budget, Ledger or Projection from PalPay.<br></p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax"><a class="link" href="#command-syntax">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>delete TYPE+INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -150,7 +154,7 @@ Format: <code>delete TYPE+INDEX</code></p>
 <p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added).</p>
 </li>
 <li>
-<p><code>TYPE</code> accepts either <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>delete b1</code> refers to deleting an <strong>Budget</strong> of index 1).</p>
+<p><code>TYPE</code> accepts either <code>t</code> (Transaction), <code>b</code> (Budget), <code>l</code> (Ledger) or <code>p</code> (Projection). (e.g. <code>delete b1</code> refers to deleting a <strong>Budget</strong> of index 1).</p>
 </li>
 <li>
 <p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>delete b 1</code> or <code>delete 1</code> or <code>delete 1b</code> will not work).</p>
@@ -166,8 +170,46 @@ Format: <code>delete TYPE+INDEX</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>PalPay deletes items based on the entry index of the target item. You can only delete a maximum of 1 entry per command. (i.e. <code>delete t1 t2 b1</code> is not allowed)</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="example-usage"><a class="link" href="#example-usage">Example Usage:</a></h4>
+<div class="literalblock">
+<div class="content">
+<pre>Deleting the 5th entry of the transactions list</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note the index of the entry you want to delete. In this example, <strong>entry 5</strong> is the field we will be deleting.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/delete_ug_1.png" alt="delete ug 1">
+</div>
+</div>
+</li>
+<li>
+<p>Since we are deleting a <strong>Transaction</strong> entry of index 5, we will input <code>t</code> into our <code>TYPE</code> field and <code>5</code> into our <code>INDEX</code> field.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/delete_ug_2.png" alt="delete ug 2">
+</div>
+</div>
+</li>
+<li>
+<p>Success message will be displayed upon successful deletion.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/delete_ug_3.png" alt="delete ug 3">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="example-commands"><a class="link" href="#example-commands">Example Commands:</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -176,30 +218,54 @@ Format: <code>delete TYPE+INDEX</code></p>
 <li>
 <p><code>delete b3</code></p>
 </li>
+<li>
+<p><code>delete l2</code></p>
+</li>
+<li>
+<p><code>delete p4</code></p>
+</li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">Updating Finance : <code>update</code></a></h3>
+<h3 id="Update"><a class="link" href="#Update">Updating Finance : <code>update</code></a></h3>
 <div class="paragraph">
-<p>Updates the specified income or expenditure from the finance manager.<br>
-Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code></p>
+<p>Did you make a mistake in one of your entries? Perhaps you over counted that expenditure you made. PalPay provides you with an <code>update</code> feature which helps you change specific fields within your entries.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-2"><a class="link" href="#command-syntax-2">Command Syntax</a></h4>
+<div class="paragraph">
+<p>The <code>update</code> feature has different implementations for different entry types. The conditions for the <code>update</code> feature is as follows.</p>
+</div>
+<div class="paragraph">
+<p>Format (Transactions): <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code><br></p>
+</div>
+<div class="paragraph">
+<p>Format (Budget): <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [c/CATEGORY]</code><br></p>
+</div>
+<div class="paragraph">
+<p>Format (Ledger): Cannot be updated<br></p>
+</div>
+<div class="paragraph">
+<p>Format (Projections): <code>update TYPE+INDEX [d/DATE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>AMOUNT</code> accepts a non-negative value lesser than 1,000,000.</p>
+<p><code>AMOUNT</code> accepts a non-negative, non zero value lesser than 1,000,000.</p>
 </li>
 <li>
-<p><code>ITEM</code> accepts the description of this Transaction or Budget.</p>
+<p><code>ITEM</code> accepts the description of this entry.</p>
 </li>
 <li>
-<p><code>DATE</code> accepts the date of this Transaction or Budget</p>
+<p><code>DATE</code> accepts the date of this entry.</p>
 </li>
 <li>
-<p><code>CATEGORY</code> accepts the CATEGORY for the Transaction or Budget.</p>
+<p><code>CATEGORY</code> accepts the CATEGORY for the entry.</p>
 </li>
 <li>
 <p>At least one <code>AMOUNT</code>, <code>DATE</code>, <code>ITEM</code> or <code>CATEGORY</code> fields must be entered. You can input more than 1 of the mentioned fields (e.g. <code>update t1 $/100 n/milk</code>).</p>
@@ -208,19 +274,13 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code>
 <p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added).</p>
 </li>
 <li>
-<p><code>TYPE</code> accepts either <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update b1 &#8230;&#8203;</code> refers to updating a <strong>Budget</strong> of index 1).</p>
+<p><code>TYPE</code> accepts either <code>t</code> (Transaction), <code>b</code> (Budget), or <code>p</code> (Projection). (e.g. <code>update t1 ..</code> refers to updating a <strong>Transaction</strong> of index 1).</p>
 </li>
 <li>
 <p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work).</p>
 </li>
 <li>
-<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted but <code>update t1</code> will not be accepted).</p>
-</li>
-<li>
-<p>You can only update an existing transaction or budget. Nothing will be updated if the transaction or budget of <code>INDEX</code> does not exists.</p>
-</li>
-<li>
-<p>You can not change an <code>in</code> transaction to an <code>out</code> transaction.</p>
+<p>You can only update an existing transaction, budget or projection. Nothing will be updated if the entry of index <code>INDEX</code> does not exists.</p>
 </li>
 <li>
 <p>Example: <code>update t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <strong>Amount</strong> to $1000 and <strong>Date</strong> to 10/10/2019.</p>
@@ -229,9 +289,98 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code>
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
 </div>
+<div class="sect3">
+<h4 id="important-details"><a class="link" href="#important-details">Important Details:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted).</p>
+</li>
+<li>
+<p>Ledger does not have an update function. If you need to change specific fields within a ledger entry, you should delete the target entry and recreate a new ledger entry with your preferred fields.</p>
+</li>
+<li>
+<p>You can not change an <code>in</code> transaction to an <code>out</code> transaction.</p>
+</li>
+<li>
+<p>Changing an expenditure with the same category field as a budget will reflect changes on the <code>Budget</code> as well.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-usage-2"><a class="link" href="#example-usage-2">Example Usage</a></h4>
+<div class="sect4">
+<h5 id="example-1"><a class="link" href="#example-1">Example 1:</a></h5>
+<div class="paragraph">
+<p>Updating a <strong>Transaction</strong> entry.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the index number of the entry you want to edit. In this case, we will be using entry 3.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_1.png" alt="update ug 1">
+</div>
+</div>
+</li>
+<li>
+<p>Put <code>t</code> as your <code>TYPE</code> input and key in the fields you want to change. In this case, we will only be changing the amount of the transaction.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_2.png" alt="update ug 2">
+</div>
+</div>
+</li>
+<li>
+<p>Success message will be displayed upon successful update. Fields will now be updated accordingly.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_3.png" alt="update ug 3">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example-2"><a class="link" href="#example-2">Example 2:</a></h5>
+<div class="paragraph">
+<p>Updating a <strong>Budget</strong> entry.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the index number of the entry you want to edit</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_4.png" alt="update ug 4">
+</div>
+</div>
+</li>
+<li>
+<p>Put <code>b</code> as your <code>TYPE</code> input and key in the fields you want to change. In this case, we will be changing both the date and amount of this Budget.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_5.png" alt="update ug 5">
+</div>
+</div>
+</li>
+<li>
+<p>Success message will be displayed upon successful update. Fields will now be updated accordingly.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_6.png" alt="update ug 6">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example-commands-2"><a class="link" href="#example-commands-2">Example Commands:</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -243,18 +392,23 @@ Format: <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]</code>
 <li>
 <p><code>update t4 $/30 d/12102019</code></p>
 </li>
+<li>
+<p><code>update p4 d/10102019</code></p>
+</li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="sorting-transactions-code-sort-code"><a class="link" href="#sorting-transactions-code-sort-code">Sorting Transactions : <code>sort</code></a></h3>
+<h3 id="Sort"><a class="link" href="#Sort">Sorting Transactions : <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Have you ever wonder which is the most expensive transaction you ever made?
-Or wondered which is the latest transaction you made? Fret not!
+Or which is the latest transaction you made? Fret not!
 You can now <code>sort</code> your transactions according to <code>date</code> or <code>amount</code>.<br></p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax"><a class="link" href="#command-syntax">Command Syntax</a></h4>
+<h4 id="command-syntax-3"><a class="link" href="#command-syntax-3">Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>sort PREDICATE/ORDER</code></p>
 </div>
@@ -274,7 +428,7 @@ You can now <code>sort</code> your transactions according to <code>date</code> o
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage"><a class="link" href="#example-usage">Example Usage:</a></h4>
+<h4 id="example-usage-3"><a class="link" href="#example-usage-3">Example Usage:</a></h4>
 <div class="paragraph">
 <p>Do you want to know what is the latest transaction you made? No need to scroll all the way down anymore. PalPay
 has made it simple for you.</p>
@@ -311,13 +465,13 @@ transaction you entered to the latest transaction you entered.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-transactions-code-filter-code"><a class="link" href="#filtering-transactions-code-filter-code">Filtering Transactions : <code>filter</code></a></h3>
+<h3 id="Filter"><a class="link" href="#Filter">Filtering Transactions : <code>filter</code></a></h3>
 <div class="paragraph">
 <p>Here at PalPay, you do not need to scroll through your history of transactions to find out what you spend two months ago.
 PalPay gives you the power to filter your transactions to solve that problem.<br></p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax-2"><a class="link" href="#command-syntax-2">Command Syntax</a></h4>
+<h4 id="command-syntax-4"><a class="link" href="#command-syntax-4">Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code></p>
 </div>
@@ -344,7 +498,7 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage-2"><a class="link" href="#example-usage-2">Example Usage:</a></h4>
+<h4 id="example-usage-4"><a class="link" href="#example-usage-4">Example Usage:</a></h4>
 <div class="paragraph">
 <p>Imagine that you wanted to find out what you spent on shopping in October 2019.</p>
 </div>
@@ -379,13 +533,13 @@ PalPay gives you the power to filter your transactions to solve that problem.<br
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-the-last-command-code-undo-code"><a class="link" href="#undoing-the-last-command-code-undo-code">Undoing the Last Command : <code>undo</code></a></h3>
+<h3 id="Undo"><a class="link" href="#Undo">Undoing the Last Command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Did you accidentally delete a transaction? Do not panic! PalPay lets you undo your previous commands with just one
 word, <code>undo</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax-3"><a class="link" href="#command-syntax-3">Command Syntax</a></h4>
+<h4 id="command-syntax-5"><a class="link" href="#command-syntax-5">Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>undo</code></p>
 </div>
@@ -433,6 +587,9 @@ word, <code>undo</code>.</p>
 <li>
 <p><code>clear</code></p>
 </li>
+<li>
+<p><code>list</code></p>
+</li>
 </ul>
 </div>
 </li>
@@ -442,7 +599,7 @@ word, <code>undo</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage-3"><a class="link" href="#example-usage-3">Example Usage:</a></h4>
+<h4 id="example-usage-5"><a class="link" href="#example-usage-5">Example Usage:</a></h4>
 <div class="paragraph">
 <p>Suppose you want to update your allowance you received in October 2019 to $800 but you accidentally update the GrabTaxi
 ride instead. Without going through the trouble of updating the same transaction again, you can simply perform the
@@ -479,12 +636,12 @@ ride instead. Without going through the trouble of updating the same transaction
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-last-command-code-redo-code"><a class="link" href="#redoing-the-last-command-code-redo-code">Redoing the Last Command : <code>redo</code></a></h3>
+<h3 id="Redo"><a class="link" href="#Redo">Redoing the Last Command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Made an extra <code>undo</code> by mistake? Do not worry! PalPay lets you redo your previous undo(s) with just one word, <code>redo</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="command-syntax-4"><a class="link" href="#command-syntax-4">Command Syntax</a></h4>
+<h4 id="command-syntax-6"><a class="link" href="#command-syntax-6">Command Syntax</a></h4>
 <div class="paragraph">
 <p>Format: <code>redo</code></p>
 </div>
@@ -504,7 +661,7 @@ ride instead. Without going through the trouble of updating the same transaction
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage-4"><a class="link" href="#example-usage-4">Example Usage:</a></h4>
+<h4 id="example-usage-6"><a class="link" href="#example-usage-6">Example Usage:</a></h4>
 <div class="paragraph">
 <p>Suppose you want to undo your last update but you accidentally undo twice instead.
 You can simply perform the <code>redo</code> command to revert the changes. Just follow these three simple steps.</p>
@@ -540,31 +697,57 @@ You can simply perform the <code>redo</code> command to revert the changes. Just
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing All Entries : <code>clear</code></a></h3>
+<h3 id="Clear"><a class="link" href="#Clear">Clearing All Entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from your Bank Account.<br>
-Format: <code>clear</code></p>
+<p>Do you want to start PalPay from a clean slate again? The <code>clear</code> command lets you do that!<br></p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-7"><a class="link" href="#command-syntax-7">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">Listing All Entries : <code>list</code></a></h3>
+<h3 id="List"><a class="link" href="#List">Listing All Entries : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Lists all entries from your Bank Account.<br>
-Format: <code>list</code></p>
+<p>After filtering your transactions, you can use the <code>list</code> command to see all of your transactions in PalPay again.<br></p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-8"><a class="link" href="#command-syntax-8">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>list</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing Help : <code>help</code></a></h3>
+<h3 id="Help"><a class="link" href="#Help">Viewing Help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Opens help page for the list of usable commands<br>
-Format: <code>help</code></p>
+<p>Did you forget how to use the <code>in</code> command? Fret not! You can easily find the link to this User Guide with the
+<code>help</code> command. Simply copy and paste the URL into your browser to access our User Guide.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-9"><a class="link" href="#command-syntax-9">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/help.png" alt="help">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-application-code-exit-code"><a class="link" href="#exiting-the-application-code-exit-code">Exiting the Application : <code>exit</code></a></h3>
+<h3 id="Exit"><a class="link" href="#Exit">Exiting the Application : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Finishing using PalPay for the day? You can use the <code>exit</code> command to close PalPay.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-10"><a class="link" href="#command-syntax-10">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -591,62 +774,66 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Split</strong> <code>split $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]&#8230;&#8203;</code><br>
-Example: <code>split $/100 n/Albert n/Bernard n/Clement s/2 s/1 s/7</code></p>
-</li>
-<li>
-<p><strong>Out</strong> : <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
-Example: <code>out $/20 n/coke d/19112019 c/drink c/lunch</code></p>
-</li>
-<li>
-<p><strong>In</strong> <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
+<p><a href="#In"><strong>In</strong></a> : <code>in $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
 Example: <code>in $/100 n/allowance d/11112019 c/income</code></p>
 </li>
 <li>
-<p><strong>Set</strong> : <code>set $/AMOUNT d/DATE c/CATEGORY</code><br>
+<p><a href="#Out"><strong>Out</strong></a> : <code>out $/AMOUNT n/ITEM d/DATE [c/CATEGORY]</code><br>
+Example: <code>out $/20 n/coke d/19112019 c/drink c/lunch</code></p>
+</li>
+<li>
+<p><a href="#Set"><strong>Set</strong></a> : <code>set $/AMOUNT d/DATE c/CATEGORY</code><br>
 Example: <code>set $/100 d/10102019 c/food</code></p>
 </li>
 <li>
-<p><strong>View</strong> : <code>view TAB</code><br>
-Example: <code>view transaction</code></p>
+<p><a href="#Split"><strong>Split</strong></a> : <code>split $/AMOUNT n/NAME1 [n/NAME2]&#8230;&#8203; [s/SHARE]&#8230;&#8203;</code><br>
+Example: <code>split $/100 n/Albert n/Bernard n/Clement s/2 s/1 s/7</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete TYPE+INDEX</code><br>
-Example: <code>delete t1</code></p>
+<p><a href="#Receive"><strong>Receive</strong></a> : <code>receive $/AMOUNT n/NAME</code><br>
+Example:  <code>receive $/20 n/Albert</code></p>
 </li>
 <li>
-<p><strong>Update</strong> : <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code><br>
-Example: <code>update b1 $/100 c/transport</code></p>
-</li>
-<li>
-<p><strong>Sort</strong> : <code>sort PREDICATE</code><br>
-Example: <code>sort amount</code></p>
-</li>
-<li>
-<p><strong>Filter</strong> : <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code><br>
-Example: <code>filter c/transport c/allowance y/2019</code></p>
-</li>
-<li>
-<p><strong>Project</strong> : <code>project DURATION</code><br>
+<p><a href="#Project"><strong>Project</strong></a> : <code>project DURATION</code><br>
 Example: <code>project d/22072020</code></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code></p>
+<p><a href="#View"><strong>View</strong></a> : <code>view TAB</code><br>
+Example: <code>view transaction</code></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code></p>
+<p><a href="#Delete"><strong>Delete</strong></a> : <code>delete TYPE+INDEX</code><br>
+Example: <code>delete t1</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><a href="#Update"><strong>Update</strong></a> : <code>update TYPE+INDEX [$/AMOUNT] [d/date] [n/ITEM] [c/CATEGORY]</code><br>
+Example: <code>update b1 $/100 c/transport</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><a href="#Sort"><strong>Sort</strong></a> : <code>sort PREDICATE</code><br>
+Example: <code>sort amount</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><a href="#Filter"><strong>Filter</strong></a> : <code>filter [n/DESCRIPTION] [y/YEAR] [m/MONTH] [c/CATEGORY]&#8230;&#8203;</code><br>
+Example: <code>filter c/transport c/allowance y/2019</code></p>
 </li>
 <li>
-<p><strong>Exit</strong> : <code>exit</code></p>
+<p><a href="#Undo"><strong>Undo</strong></a> : <code>undo</code></p>
+</li>
+<li>
+<p><a href="#Redo"><strong>Redo</strong></a> : <code>redo</code></p>
+</li>
+<li>
+<p><a href="#Clear"><strong>Clear</strong></a> : <code>clear</code></p>
+</li>
+<li>
+<p><a href="#List"><strong>List</strong></a> : <code>list</code></p>
+</li>
+<li>
+<p><a href="#Help"><strong>Help</strong></a> : <code>help</code></p>
+</li>
+<li>
+<p><a href="#Exit"><strong>Exit</strong></a> : <code>exit</code></p>
 </li>
 </ul>
 </div>
@@ -666,89 +853,169 @@ Example: <code>project d/22072020</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="transaction-code-in-code-code-out-code-code-split-code-code-receive-code"><a class="link" href="#transaction-code-in-code-code-out-code-code-split-code-code-receive-code">Transaction: <code>in</code> / <code>out</code> / <code>split</code> / <code>receive</code></a></h3>
-<div class="paragraph">
-<p>The <code>Transaction</code> abstract class allows user to input income, expense or split commands into the PalPay.</p>
-</div>
+<h3 id="undo-redo-command-feature-code-undo-code-code-redo-code"><a class="link" href="#undo-redo-command-feature-code-undo-code-code-redo-code">Undo / Redo Command Feature: <code>undo</code>/<code>redo</code></a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p><code>Transaction</code> is an abstract class which contains the default constructor and commonly used functions. <code>InTransaction</code> and <code>OutTransaction</code> extends the <code>Transaction</code> class.
-<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong>, <strong>description</strong>, and a set of <strong>categories</strong>. This describes the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
-<code>InTransaction</code> and <code>OutTransaction</code> implements <code>BankAccountOperation</code>.</p>
+<p>The undo/redo mechanism is facilitated by <code>VersionedUserState</code>.
+It extends <code>UserState</code> with an undo/redo history, stored internally as an <code>userStateList</code> and <code>currentStatePointer</code>.
+Additionally, it implements the following operations:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>VersionedUserState#commit()</code>&#8201;&#8212;&#8201;Saves the current user state in its history.</p>
+</li>
+<li>
+<p><code>VersionedUserState#undo()</code>&#8201;&#8212;&#8201;Restores the previous user state from its history.</p>
+</li>
+<li>
+<p><code>VersionedUserState#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone user state from its history.</p>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
-<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.<br>
-The balance in <code>BankAccount</code> is considered separate from the balance in <code>Ledger</code>, both being encompassed in <code>UserState</code>.
-Therefore user operations that deal with <code>BankAccount</code> implements the <code>BankAccountOperation</code> interface, while operations
-that deal with <code>Ledger</code> implements the <code>LedgerOperation</code> interface.<br>
-This allows us to achieve polymorphism by overloading methods in <code>Model</code> to handle the different operations correctly.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitUserState()</code>, <code>Model#undoUserState()</code>
+and <code>Model#redoUserState()</code> respectively.</p>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="update-code-update-code"><a class="link" href="#update-code-update-code">Update: <code>update</code></a></h3>
 <div class="paragraph">
-<p>This feature allows users to update either the <strong>Amount</strong>, <strong>Date</strong> or <strong>Category</strong> of either a Transaction or Budget.</p>
+<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="paragraph">
-<p>This <code>update</code> feature allows one or more fields of a Transaction or Budget to be updated. (e.g. <code>update t1 $/2</code> and <code>update t1 $/2 d/10102019</code> will both work as intended). This will minimize the need to input all non-required parameters if a user does not require all parameters of a Transaction or Budget to be changed.</p>
+<p><strong>Step 1</strong>. The user launches the application for the first time.
+The <code>VersionedUserState</code> will be initialized with the initial user state, and the <code>currentStatePointer</code>
+pointing to that single user state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. The user executes <code>delete t5</code> command to delete the 5th transaction in the transaction list.
+The <code>delete</code> command calls <code>Model#commitUserState()</code>, causing the modified state of the user state after the
+<code>delete t5</code> command executes to be saved in the <code>userStateList</code>, and the <code>currentStatePointer</code> is shifted
+to the newly inserted user state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. The user executes <code>in $/10 n/Allowance d/07112019</code> to log a new transaction.
+The <code>in</code> command also calls <code>Model#commitUserState()</code>, causing another modified user state to be saved
+into the <code>userStateList</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, it will not call <code>Model#commitUserState()</code>, so the user state will
+not be saved into the <code>userStateList</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. The user now decides that logging the transaction was a mistake, and decides to undo that action by
+executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoUserState()</code>, which will shift the
+<code>currentStatePointer</code> once to the left, pointing it to the previous user state, and restores the user state
+to that state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial user state, then there are no previous
+user states to restore. The <code>undo</code> command uses <code>Model#canUndoUserState()</code> to check if this is the case.
+If so, it will return an error to the user rather than attempting to perform the undo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. The user then decides to execute the command <code>list</code>.
+Commands that do not modify the user state, such as <code>list</code>, will usually not call <code>Model#commitUserState()</code>,
+<code>Model#undoUserState()</code> or <code>Model#redoUserState()</code>. Thus, the <code>userStateList</code> remains unchanged.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. The user executes <code>clear</code>, which calls <code>Model#commitUserState()</code>.
+Since the <code>currentStatePointer</code> is not pointing at the end of the <code>userStateList</code>, all user states after
+the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the
+<code>in $/10 n/Allowance d/07112019</code> command. This is the behavior that most modern desktop applications follow.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML,
+the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoUserState()</code>, which shifts the <code>currentStatePointer</code>
+once to the right, pointing to the previously undone state, and restores the user state to that state.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentStatePointer</code> is at index <code>userStateList.size() - 1</code>, pointing to the latest user state, then
+there are no undone user states to restore. The <code>redo</code> command uses <code>Model#canRedoUserState()</code> to
+check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect4">
-<h5 id="aspect-update-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-update-requires-code-type-index-code-as-one-of-its-parameter">Aspect: Update requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
+<h5 id="aspect-how-undo-and-redo-executes"><a class="link" href="#aspect-how-undo-and-redo-executes">Aspect: How Undo and Redo Executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> takes in <code>TYPE+INDEX</code> to decide whether to delete an item from Transaction or Budget list. (e.g. <code>delete b1</code> deletes item index 1 from budget).</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Requires lesser user steps to be taken before executing a <code>update</code> command</p>
-</li>
-<li>
-<p>Cons: Requires two lists to be created instead of 1. The <code>UniqueTransactionList</code> stores Transaction items and <code>UniqueBudgetList</code> to store Budget items.
-For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Change to <strong>Transaction</strong> or <strong>Budget</strong> mode and keying in only index (e.g. <code>update 1</code>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Requires only one unique list required to store both Transactions and Budgets.</p>
-</li>
-<li>
-<p>Cons: Requires additional user step to switch between modes before executing a updating command.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-redo-command-feature-code-undo-code-code-redo-code"><a class="link" href="#undo-redo-command-feature-code-undo-code-code-redo-code">Undo / Redo Command Feature: <code>undo</code>/<code>redo</code></a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire user state.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -765,7 +1032,7 @@ For example, when a new command is executed, we must remember to update both <co
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete t1</code>, just save the transaction being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -777,33 +1044,35 @@ For example, when a new command is executed, we must remember to update both <co
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-which-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-which-data-structure-to-support-the-undo-redo-commands">Aspect: Which Data Structure to Support the Undo/Redo Commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list and a pointer to store the history of user states.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Easy for new Computer Science student undergraduates to understand,
+who are likely to be the new incoming developers of our project.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice.
-For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Need to manage the list and pointer carefully as the pointer has to point to the correct position in
+the list at all times.
+For example, when a new command is executed, we must remember to update both <code>userStateList</code> and <code>currentStatePointer</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Use two stacks. One stack stores the commands to undo and the other stores the commands to redo.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Pros: Do not need to manage a pointer for the stacks.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands.
-Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Need to manage both stacks carefully. For instance, when a command is popped from the undo stack, it needs to
+be pushed into the redo stack.</p>
 </li>
 </ul>
 </div>
@@ -811,849 +1080,6 @@ Violates Single Responsibility Principle and Separation of Concerns as <code>His
 </ul>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="delete-transaction-feature-code-delete-code"><a class="link" href="#delete-transaction-feature-code-delete-code">Delete Transaction Feature: <code>delete</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to delete an existing transaction or budget from the list.<br>
-The following activity diagram summarizes what happens when a user executes Delete command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram">
-</div>
-<div class="title">Figure 1. Activity Diagram of Delete Command</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
-<div class="paragraph">
-<p><code>Transaction</code> is an abstract class which implements <code>UndoableAction</code>. <code>inTransaction</code> and <code>outTransaction</code> extend the <code>Transaction</code> class.
-<code>Transaction</code> stores an <strong>amount</strong>, <strong>date</strong> and a set of <strong>categories</strong> which describe the variables a <code>Transaction</code> with the <code>BankAccount</code> will typically hold.
-<code>Split</code> transaction is the only dependency that relies on an additional <code>peopleInvolved</code> variable.
-<code>inTransaction</code> and <code>outTransaction</code> implement <code>BankAccountOperation</code>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
-<div class="sect4">
-<h5 id="aspect-delete-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-delete-requires-code-type-index-code-as-one-of-its-parameter">Aspect: Delete requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
-<div class="paragraph">
-<p>Implementation of <code>Transaction</code> abstract class allows code reuse as different types of transactions depends on similar variables.
-<code>inTransaction</code> and <code>outTransaction</code> can be referenced by making a call to <code>BankAccountOperation</code>,
-this <code>BankAccountOperation</code> is then passed as an argument to <code>Logic</code> components and multiple CRUD commands.
-This allows multiple transaction calls within the same method.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sort-feature-code-sort-code"><a class="link" href="#sort-feature-code-sort-code">Sort Feature: <code>sort</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to <em>sort</em> their bank account by the <em>amount</em> or <em>date</em> of their transactions by using the command <code>sort amount</code> or <code>sort date</code> respectively.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>sort</code> command is facilitated by the <em>Logic</em> and <em>Model</em> components of the application.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the sorting of transactions work when the user enters <code>sort amount</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SortSequenceDiagram.png" alt="SortSequenceDiagram">
-</div>
-<div class="title">Figure 2. Sequence Diagram for <code>sort amount</code></div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-sorting-of-the-bank-account"><a class="link" href="#aspect-sorting-of-the-bank-account">Aspect: Sorting of the Bank Account</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (Current Choice):</strong> Creating a comparator for each area to be sorted.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Pros:</strong> Easy to implement.</p>
-</li>
-<li>
-<p><strong>Cons:</strong> Users can only sort by comparators that have been implemented.
-Developers have to create a new comparator class to sort a new area.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Users can define the area to be sorted.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Pros:</strong> Extremely flexible for the users as they are not limited to the number of areas to be sorted.</p>
-</li>
-<li>
-<p><strong>Cons:</strong> Difficult to implement.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="filter-feature-code-filter-code"><a class="link" href="#filter-feature-code-filter-code">Filter Feature: <code>filter</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to <em>filter</em> their bank account by the <em>category</em> of their transactions by using the
- <code>filter [CATEGORY]&#8230;&#8203;</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="overview-2"><a class="link" href="#overview-2">Overview</a></h4>
-<div class="paragraph">
-<p>The <code>FilterCommandParser</code> implements <code>Parser</code> with the following operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>FilterCommandParser#parse()</code>: This operation will take in a <code>String</code> input from the user that represents different categories delimited by a whitespace.
-It will then create a <code>TransactionContainsCategoriesPredicate</code> and passed into a new <code>FilterCommand</code>.
-Finally, this operation will return the new <code>FilterCommand</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>filter</code> command is facilitated by the <code>FilterCommandParser</code> and <code>FilterCommand</code> of the application.
-PalPay filters the list of transactions by checking if any of the specified categories exists in the transaction.</p>
-</div>
-<div class="paragraph">
-<p>For instance, the command <code>filter breakfast dinner</code> would display a list of transactions with categories of breakfast or dinner or both.</p>
-</div>
-<div class="paragraph">
-<p>The following class diagram depicts the relations of the FilterCommand, FilterCommandParser and its related classes.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FilterClassDiagram.png" alt="FilterClassDiagram">
-</div>
-<div class="title">Figure 3. Class Diagram for <code>Filter</code></div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-filtering-by-multiple-categories"><a class="link" href="#aspect-filtering-by-multiple-categories">Aspect: Filtering by multiple categories</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (Current Choice):</strong> Creating one predicate for all categories to be sorted.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Pros:</strong> Extremely flexible for the users as they are not limited to the number of categories to be filtered.</p>
-</li>
-<li>
-<p><strong>Cons:</strong> Difficult to implement.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Creating a predicate for each category to be sorted.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Pros:</strong> Easy to implement.</p>
-</li>
-<li>
-<p><strong>Cons:</strong> Users can only filter by predicates that have been implemented.
-Developers have to create a new predicate class to filter a new category.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="view-feature-code-view-code"><a class="link" href="#view-feature-code-view-code">View Feature: <code>view</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to switch between the different tabs of the application.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>view</code> command is facilitated by the <code>MainWindow</code>, <code>MainTabPanel</code>, <code>ViewCommandParser</code> and <code>ViewCommand</code>.</p>
-</div>
-<div class="paragraph">
-<p>The following activity diagram shows the flow of the <code>view</code> command.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ViewActivityDiagram.png" alt="ViewActivityDiagram">
-</div>
-<div class="title">Figure 4. Activity Diagram for <code>View</code></div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="split-feature-code-split-code"><a class="link" href="#split-feature-code-split-code">Split Feature: <code>split</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to pay for a certain item or make a transaction on behalf of his friends.
-Refer to the <a href="UserGuide.html#Features">UserGuide</a> for usage details.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>split</code> command is an abstraction of <code>LendMoney</code> class.<br>
-Given a list of <strong>shares</strong> and <strong>people</strong>, each person is assigned an <strong>amount</strong> based on the corresponding positional share and the total amount given to <code>split</code> command.<br>
-A <code>LendMoney</code> instance is created for each person and executed.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/LedgerOperationDiagram.png" alt="LedgerOperationDiagram">
-</div>
-<div class="title">Figure 5. Class diagram for operations that deal with Ledger</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SplitBehaviour.png" alt="SplitBehaviour">
-</div>
-<div class="title">Figure 6. Activity diagram for creating a <code>Split</code> object</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
-<div class="paragraph">
-<p>Current implementation of <code>Split</code> class encourages code reuse by abstracting the delegating the task of rebalancing to another class.<br>
-However, this introduces coupling as the behavior of <code>Split</code> is now inexplicably tied to <code>LendMoney</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/Split.png" alt="Split">
-</div>
-<div class="title">Figure 7. Sequence diagram for executing a <code>SplitCommand</code></div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="settle-up-feature-code-receive-code"><a class="link" href="#settle-up-feature-code-receive-code">Settle Up Feature: <code>receive</code></a></h3>
-<div class="paragraph">
-<p>This feature allows another person to send money to the user.<br>
-The balance in the <code>Ledger</code> and the balance of the sender is updated accordingly.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>receive</code> command creates <code>ReceiveMoney</code> class that handles the transfer of fund from another person to the user.</p>
-</div>
-<div class="paragraph">
-<p>In the <code>handleBalance</code> method of <code>ReceiveMoney</code>, it will find the correct person in the <code>Ledger</code> by name,
-or create a new <code>Person</code> with given <strong>name</strong> if it is not already in the <code>Ledger</code>.<br>
-Balance of the user and the sender is then updated accordingly.</p>
-</div>
-<div class="listingblock">
-<div class="title">Code snippet of <code>handleBalance</code> in ReceiveMoney</div>
-<div class="content">
-<pre class="CodeRay highlight"><code>public class ReceiveMoney extends Payment {
-    @Override
-    public Amount handleBalance(Amount balance, UniquePersonList peopleInLedger) {
-        Person target = super.handleTarget(peopleInLedger);
-        target.spend(amount);
-        return balance.addAmount(amount);
-    }
-}
-
-public abstract class Payment extends Transaction implements LedgerOperations {
-    protected Person handleTarget(UniquePersonList peopleInLedger) {
-        Person personInvolved = person;
-        if (peopleInLedger.contains(person)) {
-            personInvolved = peopleInLedger.get(person).get();
-        } else {
-            peopleInLedger.add(person);
-        }
-        return personInvolved;
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">Set Budget Feature: <code>set</code></a></h3>
-<div class="paragraph">
-<p>This feature allows the user to set a budget for a given time period for a category, if specified.
-The user is allowed to set multiple budgets, but duplicate budgets (budgets with the same identity in terms of <strong>amount</strong>, <strong>date</strong> and <strong>tag</strong>) are not allowed.
-Upon setting the budget and prior to the deadline, the user&#8217;s <code>OutTransaction</code> will deduct the amount from each budget in the list respectively.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>set</code> command is an extension of parent <code>Command</code> class, facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em><br>
-Given an <strong>amount</strong> and <strong>date</strong>, a new Budget is set for the user.<br>
-Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in a list in the application window till the date set by the user.<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">Design Considerations</a></h4>
-<div class="paragraph">
-<p>Currently, <code>Budget</code> does not extend from <code>Transaction</code> although the two behave in a similar way.
-There is an aggregation between <code>Budget</code> and <code>Transaction</code> as the two can exist independent of each other,
-although an effect on one may also cause an impact on the other.
-The current design was chosen over the former design of inheritance as there is a stark difference in the two
-in a way that <code>Budget</code> does not affect the <code>balance</code> of the user&#8217;s bank account directly while <code>Transaction</code> does.
-Hence, by Liskov Substitution Principle, inheritance is not a suitable design.<br></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Projection"><a class="link" href="#Implementation-Projection">Project Balance Feature: <code>project</code></a></h3>
-<div class="paragraph">
-<p>This feature allows users to <em>project</em> their balance status based on past income and outflows as manifest in their <em>TransactionHistory</em> by using the command <code>project [DATE]</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>project</code> command is facilitated by the Logic and Model components of the application, <em>PalPay</em></p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below demonstrates how the <code>project [DATE]</code> command is handled by the application.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/Project.png" alt="ProjectCommand Sequence Diagram">
-</div>
-<div class="title">Figure 8. Sequence Diagram of Project Command</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="future-enhancements"><a class="link" href="#future-enhancements">Future Enhancements</a></h4>
-<div class="sect4">
-<h5 id="graphical-representation"><a class="link" href="#graphical-representation">Graphical Representation</a></h5>
-<div class="paragraph">
-<p>In future updates, the <em>user&#8217;s</em> balance projection will be displayed as a linear graph plotted against time, up until the date specified by the user in the command.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="projection-by-category"><a class="link" href="#projection-by-category">Projection by Category</a></h5>
-<div class="paragraph">
-<p>In future updates, the <em>user</em> will be able to customise projections beyond specifying a single date.
-Some possible customizations include solely projection <em>income</em> / <em>outflow</em> amounts, and filtered projections based on <em>categories</em>.
-For instance, <code>project d/22112019 c/Food -o</code> will project the <em>user&#8217;s</em> spending (or outflow, as denoted by the <code>-o</code> flag) on Food (specified by the <code>c/Food</code> tag) up until the 22nd of November, 2019 (specified by the <code>d/22112019</code> tag).</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">Design Considerations</a></h4>
-<div class="paragraph">
-<p>The project command has multiple possible implementations as to how the projection may be computed.
-In the current implementation, the projected amount is calculated via the following equation:</p>
-</div>
-<div class="paragraph">
-<p><em>Projected Balance = Current Balance - [(Past Income - Past Outflow) / Total Days Elapsed] * Days Until Date of Projection</em></p>
-</div>
-<div class="paragraph">
-<p>While this algorithm allows for simple and fast computation, it does not hedge against one-time big purchases.
-For example, if the user were to buy a computer, his outflow projection is likely to be proportionally larger in the short run.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">Alternative Implementations</a></h4>
-<div class="sect4">
-<h5 id="linear-regression"><a class="link" href="#linear-regression">Linear Regression</a></h5>
-<div class="paragraph">
-<p>In light of the above-mentioned limitation, a possible algorithm to be used is the
-<a href="https://en.wikipedia.org/wiki/Gradient_descent#targetText=Gradient%20descent%20is%20a%20first,function%20at%20the%20current%20point"><em>Gradient Descent</em></a>
-algorithm in finding a best fit projection line for the user&#8217;s balance.
-However, this will increase the computational cost of the <code>project</code> function significantly, causing <em>PalPay</em> to run slower overall.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging.
-The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Refer to the guide <a href="Documentation.html">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Refer to the guide <a href="Testing.html">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Refer to the guide <a href="DevOps.html">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Target user profile</strong>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>has a need to manage a significant number of contacts</p>
-</li>
-<li>
-<p>prefer desktop apps over other types</p>
-</li>
-<li>
-<p>can type fast</p>
-</li>
-<li>
-<p>prefers typing over mouse input</p>
-</li>
-<li>
-<p>is reasonably comfortable using CLI apps</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
-<colgroup>
-<col style="width: 22%;">
-<col style="width: 23%;">
-<col style="width: 25%;">
-<col style="width: 30%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">data-oriented person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see an overview of my transactions in an intuitive graph</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">gain insights at a glance</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input my spending into different categories</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">manage my expenses better</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">visual person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see how much budget I have left in each category</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cut down on spending as necessary</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student with many friends</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">split the bill with my friends</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know how much I should payment for a meal</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student who forgets to payment his debt on time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be reminded to payment my debt before the deadline</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">stop incurring interests</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">patriotic Singaporean who travels to JB often</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">easily calculate how much Ringgit to bring</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enjoy my holiday with insufficient money</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">thrifty person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see how my savings or spending will project into the future</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plan my budget</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who forgets to save money</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be incentivized me to save money</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be motivated to not overspend/save money</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>PalPay</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
-</div>
-<h3 id="use-case-add-an-income" class="discrete">Use case: Add an income</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to add an income amount.</p>
-</li>
-<li>
-<p>PalPay adds the income amount.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a.
-Amount entered by the user is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. PalPay shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-delete-expense" class="discrete">Use case: Delete expense</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to view spending.</p>
-</li>
-<li>
-<p>PalPay shows the list of expenses since beginning of time.</p>
-</li>
-<li>
-<p>User requests to delete an expense.</p>
-</li>
-<li>
-<p>PalPay deletes the specified expense.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a.
-User speicified days passed since.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. PalPay shows the list of expenses since the time period specified.</p>
-<div class="paragraph">
-<p>Use case resumes at step 3.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> with JDK 11 or above installed.</p>
-</li>
-<li>
-<p>A user with above average typing speed for regular English text should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
-</li>
-<li>
-<p>Upon user input, PalPay should execute tasks (and display results) within 1 second.</p>
-</li>
-<li>
-<p>Users should have (and be able to specify) default options such that they can issue minimal commands for common tasks.</p>
-</li>
-<li>
-<p>Should be quick and efficient, with each user session lasting no longer than 3 minutes to effectively manage his current financial state.</p>
-</li>
-<li>
-<p>Should not make users feel defeated, but rather empowered in managing their finances.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
-<div class="sectionbody">
-<div id="mainstream-os" class="dlist">
-<dl>
-<dt class="hdlist1">Mainstream OS</dt>
-<dd>
-<p>Windows, Linux, Unix, OS-X</p>
-</dd>
-</dl>
-</div>
-<div id="private-contact-detail" class="dlist">
-<dl>
-<dt class="hdlist1">Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Initial launch</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Download the jar file and copy into an empty folder</p>
-</li>
-<li>
-<p>Double-click the jar file<br>
-   Expected: Shows the GUI with a set of sample contacts.
-The window size may not be optimum.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Saving window preferences</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Resize the window to an optimum size.
-Move the window to a different location.
-Close the window.</p>
-</li>
-<li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a Person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting a person while all persons are listed</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: List all persons using the <code>list</code> command.
-Multiple persons in the list.</p>
-</li>
-<li>
-<p>Test case: <code>delete 1</code><br>
-   Expected: First contact is deleted from the list.
-Details of the deleted contact shown in the status message.
-Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>delete 0</code><br>
-   Expected: No person is deleted.
-Error details shown in the status message.
-Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">Saving Data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 </div>
@@ -1666,4 +1092,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 07:17:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 18:59:05 UTC</div></div></div></body></html>
