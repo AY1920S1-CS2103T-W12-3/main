@@ -58,7 +58,8 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">G.2. Deleting a Person</a></li>
-<li><a href="#saving-data">G.3. Saving Data</a></li>
+<li><a href="#viewing-help-window">G.3. Viewing Help Window</a></li>
+<li><a href="#saving-data">G.4. Saving Data</a></li>
 </ul>
 </li>
 </ul>
@@ -75,25 +76,24 @@ It is a living document that evolves throughout the design and implementation fo
 Each release will have an edition of the document, and the current edition of the document is for the first public release of the application.</p>
 </div>
 <div class="paragraph">
-<p>This document is aimed at covering the high-level system architecture and design.
+<p>This document aims to cover the high-level system architecture and design.
 It is segmented into two major parts: software design, including system architecture, and design implementation.
-The software design documents the main software components that operate and support the main system architecture.
-Essential details such as the user stories and use cases, as well as the Non Functional Requirements are included at the back of the document.</p>
+The software design illustrates the main software components that operate and support the main system architecture.
+Essential details such as the user stories, use cases, and the Non Functional Requirements are included at the back of this document.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="audience"><a class="link" href="#audience">1.2. Audience</a></h3>
 <div class="paragraph">
-<p>This document is written for software engineers want to gain an insight of the system architecture and design of the application.
-In particular, the intended audience of this document is the students taking the roles of the developers, designers, and software testers of <em>PalPay</em> from CS2103T - Software Engineering.</p>
+<p>This document is written for software engineers who desires a deeper insight of the system architecture and design of this application - PalPay.
+In particular, the intended audience of this document will be the students taking on the roles of the developers, designers, and software testers of <em>PalPay</em> from CS2103T - Software Engineering.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="description"><a class="link" href="#description">1.3. Description</a></h3>
 <div class="paragraph">
 <p><em>PalPay</em> is a CLI application targeted for users who have poor financial management skills. The users should also prefer typing over mouse inputs.
-It allows the users to keep track of daily financial transactions, as well as set a budget for a time duration to achieve long-term financial success.
-Not only that, users can keep a ledger of lending and borrowing of money with others so that the users can keep track of the flow of their money.</p>
+It allows the users to keep track of daily financial transactions, as well as set a budget for a time duration to achieve long-term financial success. Additionally, users can keep a ledger of lending and borrowing of money with others so that the users can keep track of the flow of their money.</p>
 </div>
 </div>
 </div>
@@ -458,14 +458,14 @@ that deal with <code>Ledger</code> implements the <code>LedgerOperation</code> i
 </div>
 </li>
 <li>
-<p>A <code>Transaction</code> entry can affect a <code>Budget</code> which has similar categories.</p>
+<p>A <code>Transaction</code> entry can affect a <code>Budget</code> which has similar categories and is within the same time period. The activity diagram bellow will further clarify this flow.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Only <code>Out</code> Transactions will affect <code>Budget</code>.</p>
+<p>Only <code>Out</code> Transactions can affect <code>Budget</code>.</p>
 </li>
 <li>
-<p>Activity diagram below shows how and when a <code>Transaction</code> object affects <code>Budget</code>.</p>
+<p>The activity diagram below shows how and when a <code>Transaction</code> object affects <code>Budget</code>.</p>
 </li>
 </ul>
 </div>
@@ -498,7 +498,16 @@ Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in
 <div class="paragraph">
 <p>A <code>Budget</code> stores an <strong>initial amount</strong>, <strong>amount</strong> (the current amount), <strong>deadline</strong>, <strong>categories</strong>.
 There is a need for a <code>Budget</code> to store both <strong>initial amount</strong> and <strong>amount</strong> as it allows for percentage of budget remaining to be calculated.<br>
-Displaying the percentage improves the user experience greatly as our target user is a
+Shown below is the class diagram of <code>Budget</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetClassDiagram.png" alt="BudgetClassDiagram">
+</div>
+<div class="title">Figure 12. Class diagram of Budget class</div>
+</div>
+<div class="paragraph">
+<p>Displaying the percentage remaining improves the user experience greatly as our target user is a
 <code>visual person who wants to see how much budget he has left in each category so as to cut down on spending as necessary</code>
 as specified in <a href="#User-Stories">user stories</a>. Hence, taking a quick glance at the <code>Budget card</code> allows the user to
 determine how much of budget he has left, as well as be alarmed by the red font colour to spend less if he has overspent beyond the budget set.<br></p>
@@ -518,24 +527,33 @@ determine how much of budget he has left, as well as be alarmed by the red font 
 </div>
 </div>
 <div class="paragraph">
-<p>Shown below is an example of an overspent budget. Budget is displayed in red to alert the user that
-he has overspent beyond the set budget:</p>
+<p>Moreover, as our user is a visual person, PalPay makes use of colour to display different messages.
+For instance, budget is displayed in red to alert the user that he has overspent beyond the set budget.<br></p>
+</div>
+<div class="paragraph">
+<p>Shown below is an example of an overspent budget:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/overspentBudget.png" alt="overspentBudget">
 </div>
-<div class="title">Figure 12. Example of an overspent budget</div>
+<div class="title">Figure 13. Example of an overspent budget</div>
 </div>
 <div class="paragraph">
 <p>When setting a new <code>Budget</code>, existence of a duplicate budget is checked through a sequence of checks.
-The activity diagram below shows a simple successful case of setting a new budget:</p>
+The activity diagram below shows the activity diagram of setting a new budget:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SetBudgetSimpleActivityDiagram.png" alt="SetBudgetSimpleActivityDiagram">
 </div>
-<div class="title">Figure 13. Activity Diagram of successfully setting a new Budget</div>
+<div class="title">Figure 14. Activity Diagram of successfully setting a new Budget</div>
+</div>
+<div class="paragraph">
+<p>As shown, a new budget cannot have the same <strong>initalAmount</strong>, <strong>deadline</strong> and <strong>categories</strong> as any other existing budget in
+budget list. Allowing existence of duplicate budgets will crowd the interface of <code>Budget</code> tab,
+which prevents the user from getting a quick overview of his budget status. Hence, a duplicate check is essential
+in providing a pleasing user experience.<br></p>
 </div>
 </div>
 <div class="sect3">
@@ -567,13 +585,13 @@ A <code>LendMoney</code> instance is created for each person and executed.</p>
 <div class="content">
 <img src="images/LedgerOperationDiagram.png" alt="LedgerOperationDiagram">
 </div>
-<div class="title">Figure 14. Class diagram for operations that deal with Ledger</div>
+<div class="title">Figure 15. Class diagram for operations that deal with Ledger</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SplitBehaviour.png" alt="SplitBehaviour">
 </div>
-<div class="title">Figure 15. Activity diagram for creating a <code>Split</code> object</div>
+<div class="title">Figure 16. Activity diagram for creating a <code>Split</code> object</div>
 </div>
 </div>
 <div class="sect3">
@@ -586,7 +604,7 @@ However, this introduces coupling as the behavior of <code>Split</code> is now i
 <div class="content">
 <img src="images/Split.png" alt="Split">
 </div>
-<div class="title">Figure 16. Sequence diagram for executing a <code>SplitCommand</code></div>
+<div class="title">Figure 17. Sequence diagram for executing a <code>SplitCommand</code></div>
 </div>
 </div>
 </div>
@@ -652,7 +670,7 @@ If a <code>CATEGORY</code> is not specified by the user, it will be set as <code
 <div class="content">
 <img src="images/ProjectSequenceDiagram.png" alt="ProjectCommand Sequence Diagram">
 </div>
-<div class="title">Figure 17. Sequence Diagram of the Project Command</div>
+<div class="title">Figure 18. Sequence Diagram of the Project Command</div>
 </div>
 <div class="sect4">
 <h5 id="projection-by-date"><a class="link" href="#projection-by-date">Projection by Date</a></h5>
@@ -687,7 +705,7 @@ than the latter.</p>
 <div class="content">
 <img src="images/ProjectActivityDiagram.png" alt="ProjectActivityDiagram">
 </div>
-<div class="title">Figure 18. Activity Diagram of the Project Command</div>
+<div class="title">Figure 19. Activity Diagram of the Project Command</div>
 </div>
 </div>
 <div class="sect4">
@@ -753,7 +771,7 @@ a set number (e.g. 500) of transactions.</p>
 <div class="content">
 <img src="images/DisplayActivityDiagram.png" alt="DisplayActivityDiagram">
 </div>
-<div class="title">Figure 19. Activity Diagram of the Display Command</div>
+<div class="title">Figure 20. Activity Diagram of the Display Command</div>
 </div>
 <div class="paragraph">
 <p>For a more concrete illustration of how the <code>display</code> command is handled by <em>PalPay</em>,
@@ -763,7 +781,7 @@ a sequence diagram is provided below.</p>
 <div class="content">
 <img src="images/DisplaySequenceDiagram.png" alt="DisplaySequenceDiagram">
 </div>
-<div class="title">Figure 20. Sequence Diagram of the Display Command</div>
+<div class="title">Figure 21. Sequence Diagram of the Display Command</div>
 </div>
 </div>
 </div>
@@ -815,7 +833,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/ViewActivityDiagram.png" alt="ViewActivityDiagram">
 </div>
-<div class="title">Figure 21. Activity Diagram for <code>View</code></div>
+<div class="title">Figure 22. Activity Diagram for <code>View</code></div>
 </div>
 </div>
 </div>
@@ -835,7 +853,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <p>The delete feature works for <code>Transaction</code>, <code>Budget</code>, <code>Ledger</code> and <code>Projection</code> entries.</p>
 </li>
 <li>
-<p>The following activity diagram summarizes what happens when a user executes Delete command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a <code>delete</code> command:</p>
 </li>
 </ul>
 </div>
@@ -843,7 +861,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram">
 </div>
-<div class="title">Figure 22. Activity Diagram of Delete Command</div>
+<div class="title">Figure 23. Activity Diagram for <code>delete</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -851,7 +869,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>delete</code> command is followed by a <code>TYPE+INDEX</code> parameter.</p>
+<p>The <code>delete</code> keyword is followed by a <code>TYPE+INDEX</code> parameter.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -873,7 +891,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <p>The <code>index</code> parameter refers to the entry number within the <code>TYPE</code> entry&#8217;s view tab.</p>
 </li>
 <li>
-<p>Example: <code>delete t5</code> deletes the 5th transaction from the list of transaction if that particular entry exists.</p>
+<p>Example: <code>delete t5</code> deletes the 5th entry from the list of transactions if that particular entry exists.</p>
 </li>
 </ul>
 </div>
@@ -918,7 +936,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="sect2">
 <h3 id="update-existing-entry-feature-code-update-code"><a class="link" href="#update-existing-entry-feature-code-update-code">4.9. Update Existing Entry Feature: <code>update</code></a></h3>
 <div class="paragraph">
-<p>This feature allows users to update <code>Transaction</code>, <code>Budget</code> or <code>Projection</code> entries. The user is unable to perform this feature on <code>Ledger</code> and operations the rationale will be further explained in <strong>Aspect 2</strong>.</p>
+<p>This feature currently allows users to update <code>Transaction</code> or <code>Budget</code> entries. The user is unable to perform this feature on <code>Ledger</code> operations. The rationale for this will be further explained in <strong>Aspect 2</strong>. The user is currently unable to perform this feature on <code>Projection</code> operations as it will be further implemented in future updates.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.9.1. Current Implementation</a></h4>
@@ -938,7 +956,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <p><code>Budget</code> type requires at least one of it&#8217;s <code>Amount</code>, <code>Date</code> or <code>Category</code> fields to be updated.</p>
 </li>
 <li>
-<p><code>Project</code> type only requires it&#8217;s <code>Date</code> field to be updated.</p>
+<p><code>Project</code> type requires it&#8217;s <code>Date</code> and <code>Category</code> fields to be updated (Future implementation).</p>
 </li>
 </ul>
 </div>
@@ -955,7 +973,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/UpdateActivityDiagram.png" alt="UpdateActivityDiagram">
 </div>
-<div class="title">Figure 23. Activity Diagram for update</div>
+<div class="title">Figure 24. Activity Diagram for <code>update</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1014,10 +1032,14 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <p>Pros: Intuitive implementation and execution for the user.</p>
 </li>
 <li>
-<p>Cons: Requires excessive user operations. The user has to first delete the <code>Ledger</code> operation that he/she wishes to change, then input the <code>Ledger</code> operation with the amended fields.</p>
-</li>
+<p>Cons: Requires excessive user operations.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>The user has to first delete the <code>Ledger</code> operation that he/she wishes to change, followed by inputting the <code>Ledger</code> operation with the amended fields back into PalPay.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1049,6 +1071,24 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="future-enhancements-2"><a class="link" href="#future-enhancements-2">4.9.3. Future Enhancements</a></h4>
+<div class="sect4">
+<h5 id="update-feature-for-projections"><a class="link" href="#update-feature-for-projections">Update feature for Projections</a></h5>
+<div class="paragraph">
+<p>Currently the update feature has not been implemented for <code>Projection</code> operations. In future iterations of PalPay, the update feature should work seamlessly with <code>Projection</code> operations, similar to that of <code>Transaction</code> and <code>Budget</code> operations</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram below will provide a visual representation of the possible user routes using the <code>update</code> command after this enhancement has been implemented.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UpdatefutureActivityDiagram.png" alt="UpdatefutureActivityDiagram">
+</div>
+<div class="title">Figure 25. Activity Diagram for future <code>update</code></div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="sort-feature-code-sort-code"><a class="link" href="#sort-feature-code-sort-code">4.10. Sort Feature: <code>sort</code></a></h3>
@@ -1067,7 +1107,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/SortSequenceDiagram.png" alt="SortSequenceDiagram">
 </div>
-<div class="title">Figure 24. Sequence Diagram for <code>sort date/d</code></div>
+<div class="title">Figure 26. Sequence Diagram for <code>sort date/d</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1082,7 +1122,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/sort_dg_1.png" alt="sort dg 1">
 </div>
-<div class="title">Figure 25. Initial State of PalPay</div>
+<div class="title">Figure 27. Initial State of PalPay</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>. The user now executes <code>sort date/d</code> to sort the transactions in the order of descending date.</p>
@@ -1091,7 +1131,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/sort_dg_2.png" alt="sort dg 2">
 </div>
-<div class="title">Figure 26. User Inputs <code>sort date/d</code></div>
+<div class="title">Figure 28. User Inputs <code>sort date/d</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse()</code> to parse the input from the user.</p>
@@ -1126,7 +1166,7 @@ at the end.</p>
 <div class="content">
 <img src="images/sort_dg_3.png" alt="sort dg 3">
 </div>
-<div class="title">Figure 27. After Sorting of Transactions</div>
+<div class="title">Figure 29. After Sorting of Transactions</div>
 </div>
 </div>
 <div class="sect3">
@@ -1204,7 +1244,7 @@ breakfast in November 2019.</p>
 <div class="content">
 <img src="images/FilterClassDiagram.png" alt="FilterClassDiagram">
 </div>
-<div class="title">Figure 28. Class Diagram for <code>Filter</code></div>
+<div class="title">Figure 30. Class Diagram for <code>Filter</code></div>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the filter mechanism behaves at each step.</p>
@@ -1243,7 +1283,7 @@ returns a <code>CommandResult</code> to the <code>LogicManager</code> and the re
 <div class="content">
 <img src="images/FilterActivityDiagram.png" alt="FilterActivityDiagram">
 </div>
-<div class="title">Figure 29. Activity Diagram for <code>Filter</code></div>
+<div class="title">Figure 31. Activity Diagram for <code>Filter</code></div>
 </div>
 </div>
 </div>
@@ -1281,7 +1321,7 @@ and <code>Model#redoUserState()</code> respectively.</p>
 The <code>VersionedUserState</code> will be initialized with the initial user state, and the <code>currentStatePointer</code>
 pointing to that single user state.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoState0.png" alt="UndoRedoState0">
 </div>
@@ -1292,7 +1332,7 @@ The <code>delete</code> command calls <code>Model#commitUserState()</code>, caus
 <code>delete t5</code> command executes to be saved in the <code>userStateList</code>, and the <code>currentStatePointer</code> is shifted
 to the newly inserted user state.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoState1.png" alt="UndoRedoState1">
 </div>
@@ -1302,7 +1342,7 @@ to the newly inserted user state.</p>
 The <code>in</code> command also calls <code>Model#commitUserState()</code>, causing another modified user state to be saved
 into the <code>userStateList</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoState2.png" alt="UndoRedoState2">
 </div>
@@ -1326,7 +1366,7 @@ executing the <code>undo</code> command. The <code>undo</code> command will call
 <code>currentStatePointer</code> once to the left, pointing it to the previous user state, and restores the user state
 to that state.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoState3.png" alt="UndoRedoState3">
 </div>
@@ -1350,7 +1390,7 @@ If so, it will return an error to the user rather than attempting to perform the
 Commands that do not modify the user state, such as <code>list</code>, will usually not call <code>Model#commitUserState()</code>,
 <code>Model#undoUserState()</code> or <code>Model#redoUserState()</code>. Thus, the <code>userStateList</code> remains unchanged.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoState4.png" alt="UndoRedoState4">
 </div>
@@ -1361,7 +1401,7 @@ Since the <code>currentStatePointer</code> is not pointing at the end of the <co
 the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the
 <code>in $/10 n/Allowance d/07112019</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoState5.png" alt="UndoRedoState5">
 </div>
@@ -1866,7 +1906,7 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file and copy into an empty folder.</p>
 </li>
 <li>
 <p>Double-click the jar file<br>
@@ -1930,7 +1970,28 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving Data</a></h3>
+<h3 id="viewing-help-window"><a class="link" href="#viewing-help-window">G.3. Viewing Help Window</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Requesting help from PalPay</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: None</p>
+</li>
+<li>
+<p>Test case: <code>help</code><br>
+Expected: A help window pops up that displays the URL of PalPay&#8217;s User Guide and a <code>Copy URL</code> button.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.4. Saving Data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1938,7 +1999,7 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Delete the file at <code>.\data\bankaccount.json</code>.</p>
 </li>
 </ol>
 </div>
@@ -1947,4 +2008,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:25:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:54:35 UTC</div></div></div></body></html>

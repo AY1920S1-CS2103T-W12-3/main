@@ -26,9 +26,9 @@
 <li><a href="#Set">4.3. Setting a Budget : <code>set</code></a></li>
 <li><a href="#Split">4.4. Splitting a Bill with Friends : <code>split</code></a></li>
 <li><a href="#Receive">4.5. Receiving Money from a Friend : <code>receive</code></a></li>
-<li><a href="#Project">4.6. Projecting Balance : <code>project</code></a></li>
-<li><a href="#display-projection-graph-code-display-code">4.7. Display Projection Graph: <code>display</code></a></li>
-<li><a href="#switching-tabs-code-view-code">4.8. Switching Tabs : <code>view</code></a></li>
+<li><a href="#Project">4.6. Projecting Future Balance and Budgets : <code>project</code></a></li>
+<li><a href="#display-a-projection-graph-code-display-code">4.7. Display a Projection Graph: <code>display</code></a></li>
+<li><a href="#View">4.8. Switching Tabs : <code>view</code></a></li>
 <li><a href="#Delete">4.9. Deleting Finance : <code>delete</code></a></li>
 <li><a href="#Update">4.10. Updating Finance : <code>update</code></a></li>
 <li><a href="#Sort">4.11. Sorting Transactions : <code>sort</code></a></li>
@@ -129,7 +129,24 @@ the category <strong>food</strong> and the description <strong>pie</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="projections"><a class="link" href="#projections">3.4. Projections</a></h3>
-
+<div class="paragraph">
+<p>By using the <em>Projections</em> feature, you can project your:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Account Balance</p>
+</li>
+<li>
+<p>Budget Deficits / Surpluses</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These projections are cast upon a specified <code>DATE</code>, and optionally, a specified <code>CATEGORY</code>. Upon casting a
+projection, it is automatically stored and thereafter accessible through the <em>Projection</em> tab via the <code>view</code>
+command (see <a href="#View">Section 4.8, &#8220;Switching Tabs : <code>view</code>&#8221;</a>).</p>
+</div>
 </div>
 </div>
 </div>
@@ -139,7 +156,7 @@ the category <strong>food</strong> and the description <strong>pie</strong>.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Command Format</strong></p>
+<p><strong>Command Format</strong> :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -166,6 +183,60 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Parameter Restrictions</strong> :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Prefix</th>
+<th class="tableblock halign-left valign-top">Restriction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AMOUNT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- a valid amount between 0 and 1000000 dollars exclusive<br>
+- a valid amount up to 2 decimal places</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DATE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- a valid date with the format DDMMYY in the Gregorian calendar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DESCRIPTION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- a valid description with alphanumeric chacracters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CATEGORY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- a valid category with alphanumeric characters without space</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TYPE</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- a valid type containing one character<br>
+<code>t</code> : Transaction<br>
+<code>b</code> : Budget<br>
+<code>l</code> : Ledger<br>
+<code>p</code> : Projection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">INDEX</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- a valid entry number in the list</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -214,6 +285,10 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Logging income</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Inputs an income of $120 with description set to 'work' and date set on 31/12/2019.</p>
 </li>
 <li>
@@ -221,17 +296,20 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Initial balance (red box in Figure 1) has a value of $0.</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/in_ug_1.png" alt="in ug 1">
 </div>
 <div class="title">Figure 1. Income Logging Example 1</div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Income added</p>
+<div class="ulist">
+<ul>
 <li>
 <p>The income is added to the empty <strong>Transactions</strong> tab.</p>
 </li>
@@ -240,14 +318,17 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Balance has increased from $0 to $120 (red box in Figure 2).</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/in_ug_2.png" alt="in ug 2">
 </div>
 <div class="title">Figure 2. Sample Income 1 Added</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
@@ -260,6 +341,10 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Logging income</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Inputs an income of $500.50 with description set to 'allowance' and date set on 01/01/2020.</p>
 </li>
 <li>
@@ -267,17 +352,20 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Initial balance (red box in Figure 3) has a value of $120.</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/in_ug_3.png" alt="in ug 3">
 </div>
 <div class="title">Figure 3. Income Logging Example 2</div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Income added</p>
+<div class="ulist">
+<ul>
 <li>
 <p>The income is added to the bottom of the <strong>Transactions</strong> tab.</p>
 </li>
@@ -286,14 +374,17 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Balance has increased from $120 to $620.50 (red box in Figure 4).</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/in_ug_4.png" alt="in ug 4">
 </div>
 <div class="title">Figure 4. Sample Income 2 Added</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
@@ -353,8 +444,15 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </div>
 <div class="sect3">
 <h4 id="important-details"><a class="link" href="#important-details">4.2.2. Important Details:</a></h4>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>Note that <code>out</code> transactions differ from <code>in</code> transactions in the display amount. The <code>in</code> transactions are characterized by the <strong>positive</strong> value within their display box whilst the <code>out</code> transactions are characterized by the <strong>negative</strong> values in their display box. The difference can be observed in the example usage below.</p>
+</li>
+<li>
+<p><code>out</code> Transaction will affect the remaining amount of <code>Budget</code> entries with similar categories within the same time period (Refer to <a href="#UG_OUT_EXAMPLE3">Section 4.2.3.3, &#8220;Example 3&#8221;</a>).</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -369,6 +467,10 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Expenditure logging</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Inputs an expenditure of $5 with description set to 'burger' and date set on 01/01/2020.</p>
 </li>
 <li>
@@ -376,17 +478,20 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Initial balance (red box in Figure 5) has a value of $620.50.</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/out_ug_1.png" alt="out ug 1">
 </div>
 <div class="title">Figure 5. Expenditure Logging Example 1</div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Expenditure added</p>
+<div class="ulist">
+<ul>
 <li>
 <p>The expenditure is added to the bottom of the <strong>Transactions</strong> tab.</p>
 </li>
@@ -398,14 +503,17 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Balance has decreased from $620.50 to $615.50 (red box in Figure 6).</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/out_ug_2.png" alt="out ug 2">
 </div>
 <div class="title">Figure 6. Sample Expenditure 1 Added</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
@@ -418,6 +526,10 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Expenditure logging</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Inputs an expenditure of $1000 with description set to 'maintenance' and date set on 02/01/2020.</p>
 </li>
 <li>
@@ -425,17 +537,20 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>Initial balance (red box in Figure 7) has a value of $615.50.</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/out_ug_3.png" alt="out ug 3">
 </div>
 <div class="title">Figure 7. Expenditure Logging Example 2</div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Expenditure added</p>
+<div class="ulist">
+<ul>
 <li>
 <p>The expenditure is added to the bottom of the <strong>Transactions</strong> tab.</p>
 </li>
@@ -447,14 +562,105 @@ Example: <code>TYPE+INDEX</code> refers to joining <code>TYPE</code> and <code>I
 </li>
 <li>
 <p>The negative value of the balance indicates that the total spending amount outweighs the total savings amount.</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/out_ug_4.png" alt="out ug 4">
 </div>
 <div class="title">Figure 8. Sample Expenditure 2 Added</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="UG_OUT_EXAMPLE3"><a class="link" href="#UG_OUT_EXAMPLE3">Example 3</a></h5>
+<div class="literalblock">
+<div class="content">
+<pre>out $/100 n/pants d/02012020 c/clothes</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expenditure logging</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Inputs an expenditure of $100 with description set to 'pants' and date set on 02/01/2020.</p>
+</li>
+<li>
+<p>The income includes <code>clothes</code> under the <code>CATEGORY</code> field.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/out_ug_5.png" alt="out ug 5">
+</div>
+<div class="title">Figure 9. Expenditure Logging Example 3</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Budget with similar categories and time period.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Entry 3 of the <code>Budget</code> tab has <code>clothes</code> under its <code>CATEGORY</code> field.</p>
+</li>
+<li>
+<p>Entry 3 of the <code>Budget</code> tab has a deadline set to <code>01/01/2021</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/out_ug_6.png" alt="out ug 6">
+</div>
+<div class="title">Figure 10. Budget with 'clothes' category</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Expenditure added</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The expenditure is added to the bottom of the <strong>Transactions</strong> tab.</p>
+</li>
+<li>
+<p>The added expenditure has a date set to <code>02/01/2020</code>.</p>
+</li>
+<li>
+<p>The added expenditure is tagged under the <code>clothes</code> category.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/out_ug_7.png" alt="out ug 7">
+</div>
+<div class="title">Figure 11. Sample Expenditure 3 Added</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Budget entry updated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Remaining amount of entry 3 of the <code>Budget</code> tab has decreased from $1000 to $900.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/out_ug_8.png" alt="out ug 8">
+</div>
+<div class="title">Figure 12. Budget entry updated</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
@@ -529,7 +735,7 @@ Shown below as budget index 3 is an example of an overspent budget:</p>
 <div class="content">
 <img src="images/overspentBudget.png" alt="overspentBudget">
 </div>
-<div class="title">Figure 9. Overspent Budget</div>
+<div class="title">Figure 13. Overspent Budget</div>
 </div>
 <div class="paragraph">
 <p>As the day you have set for the budget approaches, the countdown placeholder as well as the percentage remaining placeholder
@@ -540,7 +746,7 @@ Shown below as budget index 4 is an example of a budget approaching its deadline
 <div class="content">
 <img src="images/approachingBudget.png" alt="approachingBudget">
 </div>
-<div class="title">Figure 10. Budget approaching deadline</div>
+<div class="title">Figure 14. Budget approaching deadline</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -613,7 +819,7 @@ field to determine nature of bill.</p>
 <div class="content">
 <img src="images/LedgerUI.png" alt="LedgerUI">
 </div>
-<div class="title">Figure 11. Sample Ledger Graphical User Interface</div>
+<div class="title">Figure 15. Sample Ledger Graphical User Interface</div>
 </div>
 <div class="paragraph">
 <p>This is how the <strong>Ledger</strong> looks when you switch to the <strong>Ledger</strong> tab.<br>
@@ -642,7 +848,7 @@ at the bottom right corner.</p>
 <div class="content">
 <img src="images/SplitEven1.png" alt="SplitEven1">
 </div>
-<div class="title">Figure 12. Splitting evenly</div>
+<div class="title">Figure 16. Splitting evenly</div>
 </div>
 </li>
 <li>
@@ -651,7 +857,7 @@ at the bottom right corner.</p>
 <div class="content">
 <img src="images/SplitEven2.png" alt="SplitEven2">
 </div>
-<div class="title">Figure 13. Splitting evenly (result)</div>
+<div class="title">Figure 17. Splitting evenly (result)</div>
 </div>
 <div class="paragraph">
 <p>For an even split of $1000, each person pays $200. Therefore <strong>Ledger</strong> shows $200 on the tab of each person.
@@ -677,7 +883,7 @@ from the rest of his friends. Therefore <strong>Ledger</strong> balance is -$800
 <div class="content">
 <img src="images/SplitUneven1.png" alt="SplitUneven1">
 </div>
-<div class="title">Figure 14. Splitting unevenly</div>
+<div class="title">Figure 18. Splitting unevenly</div>
 </div>
 </li>
 <li>
@@ -686,7 +892,7 @@ from the rest of his friends. Therefore <strong>Ledger</strong> balance is -$800
 <div class="content">
 <img src="images/SplitUneven2.png" alt="SplitUneven2">
 </div>
-<div class="title">Figure 15. Uneven split results</div>
+<div class="title">Figure 19. Uneven split results</div>
 </div>
 </li>
 </ol>
@@ -721,7 +927,7 @@ Format: <code>receive $/AMOUNT n/NAME1 [d/DATE] [a/DESCRIPTION]</code></p>
 <div class="content">
 <img src="images/Receive1.png" alt="Receive1">
 </div>
-<div class="title">Figure 16. Receive payment</div>
+<div class="title">Figure 20. Receive payment</div>
 </div>
 </li>
 <li>
@@ -730,7 +936,7 @@ Format: <code>receive $/AMOUNT n/NAME1 [d/DATE] [a/DESCRIPTION]</code></p>
 <div class="content">
 <img src="images/Receive2.png" alt="Receive2">
 </div>
-<div class="title">Figure 17. Receive payment result</div>
+<div class="title">Figure 21. Receive payment result</div>
 </div>
 <div class="paragraph">
 <p>Albert is removed from the <strong>Ledger</strong> since he no longer owes any money. <strong>Ledger</strong> balance is also updated accordingly.</p>
@@ -744,38 +950,25 @@ Format: <code>receive $/AMOUNT n/NAME1 [d/DATE] [a/DESCRIPTION]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Project"><a class="link" href="#Project">4.6. Projecting Balance : <code>project</code></a></h3>
+<h3 id="Project"><a class="link" href="#Project">4.6. Projecting Future Balance and Budgets : <code>project</code></a></h3>
 <div class="paragraph">
-<p>Cast a projection on your future balance amount and budget statuses based on your transaction history.<br>
-Format: <code>project d/DATE [c/test]</code></p>
+<p>Cast a projection on your future balance amount and budget statuses based on your transaction history.<br></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>DATE</code> input only accepts date in format DDMMYYYY.</p>
-</li>
-<li>
-<p><code>DATE</code> input must be preceded by its tag <code>d/</code>.</p>
-</li>
-<li>
-<p><code>DATE</code> input must be set in the future.</p>
-</li>
-<li>
-<p><code>Date</code> cannot be more than <em>720</em> days from the day of projection.</p>
-</li>
-<li>
-<p>There must be a minimum of <em>5</em> transactions in total, or in the specified category
-for a projection to be successfully cast.</p>
-</li>
-<li>
-<p>Should the number of <code>transactions</code> in a  <code>projection</code> fall below <em>5</em>, the <code>projection</code>
-will be automatically deleted.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Format: <code>project d/DATE [c/CATEGORY]</code></p>
 </div>
-</div>
+<div id="Project-auto-cast" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a <code>CATEGORY</code> is not specified, it will be set as <code>GENERAL</code> by default. <code>GENERAL</code> projections project
+upon <strong>ALL</strong> transactions, regardless of their categories.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="example-usage-5"><a class="link" href="#example-usage-5">4.6.1. Example Usage:</a></h4>
@@ -801,29 +994,148 @@ You are on track to meeting your budget of $600 by 08122019, with a surplus of $
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="usage-constraints"><a class="link" href="#usage-constraints">4.6.2. Usage Constraints</a></h4>
+<div class="sect4">
+<h5 id="command-format"><a class="link" href="#command-format">Command Format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CATEGORY</code> must be preceded by its tag <code>c/</code>.
+A violation of any of the above will produce the following error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Invalid command format!<br>
+project: Project future balance based on past income/outflow.<br>
+Parameters: d/DATE [c/CATEGORY]<br>
+Example: project d/12122103 c/Food</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="date-values-br"><a class="link" href="#date-values-br">Date Values<br></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DATE</code> input must be set in the future.
+A violation of this constraint will produce the following
+error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Invalid command usage!<br>
+Date must be set in the future.</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DATE</code> cannot be more than <strong>720</strong> days from the day of projection.<br>
+A violation of this constraint will produce the following error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Projections should be a maximum of 2 years (730 days) from now.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="minimum-number-of-transactions"><a class="link" href="#minimum-number-of-transactions">Minimum Number of Transactions</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>There must be a minimum of <strong>5</strong> transactions in total, or in the specified <code>CATEGORY</code>
+for a projection to be successfully cast.
+Should the requirement above be unmet, the following error message will be produced:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>There are no transactions in [CATEGORY]. It is impossible to cast a projection.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+[GENERAL] will be displayed in place of [CATEGORY] if a <code>CATEGORY</code> is not specified. This is due to
+the auto-casting of uncategorised projections to the <code>GENERAL</code> category as explained <a href="#Project-auto-cast">here</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Should the number of transactions in a <code>projection</code> fall below <strong>5</strong>, it
+will be automatically deleted, as shown below:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Suppose there are <strong>5</strong> transactions, and a <code>GENERAL</code> projection, which projects upon them.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/project1.png" alt="project1">
+</div>
+<div class="title">Figure 22. Five transactions under the projection tab</div>
+</div>
+<div id="Figure19" class="imageblock">
+<div class="content">
+<img src="images/project2.png" alt="project2">
+</div>
+<div class="title">Figure 23. A projection which is cast based on the 5 transactions above</div>
+</div>
+</li>
+<li>
+<p>If a transaction being deleted causes the number of transactions being projected upon to fall below 5,
+the corresponding projection will automatically be deleted.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/project3.png" alt="project3">
+</div>
+<div class="title">Figure 24. The fifth transaction has been deleted.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/project4.png" alt="project4">
+</div>
+<div class="title">Figure 25. The project earlier seen in <a href="#Figure19">Figure 19</a> has been automatically deleted.</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="display-projection-graph-code-display-code"><a class="link" href="#display-projection-graph-code-display-code">4.7. Display Projection Graph: <code>display</code></a></h3>
+<h3 id="display-a-projection-graph-code-display-code"><a class="link" href="#display-a-projection-graph-code-display-code">4.7. Display a Projection Graph: <code>display</code></a></h3>
 <div class="paragraph">
 <p>Display a graphical representation of a <code>projection</code> in a new window.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>display PROJECTION_ID</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>A <code>Projection</code> with <code>PROJECTION_ID</code> must exist.</p>
-</li>
-<li>
-<p><code>Projection</code> graphs do not update automatically when a new <code>Transaction</code> or <code>Budget</code> is
-added or removed. Instead, they are statically rendered upon the <code>display</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="example-usage-6"><a class="link" href="#example-usage-6">4.7.1. Example Usage</a></h4>
@@ -857,9 +1169,56 @@ representation of the budget will be additionally displayed.</p>
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="usage-constraints-2"><a class="link" href="#usage-constraints-2">4.7.2. Usage Constraints</a></h4>
+<div class="sect4">
+<h5 id="valid-projection-id"><a class="link" href="#valid-projection-id">Valid Projection ID</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Projection</code> with <code>PROJECTION_ID</code> must exist.
+Attempting to display a non-existent <code>PROJECTION</code> will result in the following error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The projection index provided is invalid.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="static-graph-rendering"><a class="link" href="#static-graph-rendering">Static Graph Rendering</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Projection</code> graphs do not update automatically when a new <code>Transaction</code> or <code>Budget</code> is
+added or removed. Instead, they are statically rendered upon the <code>display</code> command.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Due to the static nature of projection graphs, commands should <strong>NOT</strong> be executed while a projection
+graph is open, lest the behaviour of PalPay become unpredictable.<br>
+Consequently, a <code>display</code> command should <strong>ALWAYS</strong> be followed by closing the projection graph window, before
+any other actions are performed within <em>PalPay</em>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="switching-tabs-code-view-code"><a class="link" href="#switching-tabs-code-view-code">4.8. Switching Tabs : <code>view</code></a></h3>
+<h3 id="View"><a class="link" href="#View">4.8. Switching Tabs : <code>view</code></a></h3>
 <div class="paragraph">
 <p>Want to switch tabs without using your mouse? You can switch to another tab with the <code>view</code> command.</p>
 </div>
@@ -948,12 +1307,15 @@ representation of the budget will be additionally displayed.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="important-details-2"><a class="link" href="#important-details-2">4.9.2. Important Details:</a></h4>
 <div class="paragraph">
-<p>PalPay deletes items based on the entry index of the target item. You can only delete a maximum of 1 entry per command. (i.e. <code>delete t1 t2 b1</code> is not allowed)</p>
+<p>PalPay deletes items based on the entry index of the target item. You can only delete a maximum of 1 entry per command. (i.e. <code>delete t1 t2 b1</code> or <code>delete t1 t2</code> will not work)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-usage-8"><a class="link" href="#example-usage-8">4.9.2. Example Usage:</a></h4>
+<h4 id="example-usage-8"><a class="link" href="#example-usage-8">4.9.3. Example Usage:</a></h4>
 <div class="literalblock">
 <div class="content">
 <pre>Deleting the 5th entry of the transactions list</pre>
@@ -1028,7 +1390,7 @@ representation of the budget will be additionally displayed.</p>
 <p>Format (Ledger): Cannot be updated<br></p>
 </div>
 <div class="paragraph">
-<p>Format (Projections): <code>update TYPE+INDEX [d/DATE]</code></p>
+<p>Format (Projections): Cannot be updated</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1053,7 +1415,7 @@ representation of the budget will be additionally displayed.</p>
 <p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added).</p>
 </li>
 <li>
-<p><code>TYPE</code> accepts either <code>t</code> (Transaction), <code>b</code> (Budget), or <code>p</code> (Projection). (e.g. <code>update t1 ..</code> refers to updating a <strong>Transaction</strong> of index 1).</p>
+<p><code>TYPE</code> only accepts either <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update t1 ..</code> refers to updating a <strong>Transaction</strong> of index 1).</p>
 </li>
 <li>
 <p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work).</p>
@@ -1070,20 +1432,32 @@ representation of the budget will be additionally displayed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="important-details-2"><a class="link" href="#important-details-2">4.10.2. Important Details:</a></h4>
+<h4 id="important-details-3"><a class="link" href="#important-details-3">4.10.2. Important Details:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted).</p>
+<p><code>update</code> requires at least one field to be updated. (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted).</p>
 </li>
 <li>
-<p>Ledger does not have an update function. If you need to change specific fields within a ledger entry, you should delete the target entry and recreate a new ledger entry with your preferred fields.</p>
+<p><code>Ledger</code> and <code>Projection</code> do not have an update function. If you need to change specific fields within a ledger or projection entry, you should delete the target entry and recreate a new entry with your desired fields.</p>
 </li>
 <li>
-<p>You can not change an <code>in</code> transaction to an <code>out</code> transaction.</p>
+<p>You cannot change an <code>in</code> Transaction to an <code>out</code> Transaction or vice versa.</p>
 </li>
 <li>
-<p>Changing an expenditure with the same category field as a budget will reflect changes on the <code>Budget</code> as well.</p>
+<p>Changing an expenditure&#8217;s (<code>out</code> Transaction) category field to that of a Budget&#8217;s entry will reflect changes on that particular Budget entry as well. (Further explained in <a href="#UG_UPDATE_EXAMPLE_3">Section 4.10.3.3, &#8220;Example 3:&#8221;</a>)</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Changing the categories of an <code>out</code> Transaction entry with similar categories to that of a <code>Budget</code> entry to reflect changes on the budget&#8217;s remaining amount will be incoming in version 2.0.
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ul>
 </div>
@@ -1159,6 +1533,56 @@ representation of the budget will be additionally displayed.</p>
 </div>
 </div>
 <div class="sect4">
+<h5 id="UG_UPDATE_EXAMPLE_3"><a class="link" href="#UG_UPDATE_EXAMPLE_3">Example 3:</a></h5>
+<div class="paragraph">
+<p>Updating a <strong>Transaction</strong> entry which has the same category field as a <strong>Budget</strong> entry.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the index number of the <strong>Transaction</strong> entry you want to edit.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/update_ug_7.png" alt="update ug 7">
+</div>
+</div>
+</li>
+<li>
+<p>Notice that a <strong>Budget</strong> entry has the same category field as the <strong>Transaction</strong> entry mentioned above. (<strong>Budget</strong> entry 2).</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/update_ug_8.png" alt="update ug 8">
+</div>
+</div>
+</li>
+<li>
+<p>Put <code>t</code> as your <code>TYPE</code> input and key in the fields you want to change. In this case, we will be changing only the amount of this <strong>Transaction</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/update_ug_9.png" alt="update ug 9">
+</div>
+</div>
+</li>
+<li>
+<p>Success message will be displayed upon successful update. Fields of the <strong>Transaction</strong> entry will now be updated accordingly.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/update_ug_10.png" alt="update ug 10">
+</div>
+</div>
+</li>
+<li>
+<p>Remaining amount of the <strong>Budget</strong> entry will also be updated accordingly.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/update_ug_11.png" alt="update ug 11">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
 <h5 id="example-commands-4"><a class="link" href="#example-commands-4">Example Commands:</a></h5>
 <div class="ulist">
 <ul>
@@ -1170,9 +1594,6 @@ representation of the budget will be additionally displayed.</p>
 </li>
 <li>
 <p><code>update t4 $/30 d/12102019</code></p>
-</li>
-<li>
-<p><code>update p4 d/10102019</code></p>
 </li>
 </ul>
 </div>
@@ -1330,44 +1751,12 @@ word, <code>undo</code>.</p>
 <p>Once you exit PalPay, you cannot undo the previous commands.</p>
 </li>
 <li>
-<p>List of Undoable Commands:</p>
+<p>Below are the commands that are undoable:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>in</code></p>
-</li>
-<li>
-<p><code>out</code></p>
-</li>
-<li>
-<p><code>set</code></p>
-</li>
-<li>
-<p><code>split</code></p>
-</li>
-<li>
-<p><code>receive</code></p>
-</li>
-<li>
-<p><code>project</code></p>
-</li>
-<li>
-<p><code>filter</code></p>
-</li>
-<li>
-<p><code>sort</code></p>
-</li>
-<li>
-<p><code>update</code></p>
-</li>
-<li>
-<p><code>delete</code></p>
-</li>
-<li>
-<p><code>clear</code></p>
-</li>
-<li>
-<p><code>list</code></p>
+<p><code>in</code> / <code>out</code> / <code>set</code> / <code>split</code> / <code>receive</code> / <code>project</code> /
+<code>sort</code> / <code>filter</code> / <code>update</code> / <code>delete</code> / <code>clear</code> / <code>list</code></p>
 </li>
 </ul>
 </div>
@@ -1617,4 +2006,4 @@ Example: <code>filter c/transport c/allowance y/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:25:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:54:35 UTC</div></div></div></body></html>

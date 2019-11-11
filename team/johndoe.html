@@ -169,8 +169,11 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="important-details"><a class="link" href="#important-details">Important Details:</a></h4>
 <div class="paragraph">
-<p>PalPay deletes items based on the entry index of the target item. You can only delete a maximum of 1 entry per command. (i.e. <code>delete t1 t2 b1</code> is not allowed)</p>
+<p>PalPay deletes items based on the entry index of the target item. You can only delete a maximum of 1 entry per command. (i.e. <code>delete t1 t2 b1</code> or <code>delete t1 t2</code> will not work)</p>
 </div>
 </div>
 <div class="sect3">
@@ -249,7 +252,7 @@
 <p>Format (Ledger): Cannot be updated<br></p>
 </div>
 <div class="paragraph">
-<p>Format (Projections): <code>update TYPE+INDEX [d/DATE]</code></p>
+<p>Format (Projections): Cannot be updated</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -274,7 +277,7 @@
 <p><code>INDEX</code> refers to the target item number. (Items are sorted starting from the <strong>latest</strong> input added).</p>
 </li>
 <li>
-<p><code>TYPE</code> accepts either <code>t</code> (Transaction), <code>b</code> (Budget), or <code>p</code> (Projection). (e.g. <code>update t1 ..</code> refers to updating a <strong>Transaction</strong> of index 1).</p>
+<p><code>TYPE</code> only accepts either <code>t</code> (Transaction) or <code>b</code> (Budget). (e.g. <code>update t1 ..</code> refers to updating a <strong>Transaction</strong> of index 1).</p>
 </li>
 <li>
 <p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work).</p>
@@ -291,20 +294,32 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="important-details"><a class="link" href="#important-details">Important Details:</a></h4>
+<h4 id="important-details-2"><a class="link" href="#important-details-2">Important Details:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><code>update</code> requires at least one field to be updated but also allows more than one field to be updated (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted).</p>
+<p><code>update</code> requires at least one field to be updated. (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted).</p>
 </li>
 <li>
-<p>Ledger does not have an update function. If you need to change specific fields within a ledger entry, you should delete the target entry and recreate a new ledger entry with your preferred fields.</p>
+<p><code>Ledger</code> and <code>Projection</code> do not have an update function. If you need to change specific fields within a ledger or projection entry, you should delete the target entry and recreate a new entry with your desired fields.</p>
 </li>
 <li>
-<p>You can not change an <code>in</code> transaction to an <code>out</code> transaction.</p>
+<p>You cannot change an <code>in</code> Transaction to an <code>out</code> Transaction or vice versa.</p>
 </li>
 <li>
-<p>Changing an expenditure with the same category field as a budget will reflect changes on the <code>Budget</code> as well.</p>
+<p>Changing an expenditure&#8217;s (<code>out</code> Transaction) category field to that of a Budget&#8217;s entry will reflect changes on that particular Budget entry as well. (Further explained in <a href="#UG_UPDATE_EXAMPLE_3">Example 3:</a>)</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Changing the categories of an <code>out</code> Transaction entry with similar categories to that of a <code>Budget</code> entry to reflect changes on the budget&#8217;s remaining amount will be incoming in version 2.0.
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ul>
 </div>
@@ -380,6 +395,56 @@
 </div>
 </div>
 <div class="sect4">
+<h5 id="UG_UPDATE_EXAMPLE_3"><a class="link" href="#UG_UPDATE_EXAMPLE_3">Example 3:</a></h5>
+<div class="paragraph">
+<p>Updating a <strong>Transaction</strong> entry which has the same category field as a <strong>Budget</strong> entry.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the index number of the <strong>Transaction</strong> entry you want to edit.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_7.png" alt="update ug 7">
+</div>
+</div>
+</li>
+<li>
+<p>Notice that a <strong>Budget</strong> entry has the same category field as the <strong>Transaction</strong> entry mentioned above. (<strong>Budget</strong> entry 2).</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_8.png" alt="update ug 8">
+</div>
+</div>
+</li>
+<li>
+<p>Put <code>t</code> as your <code>TYPE</code> input and key in the fields you want to change. In this case, we will be changing only the amount of this <strong>Transaction</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_9.png" alt="update ug 9">
+</div>
+</div>
+</li>
+<li>
+<p>Success message will be displayed upon successful update. Fields of the <strong>Transaction</strong> entry will now be updated accordingly.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_10.png" alt="update ug 10">
+</div>
+</div>
+</li>
+<li>
+<p>Remaining amount of the <strong>Budget</strong> entry will also be updated accordingly.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/update_ug_11.png" alt="update ug 11">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
 <h5 id="example-commands-2"><a class="link" href="#example-commands-2">Example Commands:</a></h5>
 <div class="ulist">
 <ul>
@@ -391,9 +456,6 @@
 </li>
 <li>
 <p><code>update t4 $/30 d/12102019</code></p>
-</li>
-<li>
-<p><code>update p4 d/10102019</code></p>
 </li>
 </ul>
 </div>
@@ -551,44 +613,12 @@ word, <code>undo</code>.</p>
 <p>Once you exit PalPay, you cannot undo the previous commands.</p>
 </li>
 <li>
-<p>List of Undoable Commands:</p>
+<p>Below are the commands that are undoable:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>in</code></p>
-</li>
-<li>
-<p><code>out</code></p>
-</li>
-<li>
-<p><code>set</code></p>
-</li>
-<li>
-<p><code>split</code></p>
-</li>
-<li>
-<p><code>receive</code></p>
-</li>
-<li>
-<p><code>project</code></p>
-</li>
-<li>
-<p><code>filter</code></p>
-</li>
-<li>
-<p><code>sort</code></p>
-</li>
-<li>
-<p><code>update</code></p>
-</li>
-<li>
-<p><code>delete</code></p>
-</li>
-<li>
-<p><code>clear</code></p>
-</li>
-<li>
-<p><code>list</code></p>
+<p><code>in</code> / <code>out</code> / <code>set</code> / <code>split</code> / <code>receive</code> / <code>project</code> /
+<code>sort</code> / <code>filter</code> / <code>update</code> / <code>delete</code> / <code>clear</code> / <code>list</code></p>
 </li>
 </ul>
 </div>
@@ -886,7 +916,7 @@ and <code>Model#redoUserState()</code> respectively.</p>
 The <code>VersionedUserState</code> will be initialized with the initial user state, and the <code>currentStatePointer</code>
 pointing to that single user state.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
 </div>
@@ -897,7 +927,7 @@ The <code>delete</code> command calls <code>Model#commitUserState()</code>, caus
 <code>delete t5</code> command executes to be saved in the <code>userStateList</code>, and the <code>currentStatePointer</code> is shifted
 to the newly inserted user state.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
 </div>
@@ -907,7 +937,7 @@ to the newly inserted user state.</p>
 The <code>in</code> command also calls <code>Model#commitUserState()</code>, causing another modified user state to be saved
 into the <code>userStateList</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
 </div>
@@ -931,7 +961,7 @@ executing the <code>undo</code> command. The <code>undo</code> command will call
 <code>currentStatePointer</code> once to the left, pointing it to the previous user state, and restores the user state
 to that state.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
 </div>
@@ -955,7 +985,7 @@ If so, it will return an error to the user rather than attempting to perform the
 Commands that do not modify the user state, such as <code>list</code>, will usually not call <code>Model#commitUserState()</code>,
 <code>Model#undoUserState()</code> or <code>Model#redoUserState()</code>. Thus, the <code>userStateList</code> remains unchanged.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
 </div>
@@ -966,7 +996,7 @@ Since the <code>currentStatePointer</code> is not pointing at the end of the <co
 the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the
 <code>in $/10 n/Allowance d/07112019</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
 </div>
@@ -1092,4 +1122,4 @@ be pushed into the redo stack.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:25:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:54:35 UTC</div></div></div></body></html>
