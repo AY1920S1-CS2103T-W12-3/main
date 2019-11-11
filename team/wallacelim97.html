@@ -1,0 +1,695 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Wallace Lim - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">PalPay</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W12-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Wallace Lim - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The purpose of this portfolio is to document my contributions to <em>PalPay</em>,
+a software engineering project under the module
+<em>CS2103T - Software Engineering</em>. PalPay is a personal finance management application developed by a team of
+5 students taking the module, including myself.
+It is mostly written in Java and has roughly 15,000 Lines of Code (LoC).
+Being a Command Line Interface (CLI) application, it is controlled mainly through
+the Command Line in the app, while displaying output through a Graphical User Interface (GUI)
+written in JavaFX.</p>
+</div>
+<div class="paragraph">
+<p>My main role within the team was to implement the <strong>Projection</strong> feature, which utilizes
+a machine learning algorithm to predict the user&#8217;s account balance and budget statuses at a specified point of time
+in the future. I was also in charge of implementing the <strong>Display</strong> feature, which
+further enhances the <strong>Projection</strong> feature by providing users with a graphical
+representation of their balance and budget states.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code contributed</strong>: My contributions to <em>PalPay</em> can be viewed here -  <a href="https://ay1920s1-cs2103t-w12-3.github.io/publish-RepoSense/#search=wallacelim97&amp;sort=groupTitle&amp;sortWithin=title&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=wallacelim97&amp;tabRepo=AY1920S1-CS2103T-W12-3%2Fmain%5Bmaster%5D">RepoSense</a></p>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: Implemented the <code>Projection</code> feature, along with various functions associated with it.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Uses the <a href="https://en.wikipedia.org/wiki/Gradient_descent">Gradient Descent</a> algorithm to project the user&#8217;s account balance
+in the future</p>
+</li>
+<li>
+<p>Allows users to predict whether they will meet their budget goals based on past income/outflow trends</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: While most finance tracking applications have relatively robust income/outflow tracking functions,
+few offer the ability to project future financial states - something which is sorely needed
+for effective financial planning</p>
+</li>
+<li>
+<p>Highlights: By utilizing the Gradient Descent algorithm, the <code>Projection</code> feature is guaranteed to find the best-fit projection
+line graph based on past transactions, with an extremely minute error tolerance (= 1E-11).
+The feature also automatically adjusts all relevant projections whenever transactions or budgets
+are added, deleted or updated, offering considerable convenience to the user, who thus does not need to update
+them manually.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Developed the <code>display</code> feature, which offers an elegant, graphical representation
+of the user&#8217;s projections.</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Authored and assigned multiple issues. (Issues:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/82">#82</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/84">#84</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/17">#17</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/19">#19</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/20">#20</a>
+)</p>
+</li>
+<li>
+<p>Reviewed and merged pull requests.
+(Pull requests: <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/60">#60</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/23">#23</a>)</p>
+</li>
+<li>
+<p>Performed optimizations and fixed numerous bugs. (Examples:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/125">#125</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/67">#67</a>
+)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactor <code>AddressBook</code> into <code>BankAccount</code> and <code>AddCommand</code> into <code>InCommand</code>,
+such that <em>PalPay</em> had its first entry point. (Pull requests: <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/27">#27</a>)</p>
+</li>
+<li>
+<p>Refactor various JSON-adapted files and enabled PalPay&#8217;s <code>Storage</code> functionality.
+(Pull request:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/27">#27</a>)</p>
+</li>
+<li>
+<p>Extended Java&#8217;s in-build Date class to support parsing and comprehensive checking,
+which currently supports all commands in <em>PalPay</em>
+(Pull request:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/86">#86</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote comprehensive documentation for the following commands in both the User Guide and the Developer Guide:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>project</code></p>
+</li>
+<li>
+<p><code>display</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Created UML diagrams to help in the explanation of the <code>project</code> and <code>display</code> commands in the Developer Guide.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the module. (Examples:
+<a href="https://github.com/AY1920S1-CS2103T-W13-4/main/issues/147">W13-4 #147</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W13-4/main/issues/148">W13-4 #148</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W13-4/main/issues/149">W13-4 #149</a>,
+)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide.
+They showcase my ability to write comprehensive and concise documentation for
+non-technical users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Project"><a class="link" href="#Project">Projecting Future Balance and Budgets : <code>project</code></a></h3>
+<div class="paragraph">
+<p>Cast a projection on your future balance amount and budget statuses based on your transaction history.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>project d/DATE [c/CATEGORY]</code></p>
+</div>
+<div id="Project-auto-cast" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a <code>CATEGORY</code> is not specified, it will be set as <code>GENERAL</code> by default. <code>GENERAL</code> projections project
+upon <strong>ALL</strong> transactions, regardless of their categories.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example-usage"><a class="link" href="#example-usage">Example Usage</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>project d/22072020</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>Projected balance: $955.80</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>project d/01012020 c/Food</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>Projected balance: $188.04
+You are on track to meeting your budget of $600 by 08122019, with a surplus of $484.32!</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="usage-constraints"><a class="link" href="#usage-constraints">Usage Constraints</a></h4>
+<div class="sect4">
+<h5 id="command-format"><a class="link" href="#command-format">Command Format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CATEGORY</code> must be preceded by its tag <code>c/</code>.
+A violation of any of the above will produce the following error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Invalid command format!<br>
+project: Project future balance based on past income/outflow.<br>
+Parameters: d/DATE [c/CATEGORY]<br>
+Example: project d/12122103 c/Food</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="date-values-br"><a class="link" href="#date-values-br">Date Values<br></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DATE</code> input must be set in the future.
+A violation of this constraint will produce the following
+error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Invalid command usage!<br>
+Date must be set in the future.</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DATE</code> cannot be more than <strong>720</strong> days from the day of projection.<br>
+A violation of this constraint will produce the following error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Projections should be a maximum of 2 years (730 days) from now.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="minimum-number-of-transactions"><a class="link" href="#minimum-number-of-transactions">Minimum Number of Transactions</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>There must be a minimum of <strong>5</strong> transactions in total, or in the specified <code>CATEGORY</code>
+for a projection to be successfully cast.
+Should the requirement above be unmet, the following error message will be produced:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>There are no transactions in [CATEGORY]. It is impossible to cast a projection.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+[GENERAL] will be displayed in place of [CATEGORY] if a <code>CATEGORY</code> is not specified. This is due to
+the auto-casting of uncategorised projections to the <code>GENERAL</code> category as explained <a href="#Project-auto-cast">here</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Should the number of transactions in a <code>projection</code> fall below <strong>5</strong>, it
+will be automatically deleted, as shown below:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Suppose there are <strong>5</strong> transactions, and a <code>GENERAL</code> projection, which projects upon them.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/project1.png" alt="project1">
+</div>
+<div class="title">Figure 1. Five transactions under the projection tab</div>
+</div>
+<div id="Figure19" class="imageblock">
+<div class="content">
+<img src="../images/project2.png" alt="project2">
+</div>
+<div class="title">Figure 2. A projection which is cast based on the 5 transactions above</div>
+</div>
+</li>
+<li>
+<p>If a transaction being deleted causes the number of transactions being projected upon to fall below 5,
+the corresponding projection will automatically be deleted.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/project3.png" alt="project3">
+</div>
+<div class="title">Figure 3. The fifth transaction has been deleted.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/project4.png" alt="project4">
+</div>
+<div class="title">Figure 4. The project earlier seen in <a href="#Figure19">Figure 19</a> has been automatically deleted.</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="valid-budget-start-dates-and-deadlines"><a class="link" href="#valid-budget-start-dates-and-deadlines">Valid Budget Start Dates and Deadlines</a></h5>
+<div class="paragraph">
+<p>A projection will only project upon budgets with deadlines set before or equal to the projection <code>DATE</code>. An example
+is depicted below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Suppose there is currently a general <em>Budget</em> with a deadline set for 28th November 2019</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/project5.png" alt="project5">
+</div>
+<div class="title">Figure 5. Two <em>Budgets</em> with dates 20112019 and 28112019 in the "GENERAL" category</div>
+</div>
+</li>
+<li>
+<p>If a general <em>Projection</em> is cast to 20th November 2019, it will contain
+the <em>Budget</em> with deadline 20112019 but not 28112019,
+since the projection&#8217;s <code>DATE</code> is earlier than 28112019.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/project6.png" alt="project6">
+</div>
+<div class="title">Figure 6. The <em>Projection</em> only contains the <em>Budget</em> with deadline 20112019</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="backward-projections"><a class="link" href="#backward-projections">Backward Projections</a></h5>
+<div class="paragraph">
+<p>While it is possible in PalPay, projecting your balance amount backwards in time is not guaranteed to
+produce sensible results. It is generally not advisable to do so.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-a-projection-graph-code-display-code"><a class="link" href="#display-a-projection-graph-code-display-code">Display a Projection Graph: <code>display</code></a></h3>
+<div class="paragraph">
+<p>Display a graphical representation of a <em>Projection</em> in a new window.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>display PROJECTION_ID</code></p>
+</div>
+<div class="sect3">
+<h4 id="example-usage-2"><a class="link" href="#example-usage-2">Example Usage</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <strong>display PROJECTION_ID</strong> into the command box and press <kbd>Enter</kbd>. For instance:</p>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>display p1</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>A new window containing a graphical representation of the specified projection will pop up.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/display2.png" alt="display2">
+</div>
+</div>
+<div class="paragraph">
+<p>If there are any budgets associated with the projection, a corresponding graphical
+representation of the budget will be additionally displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/display3.png" alt="display3">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="interpreting-the-projection-graph"><a class="link" href="#interpreting-the-projection-graph">Interpreting the Projection graph</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>The X-Axis</strong><br>
+The X-Axis denotes your balance in dollars ($).</p>
+</li>
+<li>
+<p><strong>The Y-Axis</strong><br>
+The Y-Axis denotes the number of days from now, with today being Y = 0.</p>
+</li>
+<li>
+<p><strong>Red Points</strong><br>
+The red points on the graph each represent your account balance (denoted by the X-value)
+at a particular point of time (denoted by the Y-value).</p>
+</li>
+<li>
+<p><strong>Blue Line Graph</strong><br>
+The blue line graph represents the projection line, with each point along it representing
+a prediction of your account balance (denoted by the X-value)
+at a certain point of time (denoted by the Y-value).</p>
+</li>
+<li>
+<p><strong>All Other Coloured Line Graphs</strong><br>
+All other coloured line graphs represent various budgets which fall within the <code>CATEGORY</code> and <code>DATE</code> range
+of the <code>PROJECTION</code>. Each of these line graphs have three parts:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="../images/project8.png" alt="project8">
+</div>
+<div class="title">Figure 7. A budget line graph with its parts labelled by a green, blue and yellow box each</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The line in the green box denotes the budget amount in dollars ($).</p>
+</li>
+<li>
+<p>The line in the blue box denotes the budget&#8217;s duration lifetime in days.</p>
+</li>
+<li>
+<p>The line in the yellow box denotes the budget&#8217;s projected deficit or surplus.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="usage-constraints-2"><a class="link" href="#usage-constraints-2">Usage Constraints</a></h4>
+<div class="sect4">
+<h5 id="valid-projection-index"><a class="link" href="#valid-projection-index">Valid Projection Index</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Projection</code> with <code>PROJECTION_ID</code> must exist.
+Attempting to display a non-existent <code>PROJECTION</code> will result in the following error message:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The projection index provided is invalid.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="static-graph-rendering"><a class="link" href="#static-graph-rendering">Static Graph Rendering</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Projection</code> graphs do not update automatically when a new <code>Transaction</code> or <code>Budget</code> is
+added or removed. Instead, they are statically rendered upon the <code>display</code> command.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Due to the static nature of projection graphs, commands should <strong>NOT</strong> be executed while a projection
+graph is open, lest the behaviour of PalPay become unpredictable.<br>
+Consequently, a <code>display</code> command should <strong>ALWAYS</strong> be followed by closing the projection graph window, before
+any other actions are performed within <em>PalPay</em>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_Given below are sections I contributed to the Developer Guide.
+They showcase my ability design and implement complex features through code, as well as my technical competencies
+in Java.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Implementation-Projection"><a class="link" href="#Implementation-Projection">Project Feature: <code>project</code></a></h3>
+<div class="paragraph">
+<p>This feature allows users to <em>project</em> their balance amount and budget statuses based on past income and outflows as manifest in their
+<em>TransactionHistory</em> by using the command <code>project DATE [CATEGORY]</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>project</code> command is facilitated by the Logic and Model components of the application, <em>PalPay</em>.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below demonstrates how the <code>project DATE [CATEGORY]</code> command is handled by the application.
+If a <code>CATEGORY</code> is not specified by the user, it will be set as <code>GENERAL</code> by default.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ProjectSequenceDiagram.png" alt="ProjectCommand Sequence Diagram">
+</div>
+<div class="title">Figure 8. Sequence Diagram of the Project Command</div>
+</div>
+<div class="sect4">
+<h5 id="projection-by-date"><a class="link" href="#projection-by-date">Projection by Date</a></h5>
+<div class="paragraph">
+<p>When projecting by date alone, all transactions in the <em>user</em>'s transaction list will be taken into account,
+regardless of their categories. On the other hand, only budgets without categories (thus belonging to the
+<code>GENERAL</code> category by default) will be projected upon.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="projection-by-date-and-category"><a class="link" href="#projection-by-date-and-category">Projection by Date and Category</a></h5>
+<div class="paragraph">
+<p>When projecting by date and category, all transactions tagged by the specified category will be taken into account.
+Similarly, all budgets tagged with the specified category will be projected upon.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="budget-projections"><a class="link" href="#budget-projections">Budget Projections</a></h5>
+<div class="paragraph">
+<p>Projections on budgets are made by first projecting the <em>user</em>'s balance amount at the point when the budget was set.
+Then, it compares the <em>user</em>'s projected balance amount at the point of the budget&#8217;s deadline, with the budget&#8217;s amount.
+A surplus is indicated when the former is greater than the latter, and a deficit is indicated when the former is smaller
+than the latter.
+===== Activity Diagram</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram below depicts how a projection is made.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ProjectActivityDiagram.png" alt="ProjectActivityDiagram">
+</div>
+<div class="title">Figure 9. Activity Diagram of the Project Command</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="graphical-representation"><a class="link" href="#graphical-representation">Graphical Representation</a></h5>
+<div class="paragraph">
+<p>A graphical representation of the <em>user</em>'s projections may be rendered using the <code>display</code> command.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements"><a class="link" href="#future-enhancements">Future Enhancements</a></h4>
+<div class="sect4">
+<h5 id="polynomial-regression"><a class="link" href="#polynomial-regression">Polynomial Regression</a></h5>
+<div class="paragraph">
+<p>For simplicity of logic and design, the current implementation performs linear regression (via gradient descent),
+projecting user balance and budget states using a best-fit straight line. Ultimately, income and spending trends
+may not be best represented by a straight line, but rather by a polynomial equation. In future updates, the <code>projection</code>
+feature will choose a value, <em>n</em>, and perform a <em>n-th</em> degree polynomial regression, such that the user&#8217;s balance
+and budget states can be more accurately projected.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently, the GradientDescent class implements feature scaling and mean normalisation. Although this
+is not entirely necessary for the current implementation (which uses linear regression), it is meant
+for optimizing polynomial regression in future updates.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="normal-equation"><a class="link" href="#normal-equation">Normal Equation</a></h5>
+<div class="paragraph">
+<p>Currently, the gradient descent algorithm is used to plot the projection graph, which is used for predicting the
+<em>user</em>'s balance and budget states at specified point in time. For smaller data sets, analytically computing the
+normal equation to find the best-fit line graph may have result in a faster runtime. In future updates, the
+normal equation method will be used in place of the gradient descent algorithm, for projections with less than
+a set number (e.g. 500) of transactions.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-feature-code-display-code"><a class="link" href="#display-feature-code-display-code">Display Feature: <code>display</code></a></h3>
+<div class="paragraph">
+<p>This feature provides a graphical view of an existing projection to the <em>user</em>.<br></p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The following activity diagram depicts how the <code>display</code> command is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DisplayActivityDiagram.png" alt="DisplayActivityDiagram">
+</div>
+<div class="title">Figure 10. Activity Diagram of the Display Command</div>
+</div>
+<div class="paragraph">
+<p>For a more concrete illustration of how the <code>display</code> command is handled by <em>PalPay</em>,
+a sequence diagram is provided below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DisplaySequenceDiagram.png" alt="DisplaySequenceDiagram">
+</div>
+<div class="title">Figure 11. Sequence Diagram of the Display Command</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:48:36 UTC</div></div></div></body></html>

@@ -53,13 +53,20 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a Person</a></li>
-<li><a href="#viewing-help-window">G.3. Viewing Help Window</a></li>
-<li><a href="#saving-data">G.4. Saving Data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#adding-an-in-transaction">F.2. Adding an In Transaction</a></li>
+<li><a href="#adding-an-out-transaction">F.3. Adding an Out Transaction</a></li>
+<li><a href="#adding-a-budget">F.4. Adding a Budget</a></li>
+<li><a href="#adding-a-split-ledger">F.5. Adding a Split Ledger</a></li>
+<li><a href="#adding-a-receive-ledger">F.6. Adding a Receive Ledger</a></li>
+<li><a href="#switching-tabs">F.7. Switching Tabs</a></li>
+<li><a href="#deleting-an-entry">F.8. Deleting an Entry</a></li>
+<li><a href="#updating-an-entry">F.9. Updating an Entry</a></li>
+<li><a href="#sorting-the-transactions">F.10. Sorting the Transactions</a></li>
+<li><a href="#viewing-help-window">F.11. Viewing Help Window</a></li>
+<li><a href="#saving-data">F.12. Saving Data</a></li>
 </ul>
 </li>
 </ul>
@@ -95,6 +102,15 @@ In particular, the intended audience of this document will be the students takin
 <p><em>PalPay</em> is a CLI application targeted for users who have poor financial management skills. The users should also prefer typing over mouse inputs.
 It allows the users to keep track of daily financial transactions, as well as set a budget for a time duration to achieve long-term financial success. Additionally, users can keep a ledger of lending and borrowing of money with others so that the users can keep track of the flow of their money.</p>
 </div>
+<div class="paragraph">
+<p>Below is the Graphical User Interface (GUI) of PalPay:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dg_gui_example.png" alt="dg gui example">
+</div>
+<div class="title">Figure 1. PalPay&#8217;s GUI</div>
+</div>
 </div>
 </div>
 </div>
@@ -115,7 +131,7 @@ It allows the users to keep track of daily financial transactions, as well as se
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
 </div>
-<div class="title">Figure 1. Architecture Diagram</div>
+<div class="title">Figure 2. Architecture Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App.
@@ -171,7 +187,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Defines its <em>API</em> in an <code>interface</code> with the same name as the Component.</p>
+<p>Defines its <a href="#api"><em>API</em></a> in an <code>interface</code> with the same name as the Component.</p>
 </li>
 <li>
 <p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
@@ -185,17 +201,17 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+<div class="title">Figure 3. Class Diagram of the Logic Component</div>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <strong><em>Sequence Diagram</em></strong> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete t1</code> command</div>
+<div class="title">Figure 4. Component Interactions for <code>delete t1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -207,7 +223,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -241,7 +257,7 @@ For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-W12-
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -273,7 +289,7 @@ For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-W12-
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete t1</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>delete t1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -294,7 +310,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -308,11 +324,12 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Bank Account data.</p>
+<p>stores the User State data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;BankOperation&gt;</code> and <code>ObservableList&lt;Budget&gt;</code>
-that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change due to user command.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;BankAccountOperation&gt;</code>, <code>ObservableList&lt;Budget&gt;</code>, <code>ObservableList&lt;LedgerOperation&gt;</code> and <code>ObservableList&lt;Projection&gt;</code>
+that can be 'observed'.<br>
+For example, the UI can be bound to these lists so that the UI automatically updates when the data in the lists change due to user commands.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -326,7 +343,7 @@ that can be 'observed' e.g. the UI can be bound to this list so that the UI auto
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -374,13 +391,39 @@ The <code>in</code> transactions will increase the <code>BankAccount</code> bala
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
+<p>Given below is an example usage of how <code>in</code> behaves at each step. <code>out</code> command follows a similar logic flow.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user executes <code>in $/200 n/coke d/10102019</code> to input a new income of $100 on 10th November 2019 under the <strong>category</strong> GENERAL.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse</code> to parse this input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>MainParser</code> determines which command is being executed and creates <code>InCommandParser</code> to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>InCommandParser</code> parses the argument and checks the validity of arguments. If it is invalid, an exception is thrown.
+Else, it returns a <code>InCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>LogicManager</code> uses <code>InCommand#execute()</code> to add a new <code>InTransaction</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>BankAccount</code> then calls <code>InTransaction#handleBalance()</code> to increase its balance amount by $200.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. <code>InCommand</code> uses <code>Model#commitUserState()</code> to save the latest state of the application. It then
+returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user.</p>
+</div>
+<div class="paragraph">
 <p>The sequence diagram below illustrates how PalPay handles the command input <code>in $/200 n/coke d/10102019</code>. The arguments are parsed into the logic component where the subsequent model objects are created.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/InSequenceDiagram.png" alt="InSequenceDiagram">
 </div>
-<div class="title">Figure 9. Sequence diagram for executing an <code>InCommand</code></div>
+<div class="title">Figure 10. Sequence Diagram for Executing an <code>InCommand</code></div>
 </div>
 <div class="paragraph">
 <p>The <code>in</code> and <code>out</code> transaction follows the same logic flow after they are parsed.</p>
@@ -410,7 +453,7 @@ The <code>in</code> transactions will increase the <code>BankAccount</code> bala
 <div class="content">
 <img src="images/InActivityDiagram.png" alt="InActivityDiagram">
 </div>
-<div class="title">Figure 10. Activity Diagram for In and Out Transactions</div>
+<div class="title">Figure 11. Activity Diagram for In and Out Transactions</div>
 </div>
 </div>
 </div>
@@ -476,7 +519,7 @@ that deal with <code>Ledger</code> implements the <code>LedgerOperation</code> i
 <div class="content">
 <img src="images/OutbudgetActivityDiagram.png" alt="OutbudgetActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram for Out Transaction affecting Budget</div>
+<div class="title">Figure 12. Activity Diagram for Out Transaction Affecting Budget</div>
 </div>
 </div>
 </div>
@@ -484,7 +527,7 @@ that deal with <code>Ledger</code> implements the <code>LedgerOperation</code> i
 <h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">4.2. Set Budget Feature: <code>set</code></a></h3>
 <div class="paragraph">
 <p>The <code>Budget</code> class allows the user to set a budget for a given time period for a category, if specified.
-The user is allowed to set multiple budgets, but duplicate budgets (budgets with the same identity in terms of <strong>amount</strong>, <strong>date</strong> and <strong>tag</strong>) are not allowed.
+The user is allowed to set multiple budgets, but duplicate budgets (budgets with the same identity in terms of <strong>amount</strong>, <strong>date</strong> and <strong>category</strong>) are not allowed.
 Upon setting the budget, making <code>OutTransaction</code> will deduct the amount from relevant budgets in the list.
 The detailed implementation of the process of updating the budget is explained further below in <a href="#Current-Implementation">Current Implementation</a>.</p>
 </div>
@@ -504,13 +547,13 @@ Shown below is the class diagram of <code>Budget</code> class:</p>
 <div class="content">
 <img src="images/BudgetClassDiagram.png" alt="BudgetClassDiagram">
 </div>
-<div class="title">Figure 12. Class diagram of Budget class</div>
+<div class="title">Figure 13. Class Diagram of Budget class</div>
 </div>
 <div class="paragraph">
 <p>Displaying the percentage remaining improves the user experience greatly as our target user is a
 <code>visual person who wants to see how much budget he has left in each category so as to cut down on spending as necessary</code>
-as specified in <a href="#User-Stories">user stories</a>. Hence, taking a quick glance at the <code>Budget card</code> allows the user to
-determine how much of budget he has left, as well as be alarmed by the red font colour to spend less if he has overspent beyond the budget set.<br></p>
+as specified in the <a href="#User-Stories">User Story</a>. Hence, taking a quick glance at the <code>Budget card</code> allows the user to
+determine how much of budget he has left, as well as be alarmed by the red font color to spend less if he has overspent beyond the budget set.<br></p>
 </div>
 <div class="paragraph">
 <p>A snippet of the code which calculates the percentage of budget left is shown below:</p>
@@ -521,13 +564,15 @@ determine how much of budget he has left, as well as be alarmed by the red font 
     double percentage = this.amount.divideAmount(this.initialAmount) * 100;
     if (percentage &lt; 0.00) {
         percentage = 0.0; // should not display a negative percentage
+    } else if (percentage &gt; 100.00) {
+        percentage = 100.0; // should not display a percentage greater than 100%
     }
     return String.format("%.2f%% remaining", percentage);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Moreover, as our user is a visual person, PalPay makes use of colour to display different messages.
+<p>Moreover, as our user is a visual person, PalPay makes use of color to display different messages.
 For instance, budget is displayed in red to alert the user that he has overspent beyond the set budget.<br></p>
 </div>
 <div class="paragraph">
@@ -537,27 +582,67 @@ For instance, budget is displayed in red to alert the user that he has overspent
 <div class="content">
 <img src="images/overspentBudget.png" alt="overspentBudget">
 </div>
-<div class="title">Figure 13. Example of an overspent budget</div>
+<div class="title">Figure 14. Example of an Overspent Budget</div>
 </div>
 <div class="paragraph">
 <p>When setting a new <code>Budget</code>, existence of a duplicate budget is checked through a sequence of checks.
 The activity diagram below shows the activity diagram of setting a new budget:</p>
 </div>
-<div class="imageblock">
+<div id="Duplicate-budget-check" class="imageblock">
 <div class="content">
 <img src="images/SetBudgetSimpleActivityDiagram.png" alt="SetBudgetSimpleActivityDiagram">
 </div>
-<div class="title">Figure 14. Activity Diagram of successfully setting a new Budget</div>
+<div class="title">Figure 15. Activity Diagram of Setting a New Budget Successfully</div>
 </div>
 <div class="paragraph">
 <p>As shown, a new budget cannot have the same <strong>initalAmount</strong>, <strong>deadline</strong> and <strong>categories</strong> as any other existing budget in
 budget list. Allowing existence of duplicate budgets will crowd the interface of <code>Budget</code> tab,
 which prevents the user from getting a quick overview of his budget status. Hence, a duplicate check is essential
-in providing a pleasing user experience.<br></p>
+in providing a pleasing user exp.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
+<h4 id="example-of-usage"><a class="link" href="#example-of-usage">4.2.2. Example of Usage</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage of how <code>set</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user executes <code>set $/100 d/31122019 c/shopping</code> to set a new budget of $100 until 31st December 2019 under the <strong>category</strong> shopping.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/set_dg_1.png" alt="set dg 1">
+</div>
+<div class="title">Figure 16. User Inputs <code>set $/100 d/31122019 c/shopping</code></div>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>MainParser</code> determines which command is being executed and creates <code>SetCommandParser</code> to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>SetCommandParser</code> parses the argument and checks if it is valid. If it is invalid, an exception is thrown.
+Else, it returns a <code>SetCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>LogicManager</code> uses <code>SetCommand#execute()</code> to add a new budget.<br>
+<code>SetCommand</code> uses <code>ModelManager#has(Budget)</code> to check if it is a duplicate of an existing budget
+in the <code>UniqueBudgetList</code> as shown above in <a href="#Duplicate-budget-check">the above diagram</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>SetCommand</code> uses <code>Model#commitUserState()</code> to save the latest state of the application. It then
+returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user at the end.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/set_dg_2.png" alt="set dg 2">
+</div>
+<div class="title">Figure 17. New Budget Successfully Created</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Currently, <code>Budget</code> does not extend from <code>Transaction</code> although the two behave in a similar way.
 There is an aggregation between <code>Budget</code> and <code>Transaction</code> as the two can exist independent of each other,
@@ -581,30 +666,65 @@ Refer to the <a href="UserGuide.html#Features">UserGuide</a> for usage details.<
 Given a list of <strong>shares</strong> and <strong>people</strong>, each person is assigned an <strong>amount</strong> based on the corresponding positional share and the total amount given to <code>split</code> command.<br>
 A <code>LendMoney</code> instance is created for each person and executed.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LedgerOperationDiagram.png" alt="LedgerOperationDiagram">
-</div>
-<div class="title">Figure 15. Class diagram for operations that deal with Ledger</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SplitBehaviour.png" alt="SplitBehaviour">
-</div>
-<div class="title">Figure 16. Activity diagram for creating a <code>Split</code> object</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p>Current implementation of <code>Split</code> class encourages code reuse by abstracting the delegating the task of rebalancing to another class.<br>
-However, this introduces coupling as the behavior of <code>Split</code> is now inexplicably tied to <code>LendMoney</code>.</p>
+<p>Below shows how a typical command from the user is executed by the program.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Split.png" alt="Split">
 </div>
-<div class="title">Figure 17. Sequence diagram for executing a <code>SplitCommand</code></div>
+<div class="title">Figure 18. Sequence Diagram for Executing a <code>SplitCommand</code></div>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: User enters <code>split $/200 n/a n/b n/c a/desc</code> into the command line to split <strong>$200</strong> among <strong>a</strong>, <strong>b</strong> and <strong>c</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>MainParser</code> determines that user input is an instance of a <code>SplitCommand</code> and creates a <code>SplitCommandParser</code>
+to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>SplitCommandParser</code> parses the command and checks if fields like amount and names are valid.
+If all fields are valid, it returns a <code>SplitCommand</code>. Else, an error is thrown to the result box and the execution
+terminates.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>LogicManager</code> uses <code>SplitCommand#execute()</code> to update the balances of <code>Ledger</code> and people involved in the
+transaction.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>SplitCommand#execute()</code> calls <code>Model#add()</code> to add the user input into the user history.
+Within the function call, the actual update of balances is handled in <code>Ledger#handleOperation()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>SplitCommand</code> calls <code>Model#commitUserState()</code> after executing to save the latest state of the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: A <code>CommandResult</code> is then returned to the <code>LogicManager</code> which is then displayed to the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SplitBehaviour.png" alt="SplitBehaviour">
+</div>
+<div class="title">Figure 19. Activity Diagram for Creating a <code>Split</code> Object</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Below shows how the classes involved with <code>Ledger</code> interact with each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LedgerOperationDiagram.png" alt="LedgerOperationDiagram">
+</div>
+<div class="title">Figure 20. Class Diagram for Operations that Deal with Ledger</div>
+</div>
+<div class="paragraph">
+<p>Current implementation of <code>Split</code> class encourages code reuse by abstracting the delegating the task of rebalancing to another class.<br>
+However, this introduces coupling as the behavior of <code>Split</code> is now inexplicably tied to <code>LendMoney</code>.</p>
 </div>
 </div>
 </div>
@@ -620,9 +740,46 @@ The balance in the <code>Ledger</code> and the balance of the sender is updated 
 <p>The <code>receive</code> command creates <code>ReceiveMoney</code> class that handles the transfer of fund from another person to the user.</p>
 </div>
 <div class="paragraph">
+<p>How <code>receive</code> relates to the rest of the <code>Ledger</code> classes can be inferred from the
+class diagram above.</p>
+</div>
+<div class="paragraph">
 <p>In the <code>handleBalance</code> method of <code>ReceiveMoney</code>, it will find the correct person in the <code>Ledger</code> by name,
 or create a new <code>Person</code> with given <strong>name</strong> if it is not already in the <code>Ledger</code>.<br>
 Balance of the user and the sender is then updated accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example usage scenario for how <code>receive</code> would behave.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: User enters <code>receive $/200 n/a</code> into the command line to settle up <strong>$200</strong> from <strong>a</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>MainParser</code> determines that user input is an instance of a <code>ReceiveCommand</code> and creates a <code>ReceiveCommandParser</code>
+to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>ReceiveCommandParser</code> parses the command and checks if fields like amount and names are valid.
+If all fields are valid, it returns a <code>ReceiveCommand</code>. Else, an error is thrown to the result box and the execution
+terminates.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>LogicManager</code> uses <code>ReceiveCommand#execute()</code> to update the balances of <code>Ledger</code> and the person in the
+transaction.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>ReceiveCommand#execute()</code> calls <code>Model#add()</code> to add the user input into the user history.
+Within the function call, the person in <code>Ledger</code> is found and his/her outstanding balance is updated in <code>Ledger#handleOperation()</code>.<br>
+If he is not already inside the <code>Ledger</code>, a new <code>Person</code> is created with the same name.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>SplitCommand</code> calls <code>Model#commitUserState()</code> after executing to save the latest state of the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: A <code>CommandResult</code> is then returned to the <code>LogicManager</code> which is then displayed to the user.</p>
 </div>
 <div class="listingblock">
 <div class="title">Code snippet of <code>handleBalance</code> in ReceiveMoney</div>
@@ -670,7 +827,7 @@ If a <code>CATEGORY</code> is not specified by the user, it will be set as <code
 <div class="content">
 <img src="images/ProjectSequenceDiagram.png" alt="ProjectCommand Sequence Diagram">
 </div>
-<div class="title">Figure 18. Sequence Diagram of the Project Command</div>
+<div class="title">Figure 21. Sequence Diagram of the Project Command</div>
 </div>
 <div class="sect4">
 <h5 id="projection-by-date"><a class="link" href="#projection-by-date">Projection by Date</a></h5>
@@ -693,7 +850,43 @@ Similarly, all budgets tagged with the specified category will be projected upon
 <p>Projections on budgets are made by first projecting the <em>user</em>'s balance amount at the point when the budget was set.
 Then, it compares the <em>user</em>'s projected balance amount at the point of the budget&#8217;s deadline, with the budget&#8217;s amount.
 A surplus is indicated when the former is greater than the latter, and a deficit is indicated when the former is smaller
-than the latter.</p>
+than the latter.
+Given below is an example usage scenario and how the project command executes at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user launches the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. If the user does not have at least <strong>5</strong> transactions, he / she adds transactions until
+there are sufficient transactions to project upon. Then, the user executes the <code>project</code> command.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>MainParser</code> determines which command is being used and creates <code>ProjectCommandParser</code> to further parse
+the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>ProjectCommandParser</code> parses the argument and checks if a valid date and category was provided.<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If an invalid date or category was provided, or if no date was provided, <code>ProjectCommandParser</code> throws an exception and terminates.</p>
+</li>
+<li>
+<p>Otherwise, it returns a <code>ProjectCommand</code>, which contains a <code>Date</code> and possibly a <code>Category</code> specified by the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>LogicManager</code> uses <code>ProjectCommand#execute()</code> to project the user&#8217;s balance and budget states at the time
+of the specified <code>Date</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. <code>ProjectCommand</code> uses <code>Model#commitUserState()</code> to save the latest state of the application. It then
+returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user at the end.</p>
 </div>
 </div>
 <div class="sect4">
@@ -705,7 +898,7 @@ than the latter.</p>
 <div class="content">
 <img src="images/ProjectActivityDiagram.png" alt="ProjectActivityDiagram">
 </div>
-<div class="title">Figure 19. Activity Diagram of the Project Command</div>
+<div class="title">Figure 22. Activity Diagram of the Project Command</div>
 </div>
 </div>
 <div class="sect4">
@@ -765,13 +958,48 @@ a set number (e.g. 500) of transactions.</p>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The following activity diagram depicts how the <code>display</code> command is executed.</p>
+<p>Given below is an example usage scenario and how the display command executes at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user launches the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. If the user does not have any existing projections, he / she creates one or more projections.
+Then, the user executes the <code>display</code> command.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>MainParser</code> determines which command is being used and creates <code>DisplayCommandParser</code> to further parse
+the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>DisplayCommandParser</code> parses the argument and checks if a valid type and index was provided.<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If an invalid type or index was provided, or if no type or index was provided, <code>DisplayCommandParser</code> throws an exception and terminates.</p>
+</li>
+<li>
+<p>Otherwise, it returns a <code>DisplayCommand</code>, which contains a <code>Type</code> and an <code>Index</code> specified by the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>LogicManager</code> uses <code>ProjectCommand#execute()</code> to display the specified <code>projection</code> in a
+new window.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. <code>DisplayCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user at the end.
+The following activity diagram depicts how the <code>display</code> command is executed.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DisplayActivityDiagram.png" alt="DisplayActivityDiagram">
 </div>
-<div class="title">Figure 20. Activity Diagram of the Display Command</div>
+<div class="title">Figure 23. Activity Diagram of the Display Command</div>
 </div>
 <div class="paragraph">
 <p>For a more concrete illustration of how the <code>display</code> command is handled by <em>PalPay</em>,
@@ -781,7 +1009,7 @@ a sequence diagram is provided below.</p>
 <div class="content">
 <img src="images/DisplaySequenceDiagram.png" alt="DisplaySequenceDiagram">
 </div>
-<div class="title">Figure 21. Sequence Diagram of the Display Command</div>
+<div class="title">Figure 24. Sequence Diagram of the Display Command</div>
 </div>
 </div>
 </div>
@@ -833,7 +1061,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/ViewActivityDiagram.png" alt="ViewActivityDiagram">
 </div>
-<div class="title">Figure 22. Activity Diagram for <code>View</code></div>
+<div class="title">Figure 25. Activity Diagram for <code>View</code></div>
 </div>
 </div>
 </div>
@@ -852,6 +1080,33 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <li>
 <p>The delete feature works for <code>Transaction</code>, <code>Budget</code>, <code>Ledger</code> and <code>Projection</code> entries.</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage of how <code>delete</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user executes <code>delete t1</code> to delete the first entry from the transaction list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse</code> to parse this input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>MainParser</code> determines which command is being executed and creates <code>DeleteCommandParser</code> to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>DeleteCommandParser</code> parses the argument and checks the validity of arguments. If it is invalid, an exception is thrown.
+Else, it returns a <code>DeleteCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>LogicManager</code> uses <code>DeleteCommand#execute()</code> to delete either the <code>Transaction</code>, <code>Budget</code>, <code>Ledger</code> or <code>Projection</code> from their respective unique lists.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>DeleteCommand</code> uses <code>Model#commitUserState()</code> to save the latest state of the application. It then
+returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>The following activity diagram summarizes what happens when a user executes a <code>delete</code> command:</p>
 </li>
@@ -861,7 +1116,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram">
 </div>
-<div class="title">Figure 23. Activity Diagram for <code>delete</code> command</div>
+<div class="title">Figure 26. Activity Diagram for <code>delete</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -936,7 +1191,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="sect2">
 <h3 id="update-existing-entry-feature-code-update-code"><a class="link" href="#update-existing-entry-feature-code-update-code">4.9. Update Existing Entry Feature: <code>update</code></a></h3>
 <div class="paragraph">
-<p>This feature currently allows users to update <code>Transaction</code> or <code>Budget</code> entries. The user is unable to perform this feature on <code>Ledger</code> operations. The rationale for this will be further explained in <strong>Aspect 2</strong>. The user is currently unable to perform this feature on <code>Projection</code> operations as it will be further implemented in future updates.</p>
+<p>This feature currently allows users to update <code>Transaction</code> or <code>Budget</code> entries. The user is unable to perform this feature on <code>Ledger</code> operations. The rationale for this will be further explained in <a href="#Aspect2">Section 4.9.2.2, &#8220;Aspect 2: Update can not edit Ledger Operations&#8221;</a>. The user is currently unable to perform this feature on <code>Projection</code> operations as it will be further implemented in future updates.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.9.1. Current Implementation</a></h4>
@@ -964,6 +1219,36 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <li>
 <p>At least one valid parameter must be changed when executing an <code>update</code> command. (i.e. <code>update b1</code> will result in an error as no fields are being changed).</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user executes <code>update t2 $/200</code> to update the second entry&#8217;s amount, from the transaction list, to $200 .</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse</code> to parse this input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>MainParser</code> determines which command is being executed and creates <code>UpdateCommandParser</code> to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>UpdateCommandParser</code> parses the argument and checks the validity of arguments. If it is invalid, an exception is thrown.
+Else, it returns a <code>UpdateCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>LogicManager</code> uses <code>UpdateCommand#execute()</code> to update either the <code>Transaction</code> or <code>Budget</code> from their respective unique lists.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>UpdateCommand#execute()</code> uses the <code>UpdateTransactionDescriptor</code> class to create a new instance of a transaction or budget with the appended variables.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. <code>Model</code> from <code>UpdateCommand</code> then changes the necessary fields of this entry.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>. <code>UpdateCommand</code> uses <code>Model#commitUserState()</code> to save the latest state of the application. It then
+returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>The following activity diagram summarizes what happens when a user executes an update command:</p>
 </li>
@@ -973,7 +1258,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/UpdateActivityDiagram.png" alt="UpdateActivityDiagram">
 </div>
-<div class="title">Figure 24. Activity Diagram for <code>update</code></div>
+<div class="title">Figure 27. Activity Diagram for <code>update</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -982,7 +1267,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <p>The <code>update</code> feature allows one or more fields of a Transaction or Budget to be updated. (e.g. <code>update t1 $/2</code> and <code>update t1 $/2 d/10102019</code> will both work as intended).</p>
 </div>
 <div class="paragraph">
-<p>More often than not, users do not need to change an entire Transaction or Budget entry. This will minimize inputs for users if they do not require every single parameters of a Transaction or Budget to be changed.</p>
+<p>More often than not, users do not need to change an entire Transaction or Budget entry. This will minimize inputs from users if they do not require every single parameters of a Transaction or Budget to be changed.</p>
 </div>
 <div class="sect4">
 <h5 id="aspect-1-update-requires-code-type-index-code-as-one-of-its-parameter"><a class="link" href="#aspect-1-update-requires-code-type-index-code-as-one-of-its-parameter">Aspect 1: Update requires <code>TYPE+INDEX</code> as one of its parameter</a></h5>
@@ -993,10 +1278,10 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Requires lesser user steps to be taken before executing a <code>update</code> command.</p>
+<p>Pros: Requires lesser user steps to be taken before executing an <code>update</code> command.</p>
 </li>
 <li>
-<p>Cons: Requires three unique lists to be utilized instead of 1. (e.g. the <code>UniqueTransactionList</code> stores Transaction items and the <code>UniqueBudgetList</code> to store Budget items).</p>
+<p>Cons: Requires 2 unique lists to be utilized instead of 1. (e.g. the <code>UniqueTransactionList</code> stores Transaction items and the <code>UniqueBudgetList</code> to store Budget items).</p>
 </li>
 <li>
 <p>For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
@@ -1021,11 +1306,11 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-2-update-can-not-edit-ledger-operations"><a class="link" href="#aspect-2-update-can-not-edit-ledger-operations">Aspect 2: Update can not edit Ledger Operations</a></h5>
+<h5 id="Aspect2"><a class="link" href="#Aspect2">Aspect 2: Update can not edit Ledger Operations</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Update Command only works with <code>Transaction</code>, <code>Budget</code> and <code>Projection</code> Operations.</p>
+<p><strong>Alternative 1 (current choice):</strong> Update Command does not work with <code>Ledger</code> operations.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1036,7 +1321,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The user has to first delete the <code>Ledger</code> operation that he/she wishes to change, followed by inputting the <code>Ledger</code> operation with the amended fields back into PalPay.</p>
+<p>The user has to first delete the <code>Ledger</code> operation that he/she wishes to change, followed by inputting the <code>Ledger</code> operation with the amended fields back into <em>PalPay</em>.</p>
 </li>
 </ul>
 </div>
@@ -1085,7 +1370,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/UpdatefutureActivityDiagram.png" alt="UpdatefutureActivityDiagram">
 </div>
-<div class="title">Figure 25. Activity Diagram for future <code>update</code></div>
+<div class="title">Figure 28. Activity Diagram for Future <code>update</code></div>
 </div>
 </div>
 </div>
@@ -1107,11 +1392,11 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/SortSequenceDiagram.png" alt="SortSequenceDiagram">
 </div>
-<div class="title">Figure 26. Sequence Diagram for <code>sort date/d</code></div>
+<div class="title">Figure 29. Sequence Diagram for <code>sort date/d</code></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-of-usage"><a class="link" href="#example-of-usage">4.10.2. Example of Usage</a></h4>
+<h4 id="example-of-usage-2"><a class="link" href="#example-of-usage-2">4.10.2. Example of Usage</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage of how <code>sort</code> behaves at each step.</p>
 </div>
@@ -1122,7 +1407,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/sort_dg_1.png" alt="sort dg 1">
 </div>
-<div class="title">Figure 27. Initial State of PalPay</div>
+<div class="title">Figure 30. Initial State of PalPay</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>. The user now executes <code>sort date/d</code> to sort the transactions in the order of descending date.</p>
@@ -1131,7 +1416,7 @@ returns the <code>CommandResult</code> to <code>MainWindow</code>.</p>
 <div class="content">
 <img src="images/sort_dg_2.png" alt="sort dg 2">
 </div>
-<div class="title">Figure 28. User Inputs <code>sort date/d</code></div>
+<div class="title">Figure 31. User Inputs <code>sort date/d</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse()</code> to parse the input from the user.</p>
@@ -1155,7 +1440,7 @@ invalid, <code>SortCommandParser</code> throws an exception and terminates. Else
 <p><strong>Step 8</strong>. <code>SortCommand</code> uses <code>SortCommand#sortTransactionHistory()</code> to sort the transactions.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 9</strong>. <code>SortCommand</code> uses <code>Model#setTransactions()</code> to store the sorted transactions and <code>Model#commitUserState()</code> to
+<p><strong>Step 9</strong>. <code>SortCommand</code> uses <code>Model#set()</code> to store the sorted transactions and <code>Model#commitUserState()</code> to
 save the latest state of the application.</p>
 </div>
 <div class="paragraph">
@@ -1166,7 +1451,7 @@ at the end.</p>
 <div class="content">
 <img src="images/sort_dg_3.png" alt="sort dg 3">
 </div>
-<div class="title">Figure 29. After Sorting of Transactions</div>
+<div class="title">Figure 32. After Sorting of Transactions</div>
 </div>
 </div>
 <div class="sect3">
@@ -1244,7 +1529,7 @@ breakfast in November 2019.</p>
 <div class="content">
 <img src="images/FilterClassDiagram.png" alt="FilterClassDiagram">
 </div>
-<div class="title">Figure 30. Class Diagram for <code>Filter</code></div>
+<div class="title">Figure 33. Class Diagram for <code>Filter</code></div>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the filter mechanism behaves at each step.</p>
@@ -1283,7 +1568,7 @@ returns a <code>CommandResult</code> to the <code>LogicManager</code> and the re
 <div class="content">
 <img src="images/FilterActivityDiagram.png" alt="FilterActivityDiagram">
 </div>
-<div class="title">Figure 31. Activity Diagram for <code>Filter</code></div>
+<div class="title">Figure 34. Activity Diagram for <code>Filter</code></div>
 </div>
 </div>
 </div>
@@ -1325,6 +1610,7 @@ pointing to that single user state.</p>
 <div class="content">
 <img src="images/UndoRedoState0.png" alt="UndoRedoState0">
 </div>
+<div class="title">Figure 35. Initial State</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>. The user executes <code>delete t5</code> command to delete the 5th transaction in the transaction list.
@@ -1336,6 +1622,7 @@ to the newly inserted user state.</p>
 <div class="content">
 <img src="images/UndoRedoState1.png" alt="UndoRedoState1">
 </div>
+<div class="title">Figure 36. After <code>delete t1</code> Command</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>. The user executes <code>in $/10 n/Allowance d/07112019</code> to log a new transaction.
@@ -1346,6 +1633,7 @@ into the <code>userStateList</code>.</p>
 <div class="content">
 <img src="images/UndoRedoState2.png" alt="UndoRedoState2">
 </div>
+<div class="title">Figure 37. After <code>in $/10 n/Allowance d/07112019</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1370,6 +1658,7 @@ to that state.</p>
 <div class="content">
 <img src="images/UndoRedoState3.png" alt="UndoRedoState3">
 </div>
+<div class="title">Figure 38. After <code>undo</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1394,6 +1683,7 @@ Commands that do not modify the user state, such as <code>list</code>, will usua
 <div class="content">
 <img src="images/UndoRedoState4.png" alt="UndoRedoState4">
 </div>
+<div class="title">Figure 39. After <code>list</code> Command</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 6</strong>. The user executes <code>clear</code>, which calls <code>Model#commitUserState()</code>.
@@ -1405,6 +1695,7 @@ the <code>currentStatePointer</code> will be purged. We designed it this way bec
 <div class="content">
 <img src="images/UndoRedoState5.png" alt="UndoRedoState5">
 </div>
+<div class="title">Figure 40. After <code>clear</code> Command</div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the undo operation works:</p>
@@ -1413,6 +1704,7 @@ the <code>currentStatePointer</code> will be purged. We designed it this way bec
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
+<div class="title">Figure 41. Undo Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1824,6 +2116,14 @@ User specified days passed since.</p>
 <div class="sect1">
 <h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
 <div class="sectionbody">
+<div id="api" class="dlist">
+<dl>
+<dt class="hdlist1">API</dt>
+<dd>
+<p>Application Programming Interface</p>
+</dd>
+</dl>
+</div>
 <div id="mainstream-os" class="dlist">
 <dl>
 <dt class="hdlist1">Mainstream OS</dt>
@@ -1832,58 +2132,13 @@ User specified days passed since.</p>
 </dd>
 </dl>
 </div>
-<div id="private-contact-detail" class="dlist">
-<dl>
-<dt class="hdlist1">Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
-</dl>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
+<p>Given below are instructions to test the application manually.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1898,7 +2153,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1936,31 +2191,27 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a Person</a></h3>
+<h3 id="adding-an-in-transaction"><a class="link" href="#adding-an-in-transaction">F.2. Adding an In Transaction</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Adding an in transaction with the command: <code>in</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command.
-Multiple persons in the list.</p>
+<p>Prerequisites:</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-   Expected: First contact is deleted from the list.
-Details of the deleted contact shown in the status message.
-Timestamp in the status bar is updated.</p>
+<p>Test case: <code>in $/1000 n/Allowance d/11112019</code><br>
+Expected: An in transaction will be added into the list of transactions in the Transaction tab.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-   Expected: No person is deleted.
-Error details shown in the status message.
-Status bar remains the same.</p>
+<p>Test case: <code>in $/0 n/Allowance d/11112019</code><br>
+Expected: No transaction is added. Error details will be shown in the status message.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect <code>in</code> commands to try: <code>in $/10.001 n/Allowance d/11112019</code>, <code>in $/1000 n/Allow@nce d/11112019</code>
+(Contains non-alphanumeric characters).<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1970,7 +2221,243 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-window"><a class="link" href="#viewing-help-window">G.3. Viewing Help Window</a></h3>
+<h3 id="adding-an-out-transaction"><a class="link" href="#adding-an-out-transaction">F.3. Adding an Out Transaction</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding an out transaction with the command: <code>out</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>out $/10 n/KFC d/11112019</code><br>
+Expected: An out transaction will be added into the list of transactions in the Transaction tab.</p>
+</li>
+<li>
+<p>Test case: <code>out $/0 n/KFC d/11112019</code><br>
+Expected: No transaction is added. Error details will be shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect <code>out</code> commands to try: <code>out $/10.001 n/KFC d/11112019</code>, <code>out $/10 n/KFC d/32112019</code>
+(Date is invalid).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-budget"><a class="link" href="#adding-a-budget">F.4. Adding a Budget</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a budget with the command: <code>set</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>set $/1000 c/Shopping d/31122019</code><br>
+Expected: A budget will be added into the list of budgets in the Budget tab.</p>
+</li>
+<li>
+<p>Test case: <code>set $/1000 c/Shopping d/01012019</code><br>
+Expected: No budget is added. Error details will be shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect <code>set</code> command to try: <code>set $/-10 c/Shopping d/31122019</code> (Amount is negative).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-split-ledger"><a class="link" href="#adding-a-split-ledger">F.5. Adding a Split Ledger</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a split ledger with the command: <code>split</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>split $/1000 n/Amy n/Betty a/HaiDiLao</code><br>
+Expected: An overall ledger with 4 individual ledgers will be added into the list of ledgers in the Ledger tab.</p>
+</li>
+<li>
+<p>Test case: <code>split $/1000 n/Amy n/Betty</code><br>
+Expected: No ledger is added. Error details will be shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect <code>split</code> command to try: <code>split $/1000 n/Amy n/Betty a/HaiDiLao s/1 s/2 s/3 s/4</code>
+(Greater number of shares than number of people).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-receive-ledger"><a class="link" href="#adding-a-receive-ledger">F.6. Adding a Receive Ledger</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a receive ledger with the command: <code>receive</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>receive $/20 n/Albert</code><br>
+Expected: An overall ledger with an individual ledger will be added into the list of ledgers in the ledger tab.</p>
+</li>
+<li>
+<p>Test case: <code>receive $/20 n/A|bert</code><br>
+Expected: No ledger is added. Error details will be shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect <code>receive</code> command to try: <code>receive $/20.001 n/Albert</code> (Amount cannot have more than
+two decimal places).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-tabs"><a class="link" href="#switching-tabs">F.7. Switching Tabs</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switching tabs with the command: <code>view</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>view budget</code><br>
+Expected: Switches to budget tab if user is in another tab. Else, user remains in budget tab.</p>
+</li>
+<li>
+<p>Test case: <code>view budg3t</code><br>
+Expected: Remains in current tab. Error details will be shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect <code>view</code> command to try: <code>view loans</code> (Loans tab does not exist).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-entry"><a class="link" href="#deleting-an-entry">F.8. Deleting an Entry</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting an entry with the command: <code>delete</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>delete t1</code><br>
+Expected: First transaction is deleted from the list. Balance in the footer will be updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete t0</code><br>
+Expected: No transaction is deleted. Error details shown in the status message. Balance remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>delete</code> commands to try: <code>delete</code>, <code>delete t1000</code> (When size of the list of transaction
+is smaller than 1000).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="updating-an-entry"><a class="link" href="#updating-an-entry">F.9. Updating an Entry</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Updating an entry with the command: <code>update</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+</li>
+<li>
+<p>Test case: <code>update t1 $/1000</code><br>
+Expected: First transaction in the list is updated. Balance will be updated as well.</p>
+</li>
+<li>
+<p>Test case: <code>update t0 $/1000</code><br>
+Expected: No transaction is updated. Error details shown in the status message. Balance remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>update</code> commands to try: <code>update</code>, <code>update i/Invalid</code> (Invalid prefix).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-the-transactions"><a class="link" href="#sorting-the-transactions">F.10. Sorting the Transactions</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting the transactions with the command: <code>sort</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Prerequisites:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>sort amount/a</code><br>
+Expected: Transaction list will be sorted from smallest amount to greatest amount. Balance remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>sort amount</code><br>
+Expected: Transaction list remains unchanged. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect <code>sort</code> commands to try: <code>sort</code>, <code>sort date</code> (Order not stated).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-help-window"><a class="link" href="#viewing-help-window">F.11. Viewing Help Window</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1991,7 +2478,7 @@ Expected: A help window pops up that displays the URL of PalPay&#8217;s User Gui
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.4. Saving Data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.12. Saving Data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2008,4 +2495,4 @@ Expected: A help window pops up that displays the URL of PalPay&#8217;s User Gui
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:54:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:48:36 UTC</div></div></div></body></html>

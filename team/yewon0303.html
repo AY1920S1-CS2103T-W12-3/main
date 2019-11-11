@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Park Ye Won - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">PalPay</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W12-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Park Ye Won - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project portfolio documents my contribution to the software project PalPay.</p>
+</div>
+<div class="sect2">
+<h3 id="about-the-team"><a class="link" href="#about-the-team">1.1. About the team</a></h3>
+<div class="paragraph">
+<p>PalPay is a project collectively done by five Sophomore Computer Science Undergraduate students
+in National University of Singapore. As part of a requirement for our module - CS2103T Software Engineering,
+we morphed an existing product called Address Book (Level 3) given constraints
+that the user must interact with it using Command Line Interface (CLI).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="about-the-project"><a class="link" href="#about-the-project">1.2. About the project</a></h3>
+<div class="paragraph">
+<p>PalPay is a desktop application that is target to students who have limited time to keep track of their incomes
+and expenditure and wish to have a simple and quick means to take charge of their finances.
+Also recognising the problem faced by many students that they cannot keep track of lending and borrowing of money with friends,
+PalPay offers a ledger function which keeps track of the movement of money between friends on a daily basis.</p>
+</div>
+<div class="paragraph">
+<p>This is what PalPay looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dg_gui_example.png" alt="dg gui example">
+</div>
+<div class="title">Figure 1. PalPay&#8217;s Graphical User Interface</div>
+</div>
+<div class="paragraph">
+<p>With my role as a developer for this project, I implemented the budget function.
+Understanding that many students have a poor management of their expenses, PalPay budget function allows them to set a budget
+so that they can be more conscious of their expenditure. As they make expenses in that particular category,
+the budget will indicate the amount of money left from the budget and serve as a constant reminder for them to make smart financial choices.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">2. Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of my coding, documentation and other helpful contributions to the team in this project.</p>
+</div>
+<div class="paragraph">
+<p><strong>Enhancement added</strong>: I added the ability to set a budget in the bank account
+*	What it does: The <code>set</code> command allows the user to set a budget until a deadline in a given category.
+As the user makes <code>OutTransaction</code> s of the given category, he can see the percentage of remaining budget, as well as the number of days remaining.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Justification: As the user wishes to manage his expenses and restrict the overspending of money,
+setting the budget is useful in allowing the user to track the outflow of his money.
+Moreover, as the deadline he set approaches or upon exceeding the set budget,
+the budget card displays red font which alerts the user that he needs to manage his finance better.
+More details will be discussed below in the <a href="#User-guide">user guide</a> and <a href="#Developer-guide">developer guide</a>.</p>
+</li>
+<li>
+<p>Highlights: This enhancement is based on <code>Budget</code> class which is a build-up of the current
+<code>Transaction</code> class. While <code>Transaction</code> class allows the user to key in inflows and outflows of money,
+<code>Budget</code> allows the user to have an indication of the outflows in a given category.
+As the two classes behaves as though <code>Budget</code> is a child class of <code>Transaction</code>,
+an in-depth analysis of design alternatives was necessary to ensure that Liskov Substitution Principal
+was not violated. More details will be elaborated in section Design Considerations of <a href="#Developer-guide">developer guide</a> excerpt below.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: Please click these links to see a sample of my code:
+<a href="https://ay1920s1-cs2103t-w12-3.github.io/publish-RepoSense/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=yewon0303&amp;tabRepo=AY1920S1-CS2103T-W12-3%2Fmain%5Bmaster%5D">RepoSense</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Other contributions</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed several issue trackers on GitHub:
+(Issues: <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/92">#92</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/119">#119</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/199">#199</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Comprehensive Unit and Integration Tests
+(Pull requests: <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/204">#204</a>)</p>
+</li>
+<li>
+<p>Updated the GUI colour scheme for budget tab so that necessary messages can be brought across the user such as exceeding the set budget
+(Pull requests: <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/212">#212</a>
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/223">#223</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Made updates to the User Guide and Developer Guide to make them more informative for the following sections:
+(Pull requests: <a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/107">#107</a>
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/127">#127</a>
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/227">#227</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and offered suggestions for other teams in the class
+(Issues: <a href="https://github.com/AY1920S1-CS2103T-F11-1/main/issues/253">#253</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F11-1/main/issues/255">#255</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F11-1/main/issues/256">#256</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F11-1/main/issues/260">#260</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="User-guide"><a class="link" href="#User-guide">3. Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Original AddressBook User Guide was updated with instructions for the enhancements we added.
+The following is an excerpt from our PalPay User Guide, showing additions that I have made for the <code>set</code> command feature.</p>
+</div>
+<div class="paragraph">
+<p>&lt;Start of Excerpt&gt;</p>
+</div>
+<div class="sect2">
+<h3 id="Set"><a class="link" href="#Set">3.1. Setting a Budget : <code>set</code></a></h3>
+<div class="paragraph">
+<p>You can set a budget for a particular category until a certain date, given it is not already present in the budget list.
+A duplicate budget is a budget with the same <code>AMOUNT</code> and <code>DATE</code> and <code>CATEGORY</code>.<br>
+If you attempt to do so, you will receive an error message: <code>This budget already exists</code>.<br></p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax"><a class="link" href="#command-syntax">3.1.1. Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>set $/AMOUNT d/DATE [c/CATEGORY]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Parameters follow the same restrictions as highlighted in <a href="#Parameter-constraints">parameter constraints</a>.<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AMOUNT</code> input accepts the budget amount to be set.</p>
+</li>
+<li>
+<p><code>DATE</code> input accepts the deadline to be set. It cannot be a date in the past.</p>
+</li>
+<li>
+<p><code>CATEGORY</code> accepts the CATEGORY for the budget.
+A budget can be created without <code>CATEGORY</code> inputs in which case, the budget will automatically be assigned `GENERAL' category.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="important-details"><a class="link" href="#important-details">3.1.2. Important Details</a></h4>
+<div class="paragraph">
+<p>Let&#8217;s say you want to restrict your spending for a certain category until a certain deadline.
+PalPay allows you to set a budget and serve as a reminder to show how much of the budget set you have left
+until the deadline (inclusive). You will be more self-conscious of your spending and minimise your spending by setting a budget.<br></p>
+</div>
+<div class="paragraph">
+<p>To set a new budget:<br>
+1. Type <code>set</code> and enter the relevant details (amount, deadline, category) in the format given above.<br>
+2. The result box will display the message <code>New budget successfully set</code>.<br>
+3. If the budget already exists in the budget list, the result box will display the message <code>This budget already exists</code>.<br>
+4. Now you can see the newly set budget in the budget list.</p>
+</div>
+<div class="paragraph">
+<p>As you log an expenditure of a particular <code>CATEGORY</code>, your budgets with the same <code>CATEGORY</code> will be adjusted
+to display the remaining amount of budget. Other budgets in the list belonging to different <code>CATEGORY</code> will not be adjusted.<br></p>
+</div>
+<div class="paragraph">
+<p>For example, you went out with your friends and bought a cup of Gong Cha.
+Before you log your spending, your budget list looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/approachingBudget.png" alt="approachingBudget">
+</div>
+<div class="title">Figure 2. Budget List before Executing OutTransaction</div>
+</div>
+<div class="paragraph">
+<p>You then type in the command <code>out $/5 c/BBT c/friends n/gong cha d/11112019</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/newOutTransaction.png" alt="newOutTransaction">
+</div>
+<div class="title">Figure 3. New OutTransaction Command</div>
+</div>
+<div class="paragraph">
+<p>Your budget list now shows the updated budgets. Observe how Budget 3 is not affected because it does not belong to the relevant <strong>category</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/budgetAffected.png" alt="budgetAffected">
+</div>
+<div class="title">Figure 4. Updated Budget List</div>
+</div>
+<div class="paragraph">
+<p>Budget will not take into consideration past <strong>OutTransaction</strong> when calculating the remaining budget. Remember, you are setting a budget
+from TODAY till the stated <code>DATE</code> (inclusive)!<br></p>
+</div>
+<div class="paragraph">
+<p>If you overspend beyond a set budget, the overspent budget will be displayed in red.
+Shown below as budget index 3 is an example of an overspent budget:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/overspentBudget.png" alt="overspentBudget">
+</div>
+<div class="title">Figure 5. Overspent Budget</div>
+</div>
+<div class="paragraph">
+<p>As the day you have set for the budget approaches, the countdown placeholder as well as the percentage remaining placeholder
+will turn to red when the number of remaining days reaches 3 and below.
+Shown below as budget index 4 is an example of a budget approaching its deadline:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/approachingBudget.png" alt="approachingBudget">
+</div>
+<div class="title">Figure 6. Budget approaching deadline</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set $/100 d/010120120 c/BBT</code></p>
+</li>
+<li>
+<p><code>set $/300 d/29022020 c/shopping</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&lt;End of Excerpt&gt;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Developer-guide"><a class="link" href="#Developer-guide">4. Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following excerpt shows my contribution to PalPay Developer Guide for the section <code>set</code> command.
+The section also highlights the relationship of <code>Budget</code> class with the overall system.</p>
+</div>
+<div class="paragraph">
+<p>&lt;Start of Excerpt&gt;</p>
+</div>
+<div class="sect2">
+<h3 id="set-budget-feature-code-set-code"><a class="link" href="#set-budget-feature-code-set-code">4.1. Set Budget Feature: <code>set</code></a></h3>
+<div class="paragraph">
+<p>The <code>Budget</code> class allows the user to set a budget for a given time period for a category, if specified.
+The user is allowed to set multiple budgets, but duplicate budgets (budgets with the same identity in terms of <strong>amount</strong>, <strong>date</strong> and <strong>category</strong>) are not allowed.
+Upon setting the budget, making <code>OutTransaction</code> will deduct the amount from relevant budgets in the list.
+The detailed implementation of the process of updating the budget is explained further below in <a href="#Current-Implementation">Current Implementation</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="Current-Implementation"><a class="link" href="#Current-Implementation">4.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>set</code> command is an extension of parent <code>Command</code> class, facilitated by the <em>Logic</em> and <em>Model</em> components of the application, <em>PalPay</em><br>
+Given an <strong>amount</strong> and <strong>date</strong>, a new Budget is set for the user.<br>
+Upon setting a new budget, a <code>BudgetCard</code> is created and displayed in a list in the application window till the date set by the user.<br></p>
+</div>
+<div class="paragraph">
+<p>A <code>Budget</code> stores an <strong>initial amount</strong>, <strong>amount</strong> (the current amount), <strong>deadline</strong>, <strong>categories</strong>.
+There is a need for a <code>Budget</code> to store both <strong>initial amount</strong> and <strong>amount</strong> as it allows for percentage of budget remaining to be calculated.<br>
+Shown below is the class diagram of <code>Budget</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BudgetClassDiagram.png" alt="BudgetClassDiagram">
+</div>
+<div class="title">Figure 7. Class Diagram of Budget class</div>
+</div>
+<div class="paragraph">
+<p>Displaying the percentage remaining improves the user experience greatly as our target user is a
+<code>visual person who wants to see how much budget he has left in each category so as to cut down on spending as necessary</code>
+as specified in the <a href="#User-Stories">User Story</a>. Hence, taking a quick glance at the <code>Budget card</code> allows the user to
+determine how much of budget he has left, as well as be alarmed by the red font color to spend less if he has overspent beyond the budget set.<br></p>
+</div>
+<div class="paragraph">
+<p>A snippet of the code which calculates the percentage of budget left is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>public String displayPercentage() {
+    double percentage = this.amount.divideAmount(this.initialAmount) * 100;
+    if (percentage &lt; 0.00) {
+        percentage = 0.0; // should not display a negative percentage
+    } else if (percentage &gt; 100.00) {
+        percentage = 100.0; // should not display a percentage greater than 100%
+    }
+    return String.format("%.2f%% remaining", percentage);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Moreover, as our user is a visual person, PalPay makes use of color to display different messages.
+For instance, budget is displayed in red to alert the user that he has overspent beyond the set budget.<br></p>
+</div>
+<div class="paragraph">
+<p>Shown below is an example of an overspent budget:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/overspentBudget.png" alt="overspentBudget">
+</div>
+<div class="title">Figure 8. Example of an Overspent Budget</div>
+</div>
+<div class="paragraph">
+<p>When setting a new <code>Budget</code>, existence of a duplicate budget is checked through a sequence of checks.
+The activity diagram below shows the activity diagram of setting a new budget:</p>
+</div>
+<div id="Duplicate-budget-check" class="imageblock">
+<div class="content">
+<img src="../images/SetBudgetSimpleActivityDiagram.png" alt="SetBudgetSimpleActivityDiagram">
+</div>
+<div class="title">Figure 9. Activity Diagram of Setting a New Budget Successfully</div>
+</div>
+<div class="paragraph">
+<p>As shown, a new budget cannot have the same <strong>initalAmount</strong>, <strong>deadline</strong> and <strong>categories</strong> as any other existing budget in
+budget list. Allowing existence of duplicate budgets will crowd the interface of <code>Budget</code> tab,
+which prevents the user from getting a quick overview of his budget status. Hence, a duplicate check is essential
+in providing a pleasing user exp.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-of-usage"><a class="link" href="#example-of-usage">4.1.2. Example of Usage</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage of how <code>set</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The user executes <code>set $/100 d/31122019 c/shopping</code> to set a new budget of $100 until 31st December 2019 under the <strong>category</strong> shopping.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/set_dg_1.png" alt="set dg 1">
+</div>
+<div class="title">Figure 10. User Inputs <code>set $/100 d/31122019 c/shopping</code></div>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. Upon executing the command, <code>LogicManager</code> uses <code>MainParser#parse</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>MainParser</code> determines which command is being executed and creates <code>SetCommandParser</code> to further parse the input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. <code>SetCommandParser</code> parses the argument and checks if it is valid. If it is invalid, an exception is thrown.
+Else, it returns a <code>SetCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. <code>LogicManager</code> uses <code>SetCommand#execute()</code> to add a new budget.<br>
+<code>SetCommand</code> uses <code>ModelManager#has(Budget)</code> to check if it is a duplicate of an existing budget
+in the <code>UniqueBudgetList</code> as shown above in <a href="#Duplicate-budget-check">the above diagram</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. <code>SetCommand</code> uses <code>Model#commitUserState()</code> to save the latest state of the application. It then
+returns a <code>CommandResult</code> to the <code>LogicManager</code> and the result will be displayed to the user at the end.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/set_dg_2.png" alt="set dg 2">
+</div>
+<div class="title">Figure 11. New Budget Successfully Created</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.3. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Currently, <code>Budget</code> does not extend from <code>Transaction</code> although the two behave in a similar way.
+There is an aggregation between <code>Budget</code> and <code>Transaction</code> as the two can exist independent of each other,
+although an effect on one may also cause an impact on the other.
+The current design was chosen over the former design of inheritance as there is a stark difference in the two
+in a way that <code>Budget</code> does not affect the <code>balance</code> of the user&#8217;s bank account directly while <code>Transaction</code> does.
+Hence, by Liskov Substitution Principle, inheritance is not a suitable design.<br></p>
+</div>
+<div class="paragraph">
+<p>&lt;End of Excerpt&gt;</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:48:36 UTC</div></div></div></body></html>

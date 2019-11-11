@@ -1,0 +1,654 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Bertrand Tan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">PalPay</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W12-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Bertrand Tan - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-palpay"><a class="link" href="#project-palpay">Project: PalPay</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This portfolio documents my contributions to PalPay, a software engineering project under the module,
+CS2103T Software Engineering. My Team and I were tasked to morph an existing software application into a functional desktop application, written in Java, to better suit our intended target issues and audiences.</p>
+</div>
+<div class="paragraph">
+<p>PalPay is a financial tracking application activated through a Command-Line-Interface (CLI). Our intended target audience being computing students who lack a centralized platform for financial management and planning.</p>
+</div>
+<div class="paragraph">
+<p>For the project, my main role was to develop the <em>Transaction</em> feature.
+This feature represents the fundamental user logging and tracking capabilities that other features of this application subsequently depends on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://ay1920s1-cs2103t-w12-3.github.io/publish-RepoSense/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=dingyuchen&amp;tabRepo=AY1920S1-CS2103T-W12-3%2Fmain%5Bmaster%5D">RepoSense</a></p>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: Implemented the <code>Transactions</code> tab and the features subsumed under it.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows users to input and log their expenditure and income statements. PalPay will also display an overall transaction balance to give users an overall sensing of their financial habits.</p>
+</li>
+<li>
+<p>Justification: This feature fulfills  the primary goal of the application which is to provide users a platform to store and log all their financial statements in a fast and intuitive manner.</p>
+</li>
+<li>
+<p>Highlights: This feature requires constant integration with all existing major features of PalPay (i.e. <code>out</code> Transaction to affect <code>budget</code> if certain conditions are met). This requires constant cross-examination with other features and reimplementation of the codebase to ensure optimal functionality. This also requires a broad familiarity with the entire code base at all points during the development phase.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implemented and handled code base throughout for Update feature and <code>UpdateTransactionDescriptor</code> to function with all different major features.</p>
+</li>
+<li>
+<p>Handled parser checks for the <code>Amount</code> variable for incorrect or potentially program-breaking cases. (i.e. Maximum parsed amount can only contain a value of 999,999)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed issue tracker of the group&#8217;s repository</p>
+</li>
+<li>
+<p>Handled external team bug catches. (Issues :
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/176">#176</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/166">#166</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/151">#151</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/145">#145</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/132">#132</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/issues/109">#109</a>)</p>
+</li>
+<li>
+<p>Reviewed and merged pull requests. (Pull requests:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/251">#251</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/234">#234</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/147">#147</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/122">#122</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/101">#101</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/79">#79</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Comprehensive Unit and Integration Tests (Pull requests:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/211">#211</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/99">#99</a>)</p>
+</li>
+<li>
+<p>Refactored <code>Name</code> model object to <code>Description</code> model object (Pull requests:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/111">#111</a>)</p>
+</li>
+<li>
+<p>Implemented and integrated <code>Update</code> class (Pull requests:
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/211">#211</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/108">#108</a>,
+<a href="https://github.com/AY1920S1-CS2103T-W12-3/main/pull/101">#101</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reformatted the User Guide for a more sequential flow.</p>
+</li>
+<li>
+<p>Wrote the details for the following commands in the User Guide.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In</p>
+</li>
+<li>
+<p>Out</p>
+</li>
+<li>
+<p>Update</p>
+</li>
+<li>
+<p>Delete</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Created UML diagrams to help in the explanation of <code>in / out</code>, <code>update</code> and <code>delete</code> commands in the Developer Guide.</p>
+</li>
+<li>
+<p>Included <strong>Aspect</strong> cases under <strong>Design Considerations</strong> in the Developer Guide.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the module. (Examples:
+<a href="https://github.com/AY1920S1-CS2103T-T13-1/main/issues/223">T13-1 #223</a>,
+<a href="https://github.com/AY1920S1-CS2103T-T13-1/main/issues/222">T13-1 #222</a>,
+<a href="https://github.com/AY1920S1-CS2103T-T13-1/main/issues/221">T13-1 #221</a>,
+<a href="https://github.com/AY1920S1-CS2103T-T13-1/main/issues/220">T13-1 #220</a>,
+<a href="https://github.com/AY1920S1-CS2103T-T13-1/main/issues/219">T13-1 #219</a>,
+<a href="https://github.com/AY1920S1-CS2103T-T13-1/main/issues/216">T13-1 #216</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are snippets of sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Out"><a class="link" href="#Out">Logging Expense : <code>out</code></a></h3>
+<div class="paragraph">
+<p>Have you recently made an expenditure that requires logging down? PalPay accepts all expenditure inputs through the <code>out</code> command. Inputting an <code>out</code> command will decrease the overall balance value. Your expenditure statements, just like the income statements, have the added option to be tagged under one or more categories. You can do so by including the <code>[c/CATEGORY]</code> parameter in your command line. All uncategorized incomes will be tagged under the <code>GENERAL</code> category.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax"><a class="link" href="#command-syntax">Command Syntax</a></h4>
+<div class="paragraph">
+<p>Format: <code>out $/AMOUNT n/DESCRIPTION d/DATE [c/CATEGORY]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Users should not input negative values into <code>AMOUNT</code> (i.e. <code>out $/-100 &#8230;&#8203;</code>) as PalPay has already accounted for the difference between incomes and expenditures.</p>
+</li>
+<li>
+<p><code>CATEGORY</code> accepts the categories for this expenditure. An <code>out</code> Transaction can be created without any <code>CATEGORY</code>.</p>
+</li>
+<li>
+<p><code>out</code> updates the user&#8217;s overall balance with a net <strong>negative</strong> amount (e.g. <code>out n/milk $/2 d/10102019</code> will <strong>decrease</strong> overall balance by $2)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="important-details"><a class="link" href="#important-details">Important Details</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that <code>out</code> <em>Transactions</em> differ from <code>in</code> <em>Transactions</em> in the display amount. The <code>in</code> entries are characterized by the <strong>positive</strong> value within their display box whilst the <code>out</code> entries are characterized by the <strong>negative</strong> values in their display box. The difference can be observed in the example usage below.</p>
+</li>
+<li>
+<p>An <code>out</code> command will affect the remaining amount of <code>Budget</code> entries with similar categories within the same time period (Refer to <a href="#UG_OUT_EXAMPLE3">Example 3</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-usages"><a class="link" href="#example-usages">Example Usages</a></h4>
+<div class="sect4">
+<h5 id="UG_OUT_EXAMPLE3"><a class="link" href="#UG_OUT_EXAMPLE3">Example 3</a></h5>
+<div class="literalblock">
+<div class="content">
+<pre>out $/100 n/pants d/02012020 c/clothes</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expenditure logging</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Inputs an expenditure of "$100" with description set to "pants" and date set on "02/01/2020".</p>
+</li>
+<li>
+<p>The income includes "clothes" under the <code>CATEGORY</code> field.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/out_ug_5.png" alt="out ug 5">
+</div>
+<div class="title">Figure 1. Expenditure Logging Example 3</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Budget with similar categories and time period.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Entry 3 of the <em>Budget</em> tab has <code>clothes</code> under its <code>CATEGORY</code> field.</p>
+</li>
+<li>
+<p>Entry 3 of the <em>Budget</em> tab has a deadline set to "01/01/2021".</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/out_ug_6.png" alt="out ug 6">
+</div>
+<div class="title">Figure 2. Budget with 'clothes' category</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Expenditure added</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The expenditure is added to the bottom of the <em>Transaction</em> tab.</p>
+</li>
+<li>
+<p>The added expenditure has a date set to <code>02/01/2020</code>.</p>
+</li>
+<li>
+<p>The added expenditure is tagged under the <code>clothes</code> category.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/out_ug_7.png" alt="out ug 7">
+</div>
+<div class="title">Figure 3. Sample Expenditure 3 Added</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Budget entry updated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The remaining amount of entry 3 of the <em>Budget</em> tab has decreased from "$1000" to "$900".</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/out_ug_8.png" alt="out ug 8">
+</div>
+<div class="title">Figure 4. Budget entry updated</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example-commands"><a class="link" href="#example-commands">Example Commands:</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>out $/100 d/01012019 n/milk c/food c/drinks</code></p>
+</li>
+<li>
+<p><code>out $/29 d/29022020 n/taxi c/transport</code></p>
+</li>
+<li>
+<p><code>out $/12 d/31122019 n/burger</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="updating-finance-code-update-code"><a class="link" href="#updating-finance-code-update-code">Updating Finance : <code>update</code></a></h3>
+<div class="paragraph">
+<p>Did you make a mistake in one of your entries? Perhaps you over counted that expenditure you made. PalPay provides you with an <code>update</code> feature which helps you change specific fields within your entries.</p>
+</div>
+<div class="sect3">
+<h4 id="command-syntax-2"><a class="link" href="#command-syntax-2">Command Syntax</a></h4>
+<div class="paragraph">
+<p>The <code>update</code> feature has different implementations for different entry types. The conditions for the <code>update</code> feature is as follows.</p>
+</div>
+<div class="paragraph">
+<p>Format (Transactions): <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [n/ITEM] [c/CATEGORY]&#8230;&#8203;</code><br></p>
+</div>
+<div class="paragraph">
+<p>Format (Budget): <code>update TYPE+INDEX [$/AMOUNT] [d/DATE] [c/CATEGORY]&#8230;&#8203;</code><br></p>
+</div>
+<div class="paragraph">
+<p>Format (Ledger): Cannot be updated<br></p>
+</div>
+<div class="paragraph">
+<p>Format (Projections): Cannot be updated</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one <code>AMOUNT</code>, <code>DATE</code>, <code>ITEM</code> or <code>CATEGORY</code> fields must be entered. You can input more than 1 of the mentioned fields (e.g. <code>update t1 $/100 n/milk</code>).</p>
+</li>
+<li>
+<p><code>TYPE</code> only accepts either <code>t</code> (<em>Transaction</em>) or <code>b</code> (<em>Budget</em>). (e.g. <code>update t1 ..</code> refers to updating a <em>Transaction</em> of index 1).</p>
+</li>
+<li>
+<p><code>TYPE+INDEX</code> requires the TYPE and INDEX to be placed in sequential order (e.g. <code>update b 1 ..</code> or <code>update 1 ..</code> or <code>update 1b ..</code> will not work).</p>
+</li>
+<li>
+<p>Example: <code>update t1 $/3000 d/10102019</code> will update the first transaction from the list of transactions by changing it&#8217;s <code>AMOUNT</code> to "$1000" and <code>DATE</code> to "10/10/2019".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="important-details-2"><a class="link" href="#important-details-2">Important Details</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update</code> requires at least one field to be updated. (e.g. <code>update t1 $/20 d/10102019 n/milk</code> and <code>update t1 $/10</code> will both be accepted).</p>
+</li>
+<li>
+<p>You can only update an existing transaction, budget or projection. Nothing will be updated if the entry of "index" <code>INDEX</code> does not exists.</p>
+</li>
+<li>
+<p><code>Ledger</code> and <code>Projection</code> do not have an update function. If you need to change specific fields within a ledger or projection entry, you should delete the target entry and recreate a new entry with your desired fields.</p>
+</li>
+<li>
+<p>You cannot change an <code>in</code> <em>Transaction</em> to an <code>out</code> <em>Transaction</em> or vice versa.</p>
+</li>
+<li>
+<p>Changing an expenditure&#8217;s (<code>out</code> <em>Transaction</em>) category field to that of a Budget&#8217;s entry will reflect changes on that particular Budget entry as well. (Further explained in <strong>Example 3</strong> below).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Changing the <strong>categories</strong> of an <code>out</code> <em>Transaction</em> entry with similar categories to that of a <em>Budget</em> entry will reflect changes on the budget&#8217;s remaining amount in version 2.0.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="example-commands-2"><a class="link" href="#example-commands-2">Example Commands:</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update t1 $/20 n/coke c/drinks d/12122019</code></p>
+</li>
+<li>
+<p><code>update b2 $/300</code></p>
+</li>
+<li>
+<p><code>update t4 $/30 d/12102019</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are snippets of sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="transaction-code-in-code-code-out-code"><a class="link" href="#transaction-code-in-code-code-out-code">Transaction: <code>in</code> / <code>out</code></a></h3>
+<div class="paragraph">
+<p>The <code>Transaction</code> abstract class allows user to input income and expense statements. Both <code>in</code> and <code>out</code> transactions requires the mandatory <code>Amount</code>, <code>Description</code> and <code>Date</code> fields to be appended. There is an optional <code>Category</code> field which can accept one or more input depending on the user specifications.
+The <code>in</code> transactions will increase the <code>BankAccount</code> balance amount whilst the <code>out</code> transactions will reduce the <code>BankAccount</code> balance amount.</p>
+</div>
+<div class="paragraph">
+<p><code>In</code> Transactions represent the income statements inputted into Palpay.</p>
+</div>
+<div class="paragraph">
+<p><code>Out</code> Transactions represent the expenditure statements inputted into Palpay.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The sequence diagram below illustrates how PalPay handles the command input <code>in $/200 n/coke d/10102019</code>. The arguments are parsed into the logic component where the subsequent model objects are created.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InSequenceDiagram.png" alt="InSequenceDiagram">
+</div>
+<div class="title">Figure 5. Sequence Diagram for Executing an <code>InCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The <code>in</code> and <code>out</code> transaction follows the same logic flow after they are parsed.</p>
+</div>
+<div class="paragraph">
+<p>The difference between <code>in</code> and <code>out</code> transactions is that the <code>handleBalance()</code> method called in the <code>BankAccount</code> results in an <code>addAmount</code> operation for the <code>inTransaction</code> and a <code>subtractAmount</code> operation for the <code>OutTransaction</code> class.</p>
+</div>
+<div class="sect4">
+<h5 id="example"><a class="link" href="#example">Example</a></h5>
+<div class="paragraph">
+<p>Given that the <code>BankAccount</code> balance initially starts with 0 dollars.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>in</code> Transaction of <code>$1000</code> will increase the <code>BankAccount</code> balance from $0 to $1000.</p>
+</li>
+<li>
+<p><code>out</code> Transaction of <code>$250</code> will subsequently decrease the <code>BankAccount</code> balance from $1000 to $250.</p>
+</li>
+<li>
+<p>The Activity Diagram shown below will provide a visual representation of the two routes a Transaction object can take.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InActivityDiagram.png" alt="InActivityDiagram">
+</div>
+<div class="title">Figure 6. Activity Diagram for In and Out Transactions</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>To prevent repetitive code implementation, the <code>Transaction</code> abstract class is used to facilitate income and expenditure logging.  <code>Transaction</code> is an abstract class which contains the default constructor and commonly used variables. <code>InTransaction</code> and <code>OutTransaction</code> extends the <code>Transaction</code> class as they typically store an <strong>amount</strong>, <strong>date</strong>, <strong>description</strong>, and a set of <strong>categories</strong>.
+A code snippet of the <code>Transaction</code> abstract class is shown below.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>public abstract class Transaction {
+
+    protected Amount amount;
+    protected Date date;
+    protected Description description;
+    protected final Set&lt;Category&gt; categories = new HashSet&lt;&gt;();
+
+    public Transaction(Amount amount, Date date, Description description) {
+        this.amount = amount;
+        this.date = date;
+        this.description = description;
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The balance in <code>BankAccount</code> and the balance in <code>Ledger</code> are considered two separate identities, both being encompassed under the <code>UserState</code> class.
+Therefore user operations that deal with <code>BankAccount</code> implements the <code>BankAccountOperation</code> interface, while operations
+that deal with <code>Ledger</code> implements the <code>LedgerOperation</code> interface.<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows us to achieve polymorphism by overloading methods in <code>Model</code> to handle the different operations correctly.</p>
+</li>
+<li>
+<p>This reduces code coupling as there are different models to handle different balance amounts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>Transaction</code> entry can affect a <code>Budget</code> which has similar categories and is within the same time period. The activity diagram bellow will further clarify this flow.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>Out</code> Transactions can affect <code>Budget</code>.</p>
+</li>
+<li>
+<p>The activity diagram below shows how and when a <code>Transaction</code> object affects <code>Budget</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OutbudgetActivityDiagram.png" alt="OutbudgetActivityDiagram">
+</div>
+<div class="title">Figure 7. Activity Diagram for Out Transaction Affecting Budget</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-existing-entry-feature-code-update-code"><a class="link" href="#update-existing-entry-feature-code-update-code">Update Existing Entry Feature: <code>update</code></a></h3>
+<div class="paragraph">
+<p>This feature currently allows users to update <code>Transaction</code> or <code>Budget</code> entries. The user is unable to perform this feature on <code>Ledger</code> operations. The rationale for this will be further explained in <a href="#Aspect2">Aspect 2: Update can not edit Ledger Operations</a>. The user is currently unable to perform this feature on <code>Projection</code> operations as it will be further implemented in future updates.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The <code>update</code> feature allows one or more fields of a Transaction or Budget to be updated. (e.g. <code>update t1 $/2</code> and <code>update t1 $/2 d/10102019</code> will both work as intended).</p>
+</div>
+<div class="paragraph">
+<p>More often than not, users do not need to change an entire Transaction or Budget entry. This will minimize inputs from users if they do not require every single parameters of a Transaction or Budget to be changed.</p>
+</div>
+<div class="sect4">
+<h5 id="Aspect2"><a class="link" href="#Aspect2">Aspect 2: Update can not edit Ledger Operations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Update Command does not work with <code>Ledger</code> operations.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Intuitive implementation and execution for the user.</p>
+</li>
+<li>
+<p>Cons: Requires excessive user operations.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The user has to first delete the <code>Ledger</code> operation that he/she wishes to change, followed by inputting the <code>Ledger</code> operation with the amended fields back into <em>PalPay</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Update Command to also work with <code>Ledger</code> operations.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Requires only one user command to append or change <code>Ledger</code> entries.</p>
+</li>
+<li>
+<p>Cons: Results in convoluted implementation and user experience. This will also hinder future permeability of the <code>Split</code> feature.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Ledger</code> operations such as <code>split</code> includes many repeated fields (i.e. multiple <code>Persons</code> and <code>shares</code> list).</p>
+</li>
+<li>
+<p>Will require several conditional user inputs to differentiate between the various repeated entities that the user wishes to amend.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements"><a class="link" href="#future-enhancements">Future Enhancements</a></h4>
+<div class="sect4">
+<h5 id="update-feature-for-projections"><a class="link" href="#update-feature-for-projections">Update feature for Projections</a></h5>
+<div class="paragraph">
+<p>Currently the update feature has not been implemented for <code>Projection</code> operations. In future iterations of PalPay, the update feature should work seamlessly with <code>Projection</code> operations, similar to that of <code>Transaction</code> and <code>Budget</code> operations</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram below will provide a visual representation of the possible user routes using the <code>update</code> command after this enhancement has been implemented.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UpdatefutureActivityDiagram.png" alt="UpdatefutureActivityDiagram">
+</div>
+<div class="title">Figure 8. Activity Diagram for Future <code>update</code></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:48:36 UTC</div></div></div></body></html>
